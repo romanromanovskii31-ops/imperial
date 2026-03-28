@@ -9,146 +9,111 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #071521, #0b2a45);
-    color: #fff;
-}
-
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: auto;
+    background: #0b0b0b;
+    color: white;
 }
 
 header {
     text-align: center;
-    padding: 30px 0;
+    padding: 80px 20px;
+    background: url('https://images.unsplash.com/photo-1601582589907-f92af5ed9db8') center/cover;
 }
 
-.logo {
+header h1 {
     font-size: 42px;
-    font-weight: bold;
-    color: gold;
-    letter-spacing: 3px;
+    margin: 0;
 }
 
-.hero {
-    text-align: center;
-    padding: 100px 20px;
-}
-
-.hero h1 {
-    font-size: 48px;
-    margin-bottom: 10px;
-}
-
-.hero p {
+header p {
     font-size: 20px;
-    margin-bottom: 30px;
+    margin: 20px 0;
 }
 
 .btn {
     background: gold;
-    color: #000;
+    color: black;
     padding: 15px 30px;
     text-decoration: none;
     font-weight: bold;
-    border-radius: 6px;
+    border-radius: 5px;
 }
 
-.services {
+section {
+    padding: 60px 20px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+h2 {
+    color: gold;
+}
+
+.cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
-    margin-top: 40px;
 }
 
 .card {
-    background: rgba(255,255,255,0.05);
-    padding: 25px;
-    border-radius: 12px;
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+footer {
     text-align: center;
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-}
-
-.section {
-    padding: 60px 20px;
-}
-
-.contact {
-    text-align: center;
-    line-height: 2;
-}
-
-.whatsapp {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #25D366;
-    color: white;
-    padding: 15px 20px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: bold;
+    padding: 30px;
+    background: #000;
 }
 </style>
-
 </head>
 
 <body>
 
-<header class="container">
-    <div class="logo">IMPERIAL</div>
-    <div>LOGISTICS & CARGO</div>
+<header>
+    <h1>IMPERIAL LOGISTICS & CARGO</h1>
+    <p>Международные грузоперевозки с 2021 года</p>
+    <a href="#" class="btn">Связаться</a>
 </header>
 
-<section class="hero">
-    <h1>Международные грузоперевозки</h1>
-    <p>Европа → Россия → СНГ</p>
-    <a href="https://wa.me/795973958" class="btn">Получить расчёт</a>
+<section>
+    <h2>О компании</h2>
+    <p>
+    Мы являемся основным перевозчиком по международным направлениям с 2021 года.
+    Доставляем оборудование, коммерческие грузы и сборные отправки.
+    Работаем по Европе, СНГ, Турции и Грузии.
+    </p>
 </section>
 
-<section class="section container">
+<section>
     <h2>Наши услуги</h2>
-    <div class="services">
-        <div class="card">🚛 Автоперевозки</div>
-        <div class="card">🚢 Морские перевозки</div>
-        <div class="card">✈️ Авиадоставка</div>
-        <div class="card">📦 Сборные грузы</div>
+    <div class="cards">
+        <div class="card">Международные перевозки</div>
+        <div class="card">Доставка оборудования</div>
+        <div class="card">Сборные грузы</div>
+        <div class="card">Таможенное оформление</div>
     </div>
 </section>
 
-<section class="section container">
+<section>
     <h2>Почему выбирают нас</h2>
-    <div class="services">
-        <div class="card">Скорость и контроль</div>
-        <div class="card">Международный опыт</div>
-        <div class="card">Надёжные партнёры</div>
-        <div class="card">Работаем по Европе и СНГ</div>
+    <div class="cards">
+        <div class="card">Опыт с 2021 года</div>
+        <div class="card">Надежные партнеры</div>
+        <div class="card">Контроль на всех этапах</div>
+        <div class="card">Работаем официально</div>
     </div>
 </section>
 
-<section class="section container contact">
+<section>
     <h2>Контакты</h2>
-    <p>📞 Россия: +7 910 327-39-58</p>
-    <p>📞 Россия: +7 920 551-65-75</p>
-    <p>📞 Грузия: +995 597 084 312</p>
-
-    <p>✉️ romanovskii-1975@mail.ru</p>
-    <p>✉️ romanromanovskii31@gmail.com</p>
-
-    <p>WhatsApp / Telegram доступны</p>
+    <p>Телефон: +995 XXX XXX XXX</p>
+    <p>Email: info@imperialtranscargo.com</p>
+    <p>WhatsApp / Telegram</p>
 </section>
-
-<a class="whatsapp" href="https://wa.me/795973958">WhatsApp</a>
 
 <footer>
-    <div class="container">
-        © 2026 IMPERIAL LOGISTICS & CARGO
-    </div>
+    <p>© 2026 IMPERIAL LOGISTICS & CARGO</p>
 </footer>
 
 </body>
