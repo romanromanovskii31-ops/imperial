@@ -15,7 +15,7 @@ body {
 
 .hero {
   position: relative;
-  padding: 100px 20px;
+  padding: 120px 20px;
   text-align: center;
   background: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70') center/cover no-repeat;
 }
@@ -54,7 +54,7 @@ body {
 
 .big-btn {
   display: inline-block;
-  margin-top: 20px;
+  margin-top: 25px;
   padding: 18px 40px;
   background: #22c55e;
   border-radius: 12px;
@@ -63,7 +63,24 @@ body {
   font-size: 20px;
 }
 
-.section { padding: 60px 20px; text-align: center; }
+.section {
+  padding: 70px 20px;
+  text-align: center;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 12px;
+  width: 250px;
+}
 
 .form input, .form textarea {
   width: 100%;
@@ -82,6 +99,12 @@ button {
   border: none;
   border-radius: 10px;
   cursor: pointer;
+}
+
+.footer {
+  padding: 40px;
+  text-align: center;
+  background: #020617;
 }
 </style>
 </head>
@@ -104,6 +127,16 @@ button {
 </section>
 
 <section class="section">
+  <h2>Почему выбирают нас</h2>
+  <div class="cards">
+    <div class="card">⚡ Быстрая доставка</div>
+    <div class="card">🌍 Международные направления</div>
+    <div class="card">💰 Лучшие цены</div>
+    <div class="card">📦 Контроль груза 24/7</div>
+  </div>
+</section>
+
+<section class="section">
   <h2>Рассчитать стоимость</h2>
   <div class="form">
     <input type="text" id="name" placeholder="Ваше имя">
@@ -111,6 +144,15 @@ button {
     <textarea id="cargo" placeholder="Опишите груз"></textarea>
     <button onclick="sendTelegram()">Отправить</button>
   </div>
+</section>
+
+<section class="footer">
+  <h3>Контакты</h3>
+  <p>📞 +995 597 084 312</p>
+  <p>
+    <a href="https://wa.me/995597084312" style="color:#22c55e;">WhatsApp</a> |
+    <a href="https://t.me/roman_imperial" style="color:#38bdf8;">Telegram</a>
+  </p>
 </section>
 
 <script>
@@ -126,7 +168,7 @@ function sendTelegram() {
 
   let message = `Новая заявка:%0AИмя: ${name}%0AТелефон: ${phone}%0AГруз: ${cargo}`;
 
-  let token = "8633180088:AAGWiGxCpZQ35ViK8Z0kp7uw2AcUqbNhkC0";
+  let token = "ВСТАВИШЬ_НОВЫЙ_ТОКЕН_ЗАВТРА";
   let chat_id = "1118097651";
 
   fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${message}`)
@@ -136,7 +178,6 @@ function sendTelegram() {
         alert("Заявка отправлена!");
       } else {
         alert("Ошибка!");
-        console.log(data);
       }
     })
     .catch(() => {
