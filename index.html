@@ -60,6 +60,7 @@ body {
   border-radius: 12px;
   text-decoration: none;
   color: white;
+  font-size: 20px;
 }
 
 .section { padding: 60px 20px; text-align: center; }
@@ -78,6 +79,7 @@ button {
   background: #38bdf8;
   border: none;
   border-radius: 10px;
+  cursor: pointer;
 }
 </style>
 </head>
@@ -117,8 +119,11 @@ function sendTelegram() {
 
   let message = `Новая заявка:\nИмя: ${name}\nТелефон: ${phone}\nГруз: ${cargo}`;
 
-  let token = "YOUR_TOKEN";
-  let chat_id = "YOUR_CHAT_ID";
+  
+  let token = 8633180088:AAGWiGxCpZQ35ViK8Z0kp7uw2AcUqbNhkC0;
+
+  // ❗ chat id НЕ МЕНЯЙ
+  let chat_id = "123456789";
 
   fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
     method: "POST",
