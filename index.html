@@ -5,6 +5,12 @@
 <title>IMPERIAL TRANS CARGO</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+(function(){ emailjs.init("YOUR_PUBLIC_KEY"); })();
+</script>
+
 <style>
 body {
   margin: 0;
@@ -12,74 +18,73 @@ body {
   background: #0f172a;
   color: white;
 }
-
 .container {
   max-width: 600px;
   margin: 100px auto;
-  padding: 20px;
-}
-
-h1 {
   text-align: center;
 }
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
 input, textarea {
+  width: 100%;
   padding: 12px;
-  border: none;
+  margin: 10px 0;
   border-radius: 8px;
+  border: none;
 }
-
 button {
-  padding: 15px;
-  background: #22c55e;
+  padding: 12px 20px;
   border: none;
-  color: white;
-  font-size: 16px;
   border-radius: 8px;
+  background: #22c55e;
+  color: white;
   cursor: pointer;
 }
 </style>
 </head>
-
 <body>
 
 <div class="container">
-  <h1>IMPERIAL TRANS CARGO</h1>
-
-  <form>
-    <input type="text" name="name" placeholder="Ваше имя" required>
-    <input type="tel" name="phone" placeholder="Телефон" required>
-    <textarea name="cargo" placeholder="Описание груза" required></textarea>
-    <button type="submit">Отправить заявку</button>
-  </form>
+  <h1>Заявка</h1>
+  <input type="text" id="name" placeholder="Имя">
+  <input type="text" id="phone" placeholder="Телефон">
+  <textarea id="cargo" placeholder="Описание груза"></textarea>
+  <button onclick="sendForm()">Отправить</button>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-
 <script>
-(function(){
-  emailjs.init("iBgRJG8GNtKKEUoBM");
-})();
+// === TELEGRAM ===
+const TOKEN = "8633180088:AAFg8xzLX2t6I2TDXQ2SUYoiNAuNJh;
+const CHAT_ID = "1118097651";
 
-document.querySelector("form").addEventListener("submit", function(e) {
-  e.preventDefault();
+function sendForm() {
+  const name = document.getElementById('name').value;
+  const phone = document.getElementById('phone').value;
+  const cargo = document.getElementById('cargo').value;
 
-  emailjs.send("service_nsvynwu", "template_daooa4d", {
-    name: this.name.value,
-    phone: this.phone.value,
-    cargo: this.cargo.value
-  }).then(function() {
-    alert("Заявка отправлена!");
-  }, function(error) {
-    alert("Ошибка: " + JSON.stringify(error));
+  const message = `Новая заявка:\nИмя: ${name}\nТелефон: ${phone}\nГруз: ${cargo}`;
+
+  // TELEGRAM
+  fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      chat_id: CHAT_ID,
+      text: message
+    })
   });
-});
+
+  // EMAIL
+  emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+    name: name,
+    phone: phone,
+    cargo: cargo
+  })
+  .then(() => {
+    alert("Заявка отправлена");
+  })
+  .catch(() => {
+    alert("Ошибка отправки");
+  });
+}
 </script>
 
 </body>
