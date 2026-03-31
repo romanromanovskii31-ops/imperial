@@ -13,177 +13,73 @@ body {
   color: white;
 }
 
-.hero {
-  position: relative;
-  padding: 120px 20px;
-  text-align: center;
-  background: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70') center/cover no-repeat;
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(2,6,23,0.75);
-}
-
-.hero * { position: relative; z-index: 2; }
-
-.title {
-  font-size: 68px;
-  font-weight: 900;
-  letter-spacing: 4px;
-}
-
-.subtitle-main {
-  font-size: 28px;
-  letter-spacing: 6px;
-  color: #38bdf8;
-}
-
-.subtitle { color: #94a3b8; }
-
-.services span {
-  display: inline-block;
-  margin: 5px;
-  padding: 8px 14px;
-  background: #1e293b;
-  border-radius: 8px;
-}
-
-.big-btn {
-  display: inline-block;
-  margin-top: 25px;
-  padding: 18px 40px;
-  background: #22c55e;
-  border-radius: 12px;
-  text-decoration: none;
-  color: white;
-  font-size: 20px;
-}
-
-.section {
-  padding: 70px 20px;
-  text-align: center;
-}
-
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.card {
-  background: #1e293b;
+.container {
+  max-width: 600px;
+  margin: 100px auto;
   padding: 20px;
-  border-radius: 12px;
-  width: 250px;
 }
 
-.form input, .form textarea {
-  width: 100%;
-  max-width: 400px;
-  display: block;
-  margin: 10px auto;
+h1 {
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input, textarea {
   padding: 12px;
-  border-radius: 8px;
   border: none;
+  border-radius: 8px;
 }
 
 button {
-  width: 220px;
-  padding: 14px;
-  background: #38bdf8;
+  padding: 15px;
+  background: #22c55e;
   border: none;
-  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+  border-radius: 8px;
   cursor: pointer;
-}
-
-.footer {
-  padding: 40px;
-  text-align: center;
-  background: #020617;
 }
 </style>
 </head>
 
 <body>
 
-<section class="hero">
-  <h1 class="title">IMPERIAL</h1>
-  <p class="subtitle-main">TRANS CARGO</p>
-  <p class="subtitle">Международные грузоперевозки</p>
+<div class="container">
+  <h1>IMPERIAL TRANS CARGO</h1>
 
-  <div class="services">
-    <span>🚛 Тент</span>
-    <span>❄️ Рефрижераторы</span>
-    <span>📦 Контейнеры</span>
-    <span>✈️ Авиа</span>
-  </div>
+  <form>
+    <input type="text" name="name" placeholder="Ваше имя" required>
+    <input type="tel" name="phone" placeholder="Телефон" required>
+    <textarea name="cargo" placeholder="Описание груза" required></textarea>
+    <button type="submit">Отправить заявку</button>
+  </form>
+</div>
 
-  <a href="https://wa.me/995597084312" class="big-btn">🚀 Рассчитать стоимость</a>
-</section>
-
-<section class="section">
-  <h2>Почему выбирают нас</h2>
-  <div class="cards">
-    <div class="card">⚡ Быстрая доставка</div>
-    <div class="card">🌍 Международные направления</div>
-    <div class="card">💰 Лучшие цены</div>
-    <div class="card">📦 Контроль груза 24/7</div>
-  </div>
-</section>
-
-<section class="section">
-  <h2>Рассчитать стоимость</h2>
-  <div class="form">
-    <input type="text" id="name" placeholder="Ваше имя">
-    <input type="text" id="phone" placeholder="Телефон">
-    <textarea id="cargo" placeholder="Опишите груз"></textarea>
-    <button onclick="sendTelegram()">Отправить</button>
-  </div>
-</section>
-
-<section class="footer">
-  <h3>Контакты</h3>
-  <p>📞 +995 597 084 312</p>
-  <p>
-    <a href="https://wa.me/995597084312" style="color:#22c55e;">WhatsApp</a> |
-    <a href="https://t.me/roman_imperial" style="color:#38bdf8;">Telegram</a>
-  </p>
-</section>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
 <script>
-function sendTelegram() {
-  let name = document.getElementById('name').value.trim();
-  let phone = document.getElementById('phone').value.trim();
-  let cargo = document.getElementById('cargo').value.trim();
+(function(){
+  emailjs.init("iBgRJG8GNtKKEUoBM");
+})();
 
-  if (!name || !phone || !cargo) {
-    alert("Заполните все поля!");
-    return;
-  }
+document.querySelector("form").addEventListener("submit", function(e) {
+  e.preventDefault();
 
-  let message = `Новая заявка:%0AИмя: ${name}%0AТелефон: ${phone}%0AГруз: ${cargo}`;
-
-  let token = "ВСТАВИШЬ_НОВЫЙ_ТОКЕН_ЗАВТРА";
-  let chat_id = "1118097651";
-
-  fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${message}`)
-    .then(res => res.json())
-    .then(data => {
-      if (data.ok) {
-        alert("Заявка отправлена!");
-      } else {
-        alert("Ошибка!");
-      }
-    })
-    .catch(() => {
-      alert("Ошибка соединения!");
-    });
-}
+  emailjs.send("service_nsvynwu", "template_daooa4d", {
+    name: this.name.value,
+    phone: this.phone.value,
+    cargo: this.cargo.value
+  }).then(function() {
+    alert("Заявка отправлена!");
+  }, function(error) {
+    alert("Ошибка: " + JSON.stringify(error));
+  });
+});
 </script>
 
 </body>
