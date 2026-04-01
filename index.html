@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>IMPERIAL </title>
+<title>IMPERIAL</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- EmailJS -->
@@ -43,7 +43,7 @@ button {
 <body>
 
 <div class="container">
-  <h1>Заявка</h1>
+  <h1>IMPERIAL</h1>
   <input type="text" id="name" placeholder="Имя">
   <input type="text" id="phone" placeholder="Телефон">
   <textarea id="cargo" placeholder="Описание груза"></textarea>
@@ -52,9 +52,7 @@ button {
 
 <script>
 // === TELEGRAM ===
-const TOKEN = "Token for the bot Imperial Cargo Bot @imperial_trans_cargo_bot has been revoked. New token is:
-
-8633180088:AAFg8xzLX2t6I2TDXQ2SUYoiNAuNJhtebQM";
+const TOKEN = "8633180088:AAFg8xzLX2t6I2TDXQ2SUYoiNAuNJhtebQM";
 const CHAT_ID = "1118097651";
 
 function sendForm() {
@@ -62,7 +60,10 @@ function sendForm() {
   const phone = document.getElementById('phone').value;
   const cargo = document.getElementById('cargo').value;
 
-  const message = `Новая заявка:\nИмя: ${name}\nТелефон: ${phone}\nГруз: ${cargo}`;
+  const message = `Новая заявка:
+Имя: ${name}
+Телефон: ${phone}
+Груз: ${cargo}`;
 
   // TELEGRAM
   fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
@@ -91,3 +92,4 @@ function sendForm() {
 
 </body>
 </html>
+
