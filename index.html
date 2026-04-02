@@ -7,7 +7,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
-(function(){ emailjs.init("ТВОЙ_PUBLIC_KEY"); })();
+(function(){ emailjs.init("iBgRJG8GNtKKEUoBM"); })();
 </script>
 
 <style>
@@ -93,13 +93,10 @@ button {
   <p>🛃 Таможенное оформление и брокерские услуги (Белгород • Краснодар • Новороссийск)</p>
 </div>
 
-<!-- КАРТА -->
 <div class="container">
   <h2>География перевозок</h2>
-
   <img src="https://i.imgur.com/6X4KQ8p.png"
        style="width:100%;max-width:600px;border-radius:10px;margin-top:15px;">
-
   <p style="margin-top:15px;">
   Европа • СНГ • Азия
   </p>
@@ -157,6 +154,7 @@ function sendForm() {
 Телефон: ${phone}
 Груз: ${cargo}`;
 
+  // TELEGRAM
   fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -166,7 +164,8 @@ function sendForm() {
     })
   });
 
-  emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+  // EMAIL
+  emailjs.send("service_nsvynwu", "template_daooa4d", {
     name: name,
     phone: phone,
     cargo: cargo
