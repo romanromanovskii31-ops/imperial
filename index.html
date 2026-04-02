@@ -38,11 +38,15 @@ body {
 }
 
 input, textarea {
-  width: 100%;
+  width: 90%;
+  max-width: 400px;
   padding: 12px;
-  margin: 10px 0;
+  margin: 10px auto;
+  display: block;
   border-radius: 8px;
   border: none;
+  background: #1e293b;
+  color: white;
 }
 
 button {
@@ -58,7 +62,6 @@ button {
 
 <body>
 
-<!-- ГЛАВНЫЙ БЛОК -->
 <div class="hero">
   <h1>ООО ИМПЕРИАЛ</h1>
   <p>
@@ -71,7 +74,6 @@ button {
   </p>
 </div>
 
-<!-- УСЛУГИ -->
 <div class="container">
   <h2>Наши услуги</h2>
   <p>🚚 Международные перевозки</p>
@@ -82,25 +84,27 @@ button {
   <p>📑 Таможенное оформление</p>
 </div>
 
-<!-- ДОП УСЛУГИ -->
 <div class="container">
   <h2>Дополнительные услуги</h2>
   <p>💳 Агентские платежи</p>
   <p>🌍 Аутсорсинг ВЭД</p>
   <p>📦 Параллельный импорт</p>
   <p>📑 Полное сопровождение</p>
+  <p>🛃 Таможенное оформление и брокерские услуги (Белгород • Краснодар • Новороссийск)</p>
 </div>
 
-<!-- ГЕОГРАФИЯ -->
+<!-- КАРТА -->
 <div class="container">
   <h2>География перевозок</h2>
-  <p>Россия — Грузия — Европа</p>
-  <p>Китай — Центральная Азия</p>
-  <p>Узбекистан • Казахстан • Кыргызстан • Таджикистан</p>
-  <p>Азербайджан • Туркменистан</p>
+
+  <img src="https://i.imgur.com/6X4KQ8p.png"
+       style="width:100%;max-width:600px;border-radius:10px;margin-top:15px;">
+
+  <p style="margin-top:15px;">
+  Европа • СНГ • Азия
+  </p>
 </div>
 
-<!-- ОФИСЫ -->
 <div class="container">
   <h2>Наши офисы</h2>
   <p>📍 Россия, Белгород</p>
@@ -108,17 +112,14 @@ button {
   <p>📍 Вильнюс (Европа)</p>
 </div>
 
-<!-- ПОЧЕМУ МЫ -->
 <div class="container">
   <h2>Почему выбирают ИМПЕРИАЛ</h2>
-
-  <p>✔ Более 15 лет опыта в логистике</p>
+  <p>✔ Более 15 лет опыта</p>
   <p>✔ Работаем по всей Европе, СНГ и Азии</p>
   <p>✔ Полное сопровождение под ключ</p>
   <p>✔ Быстрая доставка без задержек</p>
 </div>
 
-<!-- ФОРМА -->
 <div class="container">
   <h2>Оставьте заявку</h2>
 
@@ -143,7 +144,7 @@ button {
 
 <script>
 // === TELEGRAM ===
-const TOKEN = "8633180088:AAEsPBJAYgXh2NyY1t8Z817WXgmjA2nm9Bc;
+const TOKEN = "8633180088:AAEsPBJAYgXh2NyY1t8Z817WXgmjA2nm9Bc";
 const CHAT_ID = "1118097651";
 
 function sendForm() {
