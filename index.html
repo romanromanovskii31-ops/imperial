@@ -2,12 +2,12 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>IMPERIAL</title>
+<title>ООО ИМПЕРИАЛ</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
-(function(){ emailjs.init("YOUR_PUBLIC_KEY"); })();
+(function(){ emailjs.init("ТВОЙ_PUBLIC_KEY"); })();
 </script>
 
 <style>
@@ -25,7 +25,6 @@ body {
 
 .hero h1 {
   font-size: 36px;
-  margin-bottom: 10px;
 }
 
 .hero p {
@@ -48,75 +47,103 @@ input, textarea {
 
 button {
   padding: 12px 20px;
-  border: none;
   border-radius: 8px;
+  border: none;
   background: #22c55e;
   color: white;
   cursor: pointer;
 }
-
-.features {
-  text-align: center;
-  padding: 20px;
-}
-
-.features div {
-  margin: 10px 0;
-}
 </style>
 </head>
+
 <body>
 
+<!-- ГЛАВНЫЙ БЛОК -->
 <div class="hero">
-  <h1>IMPERIAL</h1>
-  <p>Международные грузоперевозки Россия — Грузия — Европа</p>
+  <h1>ООО ИМПЕРИАЛ</h1>
+  <p>
+  Международная экспедиторская компания полного цикла.<br>
+  Европа • СНГ • Азия
+  </p>
+
+  <p style="margin-top:10px;">
+  Доставляем грузы даже по сложным маршрутам — там, где другие не работают.
+  </p>
 </div>
 
-<div class="features">
-  <div>🚚 Быстро</div>
-  <div>📦 Надёжно</div>
-  <div>💰 Выгодно</div>
+<!-- УСЛУГИ -->
+<div class="container">
+  <h2>Наши услуги</h2>
+  <p>🚚 Международные перевозки</p>
+  <p>📦 Карго доставка</p>
+  <p>🚛 Автоперевозки</p>
+  <p>✈️ Авиадоставка</p>
+  <p>🚢 Морские перевозки</p>
+  <p>📑 Таможенное оформление</p>
 </div>
 
-
-  <div class="container"> 
-    <div class="container">
-  <h2>Наши офисы</h2>
-
-  <p>📍 Россия Белгород </p>
-  <p>📍 Стамбул (Турция)</p>
-  <p>📍 Вильнюс (Литва, Европа)</p>
-
-</div>
+<!-- ДОП УСЛУГИ -->
+<div class="container">
   <h2>Дополнительные услуги</h2>
-
-  <p>💳 Агентские платежи и финансовые расчёты</p>
-  <p>🌍 Аутсорсинг ВЭД (внешнеэкономическая деятельность)</p>
-  <p>📦 Параллельный импорт товаров</p>
-  <p>📑 Полное документальное сопровождение</p>
-
+  <p>💳 Агентские платежи</p>
+  <p>🌍 Аутсорсинг ВЭД</p>
+  <p>📦 Параллельный импорт</p>
+  <p>📑 Полное сопровождение</p>
 </div>
+
+<!-- ГЕОГРАФИЯ -->
+<div class="container">
+  <h2>География перевозок</h2>
+  <p>Россия — Грузия — Европа</p>
+  <p>Китай — Центральная Азия</p>
+  <p>Узбекистан • Казахстан • Кыргызстан • Таджикистан</p>
+  <p>Азербайджан • Туркменистан</p>
+</div>
+
+<!-- ОФИСЫ -->
+<div class="container">
+  <h2>Наши офисы</h2>
+  <p>📍 Россия, Белгород</p>
+  <p>📍 Стамбул (Турция)</p>
+  <p>📍 Вильнюс (Европа)</p>
+</div>
+
+<!-- ПОЧЕМУ МЫ -->
+<div class="container">
+  <h2>Почему выбирают ИМПЕРИАЛ</h2>
+
+  <p>✔ Более 15 лет опыта в логистике</p>
+  <p>✔ Работаем по всей Европе, СНГ и Азии</p>
+  <p>✔ Полное сопровождение под ключ</p>
+  <p>✔ Быстрая доставка без задержек</p>
+</div>
+
+<!-- ФОРМА -->
+<div class="container">
   <h2>Оставьте заявку</h2>
+
   <input type="text" id="name" placeholder="Имя">
   <input type="text" id="phone" placeholder="Телефон">
   <textarea id="cargo" placeholder="Описание груза"></textarea>
-  <button onclick="sendForm()">Отправить</button> 
-  <a href="https://t.me/Roman_Imperial_Trans_Cargo" target="_blank">
-  <button style="background:#3b82f6;margin-top:10px;">
-    Написать в Telegram
-  </button>
-</a>
 
-<a href="https://wa.me/79103273958" target="_blank">
-  <button style="background:#25D366;margin-top:10px;">
-    Написать в WhatsApp
-  </button>
-</a>
+  <button onclick="sendForm()">Отправить</button>
+
+  <a href="https://t.me/Roman_Imperial_Trans_Cargo" target="_blank">
+    <button style="background:#3b82f6;margin-top:10px;">Telegram</button>
+  </a>
+
+  <a href="https://wa.me/79103273958" target="_blank">
+    <button style="background:#25D366;margin-top:10px;">WhatsApp</button>
+  </a>
+
+  <p style="margin-top:20px;color:#94a3b8;">
+  Ответим в течение 5–10 минут
+  </p>
 </div>
 
 <script>
 // === TELEGRAM ===
-const TOKEN = "8633180088:AAEsPBJAYgXh2NyY1t8Z817WXgmjA2nm9Bc";
+const TOKEN = "8633180088:AAEsPBJAYgXh2NyY1t8Z817WXgmjA2nm9Bc;
 const CHAT_ID = "1118097651";
 
 function sendForm() {
@@ -129,7 +156,6 @@ function sendForm() {
 Телефон: ${phone}
 Груз: ${cargo}`;
 
-  // TELEGRAM
   fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -139,18 +165,17 @@ function sendForm() {
     })
   });
 
-  // EMAIL
   emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
     name: name,
     phone: phone,
     cargo: cargo
-  })
-  .then(() => {
-    alert("Заявка отправлена");
-  })
-  .catch(() => {
-    alert("Ошибка отправки");
   });
+
+  alert("Заявка отправлена");
+
+  document.getElementById('name').value = "";
+  document.getElementById('phone').value = "";
+  document.getElementById('cargo').value = "";
 }
 </script>
 
