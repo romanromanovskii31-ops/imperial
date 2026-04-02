@@ -17,11 +17,27 @@ body {
   background: #0f172a;
   color: white;
 }
+
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.hero h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  color: #94a3b8;
+}
+
 .container {
   max-width: 600px;
-  margin: 100px auto;
+  margin: 40px auto;
   text-align: center;
 }
+
 input, textarea {
   width: 100%;
   padding: 12px;
@@ -29,6 +45,7 @@ input, textarea {
   border-radius: 8px;
   border: none;
 }
+
 button {
   padding: 12px 20px;
   border: none;
@@ -37,12 +54,32 @@ button {
   color: white;
   cursor: pointer;
 }
+
+.features {
+  text-align: center;
+  padding: 20px;
+}
+
+.features div {
+  margin: 10px 0;
+}
 </style>
 </head>
 <body>
 
-<div class="container">
+<div class="hero">
   <h1>IMPERIAL</h1>
+  <p>Международные грузоперевозки Россия — Грузия — Европа</p>
+</div>
+
+<div class="features">
+  <div>🚚 Быстро</div>
+  <div>📦 Надёжно</div>
+  <div>💰 Выгодно</div>
+</div>
+
+<div class="container">
+  <h2>Оставьте заявку</h2>
   <input type="text" id="name" placeholder="Имя">
   <input type="text" id="phone" placeholder="Телефон">
   <textarea id="cargo" placeholder="Описание груза"></textarea>
@@ -51,7 +88,7 @@ button {
 
 <script>
 // === TELEGRAM ===
-const TOKEN = "ВСТАВЬ_СЮДА_НОВЫЙ_ТОКЕН";
+const TOKEN = "8633180088:AAFg8xzLX2t6I2TDXQ2SUYoiNAuNJhtebQM";
 const CHAT_ID = "1118097651";
 
 function sendForm() {
@@ -64,7 +101,8 @@ function sendForm() {
 Телефон: ${phone}
 Груз: ${cargo}`;
 
-  fetch(`https://api.telegram.org/bot${8633180088:AAG0EZDH1TcEIxviLTS22WceREtJe4VK1mM}/sendMessage`, {
+  // TELEGRAM
+  fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -73,6 +111,7 @@ function sendForm() {
     })
   });
 
+  // EMAIL
   emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
     name: name,
     phone: phone,
