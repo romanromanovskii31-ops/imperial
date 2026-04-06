@@ -129,8 +129,20 @@ button {
     <button style="background:#3b82f6;margin-top:10px;">Telegram</button>
   </a>
 
-  <a href="https://wa.me/79103273958" target="_blank">
-    <button style="background:#25D366;margin-top:10px;">WhatsApp</button>
+  <!-- ✅ ИСПРАВЛЕННЫЙ WHATSAPP -->
+  <a href="https://wa.me/79103273958?text=Здравствуйте!%20Интересует%20перевозка" 
+     target="_blank"
+     style="
+     display:inline-block;
+     margin-top:10px;
+     padding:12px 20px;
+     background:#25D366;
+     color:white;
+     border-radius:8px;
+     text-decoration:none;
+     font-weight:bold;
+     ">
+     WhatsApp
   </a>
 
   <p style="margin-top:20px;color:#94a3b8;">
@@ -139,8 +151,9 @@ button {
 </div>
 
 <script>
-// === TELEGRAM ===
-const TOKEN = "8633180088:AAEsPBJAYgXh2NyY1t8Z817WXgmjA2nm9Bc";
+const TOKEN = "8633180088:AAEsPBJAYgXh2NyY1t8Z817WXgmjA2nm9Bc"
+
+« Back to Bot;
 const CHAT_ID = "1118097651";
 
 function sendForm() {
@@ -164,27 +177,36 @@ function sendForm() {
       alert("Заявка отправлена ✅");
     } else {
       alert("Ошибка Telegram ❌");
-      console.log(data);
     }
   })
-  .catch(err => {
-    alert("Ошибка сети ❌");
-    console.log(err);
-  });
+  .catch(() => alert("Ошибка сети ❌"));
 
-  // EMAIL
   emailjs.send("service_nsvynwu", "template_daooa4d", {
     name: name,
     phone: phone,
     cargo: cargo
   });
-
-  // очистка формы
-  document.getElementById('name').value = "";
-  document.getElementById('phone').value = "";
-  document.getElementById('cargo').value = "";
 }
 </script>
+
+<!-- 🚀 ПЛАВАЮЩАЯ КНОПКА -->
+<a href="https://wa.me/79103273958?text=Здравствуйте!%20Интересует%20перевозка" 
+   target="_blank"
+   style="
+   position:fixed;
+   bottom:20px;
+   right:20px;
+   background:#25D366;
+   color:#fff;
+   padding:15px 20px;
+   border-radius:50px;
+   text-decoration:none;
+   font-weight:bold;
+   box-shadow:0 4px 10px rgba(0,0,0,0.3);
+   z-index:999;
+   ">
+   WhatsApp
+</a>
 
 </body>
 </html>
