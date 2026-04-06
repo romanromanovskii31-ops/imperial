@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>ООО ИМПЕРИАЛ</title>
+<title>ИМПЕРИАЛ</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
@@ -13,200 +13,134 @@
 <style>
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: Arial;
   background: #0f172a;
   color: white;
 }
 
-.hero {
-  text-align: center;
-  padding: 60px 20px;
-}
-
-.hero h1 {
-  font-size: 36px;
-}
-
-.hero p {
-  color: #94a3b8;
-}
-
 .container {
-  max-width: 600px;
-  margin: 40px auto;
+  padding: 40px 20px;
   text-align: center;
+}
+
+.logo {
+  font-size: 36px;
+  margin-bottom: 5px;
+}
+
+.sublogo {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #9ca3af;
+  margin-top: 0;
+}
+
+.section {
+  margin-top: 40px;
 }
 
 input, textarea {
   width: 90%;
   max-width: 400px;
   padding: 12px;
-  margin: 10px auto;
-  display: block;
+  margin: 10px;
   border-radius: 8px;
   border: none;
-  background: #1e293b;
-  color: white;
 }
 
 button {
-  padding: 12px 20px;
-  border-radius: 8px;
-  border: none;
+  padding: 12px 25px;
   background: #22c55e;
+  border: none;
+  border-radius: 8px;
   color: white;
+  font-size: 16px;
   cursor: pointer;
+}
+
+button:hover {
+  background: #16a34a;
+}
+
+.success { color: #4ade80; }
+.error { color: #f87171; }
+
+.whatsapp {
+  display: inline-block;
+  margin-top: 20px;
+  color: #25D366;
+  font-size: 18px;
+  text-decoration: none;
 }
 </style>
 </head>
 
 <body>
 
-<div class="hero">
-  <h1>ООО ИМПЕРИАЛ</h1>
-  <p>
-  Международная экспедиторская компания полного цикла.<br>
-  Европа • СНГ • Азия
-  </p>
-  <p style="margin-top:10px;">
-  Доставляем грузы даже по сложным маршрутам — там, где другие не работают.
-  </p>
+<div class="container">
+
+<div class="logo">ИМПЕРИАЛ</div>
+<div class="sublogo">TRANS CARGO</div>
+
+<p>Международные грузоперевозки</p>
+
+<div class="section">
+<h2>Услуги</h2>
+<p>🚛 Автомобильные перевозки</p>
+<p>📦 Сборные грузы</p>
+<p>🌍 Россия — Грузия — Европа</p>
 </div>
 
-<div class="container">
-  <h2>Наши услуги</h2>
-  <p>🚚 Международные перевозки</p>
-  <p>📦 Карго доставка</p>
-  <p>🚛 Автоперевозки</p>
-  <p>✈️ Авиадоставка</p>
-  <p>🚢 Морские перевозки</p>
-  <p>📑 Таможенное оформление</p>
+<div class="section">
+<h2>Оставить заявку</h2>
+
+<form id="form">
+<input type="text" name="name" placeholder="Ваше имя" required>
+<input type="tel" name="phone" placeholder="Телефон" required>
+<textarea name="cargo" placeholder="Описание груза" required></textarea>
+
+<button type="submit">Отправить заявку</button>
+</form>
+
+<div id="status"></div>
+
+<a class="whatsapp" href="https://wa.me/79103273958" target="_blank">
+📲 Написать в WhatsApp
+</a>
+
 </div>
 
-<div class="container">
-  <h2>Дополнительные услуги</h2>
-  <p>💳 Агентские платежи</p>
-  <p>🌍 Аутсорсинг ВЭД</p>
-  <p>📦 Параллельный импорт</p>
-  <p>📑 Полное сопровождение</p>
-  <p>🛃 Таможенное оформление и брокерские услуги (Белгород • Краснодар • Новороссийск)</p>
+<div class="section">
+<h2>Контакты</h2>
+<p>📞 +7 910 327-39-58</p>
+<p>📩 imperialtranscargo@gmail.com</p>
 </div>
 
-<div class="container">
-  <h2>География перевозок</h2>
-  <img src="https://i.imgur.com/6X4KQ8p.png"
-       style="width:100%;max-width:600px;border-radius:10px;margin-top:15px;">
-  <p style="margin-top:15px;">
-  Европа • СНГ • Азия
-  </p>
-</div>
-
-<div class="container">
-  <h2>Наши офисы</h2>
-  <p>📍 Россия, Белгород</p>
-  <p>📍 Стамбул (Турция)</p>
-  <p>📍 Вильнюс (Европа)</p>
-</div>
-
-<div class="container">
-  <h2>Почему выбирают ИМПЕРИАЛ</h2>
-  <p>✔ Более 15 лет опыта</p>
-  <p>✔ Работаем по всей Европе, СНГ и Азии</p>
-  <p>✔ Полное сопровождение под ключ</p>
-  <p>✔ Быстрая доставка без задержек</p>
-</div>
-
-<div class="container">
-  <h2>Оставьте заявку</h2>
-
-  <input type="text" id="name" placeholder="Имя">
-  <input type="text" id="phone" placeholder="Телефон">
-  <textarea id="cargo" placeholder="Описание груза"></textarea>
-
-  <button onclick="sendForm()">Отправить</button>
-
-  <a href="https://t.me/Roman_Imperial_Trans_Cargo" target="_blank">
-    <button style="background:#3b82f6;margin-top:10px;">Telegram</button>
-  </a>
-
-  <!-- ✅ ИСПРАВЛЕННЫЙ WHATSAPP -->
-  <a href="https://wa.me/79103273958?text=Здравствуйте!%20Интересует%20перевозка" 
-     target="_blank"
-     style="
-     display:inline-block;
-     margin-top:10px;
-     padding:12px 20px;
-     background:#25D366;
-     color:white;
-     border-radius:8px;
-     text-decoration:none;
-     font-weight:bold;
-     ">
-     WhatsApp
-  </a>
-
-  <p style="margin-top:20px;color:#94a3b8;">
-  Ответим в течение 5–10 минут
-  </p>
 </div>
 
 <script>
-const TOKEN = "8633180088:AAEsPBJAYgXh2NyY1t8Z817WXgmjA2nm9Bc"
+const form = document.getElementById("form");
+const status = document.getElementById("status");
 
-« Back to Bot;
-const CHAT_ID = "1118097651";
+form.addEventListener("submit", function(e) {
+  e.preventDefault();
 
-function sendForm() {
-  const name = document.getElementById('name').value;
-  const phone = document.getElementById('phone').value;
-  const cargo = document.getElementById('cargo').value;
+  status.innerHTML = "Отправка...";
 
-  const message = `Новая заявка:\nИмя: ${name}\nТелефон: ${phone}\nГруз: ${cargo}`;
-
-  fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      chat_id: CHAT_ID,
-      text: message
-    })
+  emailjs.sendForm(
+    "service_z4k9k7r",
+    "template_7p1n4jz",
+    this
+  )
+  .then(() => {
+    status.innerHTML = "<div class='success'>Заявка отправлена ✅</div>";
+    form.reset();
   })
-  .then(res => res.json())
-  .then(data => {
-    if (data.ok) {
-      alert("Заявка отправлена ✅");
-    } else {
-      alert("Ошибка Telegram ❌");
-    }
-  })
-  .catch(() => alert("Ошибка сети ❌"));
-
-  emailjs.send("service_nsvynwu", "template_daooa4d", {
-    name: name,
-    phone: phone,
-    cargo: cargo
+  .catch(() => {
+    status.innerHTML = "<div class='error'>Ошибка отправки ❌</div>";
   });
-}
+});
 </script>
-
-<!-- 🚀 ПЛАВАЮЩАЯ КНОПКА -->
-<a href="https://wa.me/79103273958?text=Здравствуйте!%20Интересует%20перевозка" 
-   target="_blank"
-   style="
-   position:fixed;
-   bottom:20px;
-   right:20px;
-   background:#25D366;
-   color:#fff;
-   padding:15px 20px;
-   border-radius:50px;
-   text-decoration:none;
-   font-weight:bold;
-   box-shadow:0 4px 10px rgba(0,0,0,0.3);
-   z-index:999;
-   ">
-   WhatsApp
-</a>
 
 </body>
 </html>
