@@ -68,7 +68,6 @@ button {
   Международная экспедиторская компания полного цикла.<br>
   Европа • СНГ • Азия
   </p>
-
   <p style="margin-top:10px;">
   Доставляем грузы даже по сложным маршрутам — там, где другие не работают.
   </p>
@@ -141,7 +140,7 @@ button {
 
 <script>
 // === TELEGRAM ===
-const TOKEN = "8633180088:AAEsPBJAYgXh2NyY1t8Z817WXgmjA2nm9Bc";
+const TOKEN = "8633180088:AAEsPBJAYgXh2NyY1t8Z817WXgmjA2nm9Bc;
 const CHAT_ID = "1118097651";
 
 function sendForm() {
@@ -149,10 +148,7 @@ function sendForm() {
   const phone = document.getElementById('phone').value;
   const cargo = document.getElementById('cargo').value;
 
-  const message = `Новая заявка:
-Имя: ${name}
-Телефон: ${phone}
-Груз: ${cargo}`;
+  const message = `Новая заявка:\nИмя: ${name}\nТелефон: ${phone}\nГруз: ${cargo}`;
 
   // TELEGRAM
   fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
@@ -162,17 +158,25 @@ function sendForm() {
       chat_id: CHAT_ID,
       text: message
     })
-  });
+  })
+  .then(res => res.json())
+  .then(data => console.log("TG OK:", data))
+  .catch(err => console.log("TG ERROR:", err));
 
   // EMAIL
   emailjs.send("service_nsvynwu", "template_daooa4d", {
     name: name,
     phone: phone,
     cargo: cargo
+  })
+  .then(() => {
+    alert("Заявка отправлена");
+  })
+  .catch(() => {
+    alert("Ошибка отправки");
   });
 
-  alert("Заявка отправлена");
-
+  // очистка формы
   document.getElementById('name').value = "";
   document.getElementById('phone').value = "";
   document.getElementById('cargo').value = "";
