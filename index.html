@@ -140,7 +140,7 @@ button {
 
 <script>
 // === TELEGRAM ===
-const TOKEN = "8633180088:AAEsPBJAYgXh2NyY1t8Z817WXgmjA2nm9Bc;
+const TOKEN = " 8633180088:AAEsPBJAYgXh2NyY1t8Z817WXgmjA2nm9Bc ";
 const CHAT_ID = "1118097651";
 
 function sendForm() {
@@ -150,8 +150,7 @@ function sendForm() {
 
   const message = `Новая заявка:\nИмя: ${name}\nТелефон: ${phone}\nГруз: ${cargo}`;
 
-  // TELEGRAM
-  fetch(`https://api.telegram.org/bot${8633180088:AAEsPBJAYgXh2NyY1t8Z817WXgmjA2nm9Bc}/sendMessage`, {
+  fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -160,20 +159,24 @@ function sendForm() {
     })
   })
   .then(res => res.json())
-  .then(data => console.log("TG OK:", data))
-  .catch(err => console.log("TG ERROR:", err));
+  .then(data => {
+    if (data.ok) {
+      alert("Заявка отправлена ✅");
+    } else {
+      alert("Ошибка Telegram ❌");
+      console.log(data);
+    }
+  })
+  .catch(err => {
+    alert("Ошибка сети ❌");
+    console.log(err);
+  });
 
   // EMAIL
   emailjs.send("service_nsvynwu", "template_daooa4d", {
     name: name,
     phone: phone,
     cargo: cargo
-  })
-  .then(() => {
-    alert("Заявка отправлена");
-  })
-  .catch(() => {
-    alert("Ошибка отправки");
   });
 
   // очистка формы
