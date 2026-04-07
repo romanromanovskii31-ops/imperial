@@ -9,122 +9,134 @@
 body {margin:0; font-family: Arial, sans-serif; background:#0b0f1a; color:#fff;}
 .container {max-width:1100px; margin:auto; padding:20px;}
 .hero {
-  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.85)),
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)),
   url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=80');
-  background-size:cover;
-  background-position:center;
-  padding:100px 20px;
-  text-align:center;
+  background-size:cover; background-position:center; padding:120px 20px; text-align:center;
 }
-.btn {
-  padding:12px 18px;
-  margin:8px;
-  background:#ff7a00;
-  color:#fff;
-  border:none;
-  border-radius:8px;
-  cursor:pointer;
-  text-decoration:none;
-  display:inline-block;
-}
-.lang {display:none;}
-.active {display:block;}
+.btn {padding:14px 20px; margin:10px; background:#ff7a00; color:#fff; border:none; border-radius:10px; cursor:pointer; text-decoration:none; display:inline-block; font-weight:bold;}
+.lang {display:none;} .active {display:block;}
 .img {width:100%; border-radius:12px; margin:20px 0;}
-.block {margin:50px 0; text-align:center;}
-h1 {font-size:34px;}
-h2 {margin-bottom:10px;}
-p {opacity:0.9;}
+.block {margin:40px 0; text-align:center; background:#12182a; padding:25px; border-radius:14px;}
+h1 {font-size:38px; text-shadow:0 5px 25px rgba(0,0,0,0.7);} 
+h2 {margin-bottom:10px;} p {opacity:0.9;}
+.grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:15px;}
+.card {background:#0f1426; padding:18px; border-radius:12px;}
+.badges {margin-top:20px;}
 </style>
 
 <script>
-function setLang(lang) {
-  document.querySelectorAll('.lang').forEach(el => el.classList.remove('active'));
-  document.querySelectorAll('.' + lang).forEach(el => el.classList.add('active'));
-}
+function setLang(lang){document.querySelectorAll('.lang').forEach(el=>el.classList.remove('active'));document.querySelectorAll('.'+lang).forEach(el=>el.classList.add('active'));}
 </script>
-
 </head>
-
 <body>
 
-<!-- LANGUAGE SWITCH -->
+<!-- LANG -->
 <div style="text-align:center; padding:12px; background:#070b14;">
-<button class="btn" onclick="setLang('ru')">🇷🇺 RU</button>
-<button class="btn" onclick="setLang('en')">🇬🇧 EN</button>
-<button class="btn" onclick="setLang('ge')">🇬🇪 GE</button>
+  <button class="btn" onclick="setLang('ru')">🇷🇺 RU</button>
+  <button class="btn" onclick="setLang('en')">🇬🇧 EN</button>
+  <button class="btn" onclick="setLang('ge')">🇬🇪 GE</button>
 </div>
 
 <!-- HERO -->
 <div class="hero">
-<h2>IMPERIAL LLC</h2>
-<h1>🚚 IMPERIAL Transport & Cargo</h1>
+  <h2>IMPERIAL LLC</h2>
+  <h1>🚚 IMPERIAL Transport & Cargo</h1>
 
-<p class="lang ru">Международные грузоперевозки. Быстро и надёжно</p>
-<p class="lang en">International logistics. Fast & reliable</p>
-<p class="lang ge">საერთაშორისო გადაზიდვები. სწრაფი და საიმედო</p>
+  <p class="lang ru">Международные грузоперевозки по Европе, СНГ и Азии</p>
+  <p class="lang en">International logistics across Europe, CIS and Asia</p>
+  <p class="lang ge">საერთაშორისო გადაზიდვები ევროპაში, დსთ-სა და აზიაში</p>
 
-<a href="tel:+79205516575" class="btn">📞 Позвонить</a>
-<a href="https://t.me/Roman_Imperial_Trans_Cargo" class="btn">Telegram</a>
-<a href="https://wa.me/79103273958" class="btn">WhatsApp</a>
+  <p class="lang ru">Доставим груз быстро, безопасно и под ключ</p>
+  <p class="lang en">Fast, safe and turnkey delivery</p>
+  <p class="lang ge">სწრაფი, უსაფრთხო და სრული მომსახურება</p>
+
+  <div class="badges">
+    <p>🚚 15+ лет &nbsp;&nbsp; 🌍 10+ стран &nbsp;&nbsp; 📦 1000+ перевозок</p>
+  </div>
+
+  <a href="tel:+79205516575" class="btn">📞 Позвонить сейчас</a>
+  <a href="https://t.me/Roman_Imperial_Trans_Cargo" class="btn">Telegram</a>
+  <a href="https://wa.me/79103273958" class="btn">WhatsApp</a>
+
+  <p style="margin-top:15px;">📞 +7 920 551-65-75 | 💬 +7 910 327-39-58</p>
 </div>
 
 <div class="container">
 
-<!-- GEOGRAPHY -->
+<!-- SERVICES -->
 <div class="block">
-<h2 class="lang ru">🌍 География</h2>
-<h2 class="lang en">🌍 Geography</h2>
-<h2 class="lang ge">🌍 გეოგრაფია</h2>
-
-<img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=1200&q=80" class="img">
-
-<p class="lang ru">Европа • СНГ • Азия</p>
-<p class="lang en">Europe • CIS • Asia</p>
-<p class="lang ge">ევროპა • დსთ • აზია</p>
+  <h2 class="lang ru">📦 Услуги</h2>
+  <h2 class="lang en">📦 Services</h2>
+  <h2 class="lang ge">📦 მომსახურება</h2>
+  <div class="grid">
+    <div class="card">Автоперевозки Европа–СНГ</div>
+    <div class="card">Карго Турция / Китай</div>
+    <div class="card">Сборные грузы</div>
+    <div class="card">Срочная доставка</div>
+  </div>
 </div>
 
-<!-- TRANSPORT -->
+<!-- GEOGRAPHY -->
 <div class="block">
-<h2 class="lang ru">🚚 Автоперевозки</h2>
-<h2 class="lang en">🚚 Road Transport</h2>
-<h2 class="lang ge">🚚 ავტოგადაზიდვები</h2>
+  <h2 class="lang ru">🌍 География</h2>
+  <h2 class="lang en">🌍 Geography</h2>
+  <h2 class="lang ge">🌍 გეოგრაფია</h2>
+  <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=1200&q=80" class="img">
+  <p class="lang ru">Европа • СНГ • Азия</p>
+  <p class="lang en">Europe • CIS • Asia</p>
+  <p class="lang ge">ევროპა • დსთ • აზია</p>
+</div>
 
-<img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1200&q=80" class="img">
-
-<p class="lang ru">Более 15 лет опыта. Италия • Франция • Германия • Польша</p>
-<p class="lang en">15+ years experience. Italy • France • Germany • Poland</p>
-<p class="lang ge">15+ წლიანი გამოცდილება. იტალია • საფრანგეთი • გერმანია • პოლონეთი</p>
+<!-- CASES -->
+<div class="block">
+  <h2 class="lang ru">🚚 Реальные перевозки</h2>
+  <h2 class="lang en">🚚 Cases</h2>
+  <h2 class="lang ge">🚚 რეალური გადაზიდვები</h2>
+  <div class="grid">
+    <div class="card">🇮🇹 Италия → Россия<br>12 паллет • 6 дней</div>
+    <div class="card">🇩🇪 Германия → Казахстан<br>Оборудование • 8 дней</div>
+    <div class="card">🇵🇱 Польша → Грузия<br>Сборный груз • 4 дня</div>
+  </div>
 </div>
 
 <!-- PROCESS -->
 <div class="block">
-<h2 class="lang ru">📦 Контроль груза</h2>
-<h2 class="lang en">📦 Cargo control</h2>
-<h2 class="lang ge">📦 ტვირთის კონტროლი</h2>
+  <h2 class="lang ru">📦 Как мы работаем</h2>
+  <h2 class="lang en">📦 How we work</h2>
+  <h2 class="lang ge">📦 როგორ ვმუშაობთ</h2>
+  <div class="grid">
+    <div class="card">1. Заявка</div>
+    <div class="card">2. Расчёт</div>
+    <div class="card">3. Забор груза</div>
+    <div class="card">4. Доставка</div>
+  </div>
+</div>
 
-<img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80" class="img">
-
-<p class="lang ru">Полный контроль и сопровождение</p>
-<p class="lang en">Full control & tracking</p>
-<p class="lang ge">სრული კონტროლი და მონიტორინგი</p>
+<!-- TRUST -->
+<div class="block">
+  <h2 class="lang ru">⭐ Почему мы</h2>
+  <h2 class="lang en">⭐ Why us</h2>
+  <h2 class="lang ge">⭐ რატომ ჩვენ</h2>
+  <div class="grid">
+    <div class="card">✔ Работаем по договору</div>
+    <div class="card">✔ Без посредников</div>
+    <div class="card">✔ 24/7 на связи</div>
+  </div>
 </div>
 
 <!-- CTA -->
 <div class="block">
-<h2 class="lang ru">📩 Оставить заявку</h2>
-<h2 class="lang en">📩 Request</h2>
-<h2 class="lang ge">📩 მოთხოვნა</h2>
-
-<p class="lang ru">Ответим за 10 минут</p>
-<p class="lang en">Response in 10 minutes</p>
-<p class="lang ge">პასუხი 10 წუთში</p>
+  <h2 class="lang ru">📩 Получите расчёт</h2>
+  <h2 class="lang en">📩 Request</h2>
+  <h2 class="lang ge">📩 მოთხოვნა</h2>
+  <p class="lang ru">Ответим за 10 минут</p>
+  <p class="lang en">Response in 10 minutes</p>
+  <p class="lang ge">პასუხი 10 წუთში</p>
+  <a href="tel:+79205516575" class="btn">Позвонить</a>
 </div>
 
 </div>
 
-<script>
-setLang('ru');
-</script>
-
+<script>setLang('ru');</script>
 </body>
 </html>
