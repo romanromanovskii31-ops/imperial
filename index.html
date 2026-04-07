@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ООО ИМПЕРИАЛ</title>
+<title>IMPERIAL Transport & Cargo</title>
 
 <style>
 body {margin:0; font-family: Arial, sans-serif; background:#0b0f1a; color:#fff;}
@@ -16,90 +16,68 @@ body {margin:0; font-family: Arial, sans-serif; background:#0b0f1a; color:#fff;}
   padding:100px 20px;
   text-align:center;
 }
-.hero h1 {font-size:36px; margin-bottom:10px;}
-.hero p {font-size:18px; opacity:0.9;}
-.btn {
-  display:inline-block;
-  padding:14px 24px;
-  background:#ff7a00;
-  color:#fff;
-  text-decoration:none;
-  border-radius:10px;
-  margin:10px;
-  box-shadow:0 4px 15px rgba(255,122,0,0.4);
-}
-.block {margin:60px 0; text-align:center;}
-.card {
-  background:#12182a;
-  padding:20px;
-  border-radius:12px;
-  margin:10px;
-  display:inline-block;
-  width:250px;
-}
-.img {
-  width:100%;
-  border-radius:12px;
-  margin-top:15px;
-}
-.footer {margin-top:60px; padding:30px; background:#070b14; text-align:center;}
+.btn {padding:10px 15px; margin:5px; background:#ff7a00; color:#fff; border:none; border-radius:6px; cursor:pointer;}
+.lang {display:none;}
+.active {display:block;}
 </style>
+
+<script>
+function setLang(lang) {
+  document.querySelectorAll('.lang').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.' + lang).forEach(el => el.classList.add('active'));
+}
+</script>
+
 </head>
 
-<body>
+<body onload="setLang('ru')">
+
+<div style="text-align:center; padding:10px;">
+<button class="btn" onclick="setLang('ru')">RU</button>
+<button class="btn" onclick="setLang('en')">EN</button>
+<button class="btn" onclick="setLang('ge')">GE</button>
+</div>
 
 <div class="hero">
-<h1>🚚 Международные грузоперевозки</h1>
-<p>ООО ИМПЕРИАЛ • Европа • СНГ • Азия</p>
-<p>Доставим ваш груз быстро и надёжно</p>
+<h2>IMPERIAL LLC</h2>
+<h1>IMPERIAL Transport & Cargo</h1>
 
-<a href="tel:+79205516575" class="btn">Позвонить</a>
+<p class="lang ru">Доставим ваш груз быстро и надёжно</p>
+<p class="lang en">Fast & Reliable Delivery</p>
+<p class="lang ge">სწრაფი და საიმედო გადაზიდვა</p>
+
+<a href="tel:+79205516575" class="btn">📞</a>
 <a href="https://t.me/Roman_Imperial_Trans_Cargo" class="btn">Telegram</a>
 <a href="https://wa.me/79103273958" class="btn">WhatsApp</a>
 
-<p>📞 +7 920 551-65-75 | 💬 +7 910 327-39-58</p>
 </div>
 
 <div class="container">
 
-<div class="block">
-<h2>🌍 География перевозок</h2>
-<img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff" class="img">
-<p>Европа • СНГ • Азия</p>
-</div>
+<h2 class="lang ru">География</h2>
+<h2 class="lang en">Geography</h2>
+<h2 class="lang ge">გეოგრაფია</h2>
 
-<div class="block">
-<h2>🚚 Автоперевозки по Европе</h2>
-<img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7" class="img">
-<p>Более 15 лет доставляем грузы без задержек и проблем</p>
-<p>Италия • Франция • Австрия • Сербия • Польша • Нидерланды • Германия</p>
-</div>
+<p class="lang ru">Европа • СНГ • Азия</p>
+<p class="lang en">Europe • CIS • Asia</p>
+<p class="lang ge">ევროპა • დსთ • აზია</p>
 
-<div class="block">
-<h2>📦 Процесс перевозки</h2>
-<img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d" class="img">
-<p>Контроль загрузки, проверка и сопровождение груза</p>
-</div>
+<h2 class="lang ru">Автоперевозки</h2>
+<h2 class="lang en">Road Transport</h2>
+<h2 class="lang ge">ავტოგადაზიდვები</h2>
 
-<div class="block">
-<h2>⭐ Почему выбирают нас</h2>
-<div class="card">🚚 15+ лет опыта</div>
-<div class="card">🌍 Работаем по миру</div>
-<div class="card">📦 Под ключ</div>
-<div class="card">⏱ Быстро</div>
-<div class="card">📞 24/7</div>
-</div>
+<p class="lang ru">Более 15 лет опыта</p>
+<p class="lang en">15+ years experience</p>
+<p class="lang ge">15+ წლიანი გამოცდილება</p>
 
-<div class="block">
-<h2>📩 Получите расчёт</h2>
-<p>Ответим в течение 10 минут</p>
-</div>
+<h2 class="lang ru">Заявка</h2>
+<h2 class="lang en">Request</h2>
+<h2 class="lang ge">მოთხოვნა</h2>
 
-</div>
+<p class="lang ru">Ответим за 10 минут</p>
+<p class="lang en">Response in 10 minutes</p>
+<p class="lang ge">პასუხი 10 წუთში</p>
 
-<div class="footer">
-<h2>🚚 Срочная доставка?</h2>
-<p>📞 +7 920 551-65-75</p>
 </div>
 
 </body>
