@@ -1,4 +1,67 @@
 <!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IMPERIAL Logistics & Cargo</title>
+
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#0a0f1c;color:#fff}
+.container{max-width:1000px;margin:auto;padding:40px 20px}
+.hero{padding:120px 20px;text-align:center}
+
+h1{font-size:44px;margin-bottom:10px}
+.sub{font-size:20px;opacity:.8}
+
+.btn{
+  padding:14px 28px;
+  margin:10px;
+  background:linear-gradient(135deg,#c9a24a,#f2d27a);
+  color:#000;
+  border:none;
+  border-radius:30px;
+  font-weight:600;
+  text-decoration:none;
+  display:inline-block;
+}
+
+.block{margin:60px 0;text-align:center}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:#11182b;
+  padding:22px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,0.05);
+}
+
+.stats{margin-top:20px;opacity:.9}
+
+.lang{display:none;}
+.active{display:block;}
+</style>
+
+<script>
+function setLang(lang){
+  document.querySelectorAll('.lang').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll('.'+lang).forEach(el=>el.classList.add('active'));
+}
+</script>
+
+</head>
+
+<body onload="setLang('ru')">
+
+<div class="hero">
+
+<h1 class="lang ru">Доставка грузов Европа — СНГ — Азия</h1>
+<h1 class="lang en">Cargo delivery Europe — CIS — Asia</h1>
+
 <p class="sub lang ru">Работаем с бизнесом и частными клиентами</p>
 <p class="sub lang en">For business and private clients</p>
 
@@ -15,7 +78,6 @@
 
 <div class="container">
 
-<!-- SERVICES -->
 <div class="block">
 <h2 class="lang ru">Услуги</h2>
 <h2 class="lang en">Services</h2>
@@ -27,7 +89,6 @@
 </div>
 </div>
 
-<!-- CASES -->
 <div class="block">
 <h2 class="lang ru">Реальные перевозки</h2>
 <h2 class="lang en">Cases</h2>
@@ -39,7 +100,6 @@
 </div>
 </div>
 
-<!-- PROCESS -->
 <div class="block">
 <h2 class="lang ru">Как работаем</h2>
 <h2 class="lang en">How we work</h2>
@@ -51,7 +111,6 @@
 </div>
 </div>
 
-<!-- CTA -->
 <div class="block">
 <h2 class="lang ru">Нужна доставка?</h2>
 <h2 class="lang en">Need delivery?</h2>
