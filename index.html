@@ -40,15 +40,6 @@ opacity:.6;
 letter-spacing:2px;
 }
 
-.lang button{
-margin-left:6px;
-background:none;
-border:1px solid #444;
-color:#fff;
-padding:6px 10px;
-cursor:pointer;
-}
-
 /* HERO */
 .hero{
 padding:120px 20px 80px;
@@ -60,17 +51,6 @@ margin:auto;
 .hero h1{
 font-size:42px;
 margin-bottom:15px;
-}
-
-.hero p{
-opacity:.8;
-}
-
-/* TRUST */
-.trust{
-margin:25px 0;
-font-size:15px;
-opacity:.9;
 }
 
 /* BUTTON */
@@ -93,26 +73,6 @@ max-width:1100px;
 margin:auto;
 }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:25px;
-margin-top:40px;
-}
-
-.card{
-background:#11182b;
-padding:25px;
-border-radius:16px;
-border:1px solid rgba(255,255,255,0.05);
-transition:0.3s;
-}
-
-.card:hover{
-transform:translateY(-5px);
-border:1px solid rgba(242,210,122,0.3);
-}
-
 /* FORM */
 input{
 width:100%;
@@ -131,43 +91,13 @@ border:none;
 <div class="main">ИМПЕРИАЛ</div>
 <div class="sub">TRANS CARGO</div>
 </div>
-
-<div class="lang">
-<button onclick="setLang('ru')">RU</button>
-<button onclick="setLang('en')">EN</button>
-<button onclick="setLang('ge')">GE</button>
-</div>
 </div>
 
 <div class="hero">
-<h1 id="title">Международные грузоперевозки под ключ</h1>
-<p id="desc">Европа • СНГ • Азия</p>
-
-<div class="trust">
-📦 Договор &nbsp;&nbsp; 🛡 Страхование &nbsp;&nbsp; 📍 Контроль
-</div>
+<h1>Международные грузоперевозки</h1>
+<p>Европа • СНГ • Азия</p>
 
 <a class="btn" href="tel:+79205516575">Позвонить</a>
-</div>
-
-<div class="container">
-<h2>Услуги</h2>
-
-<div class="grid">
-<div class="card">🚛 Автоперевозки Европа — СНГ</div>
-<div class="card">📦 Карго Турция / Китай</div>
-<div class="card">📍 Сборные грузы</div>
-</div>
-</div>
-
-<div class="container">
-<h2>Как работаем</h2>
-
-<div class="grid">
-<div class="card">1. Заявка</div>
-<div class="card">2. Расчёт</div>
-<div class="card">3. Доставка</div>
-</div>
 </div>
 
 <div class="container">
@@ -187,21 +117,6 @@ border:none;
 </div>
 
 <script>
-function setLang(lang){
-if(lang==='en'){
-title.innerText="International cargo transportation";
-desc.innerText="Europe • CIS • Asia";
-}
-if(lang==='ge'){
-title.innerText="საერთაშორისო გადაზიდვები";
-desc.innerText="ევროპა • დსთ • აზია";
-}
-if(lang==='ru'){
-title.innerText="Международные грузоперевозки";
-desc.innerText="Европа • СНГ • Азия";
-}
-}
-
 function sendForm(e){
 e.preventDefault();
 
@@ -209,10 +124,12 @@ let name = document.getElementById('name').value;
 let phone = document.getElementById('phone').value;
 let cargo = document.getElementById('cargo').value;
 
+// ВОТ КЛЮЧ — КАК ВЧЕРА
 emailjs.send("service_rjz7d2c","template_6w4m9kf",{
-name:name,
-phone:phone,
-cargo:cargo
+user_name: name,
+user_phone: phone,
+user_cargo: cargo,
+message: `Новая заявка:\nИмя: ${name}\nТелефон: ${phone}\nГруз: ${cargo}`
 });
 
 document.getElementById("msg").innerText="Заявка отправлена!";
