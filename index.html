@@ -7,9 +7,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
-(function(){
-emailjs.init("iBgRJG8GNtKKEUoBM");
-})();
+(function(){ emailjs.init("iBgRJG8GNtKKEUoBM"); })();
 </script>
 
 <style>
@@ -25,56 +23,102 @@ color:#fff;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:15px 60px;
+padding:20px 60px;
+border-bottom:1px solid rgba(255,255,255,0.05);
 }
 
 .logo-text .main{
-font-size:24px;
+font-size:26px;
 font-weight:700;
 color:#f2d27a;
+letter-spacing:2px;
 }
 
 .logo-text .sub{
 font-size:11px;
 opacity:.6;
+letter-spacing:2px;
 }
 
 .lang button{
-margin-left:5px;
+margin-left:6px;
 background:none;
 border:1px solid #444;
 color:#fff;
-padding:5px;
+padding:6px 10px;
 cursor:pointer;
 }
 
 /* HERO */
 .hero{
-padding:100px 20px;
+padding:120px 20px 80px;
 text-align:center;
+max-width:900px;
+margin:auto;
 }
 
+.hero h1{
+font-size:42px;
+margin-bottom:15px;
+}
+
+.hero p{
+opacity:.8;
+}
+
+/* TRUST */
+.trust{
+margin:25px 0;
+font-size:15px;
+opacity:.9;
+}
+
+/* BUTTON */
 .btn{
-padding:14px 30px;
-background:#f2d27a;
+padding:14px 32px;
+background:linear-gradient(135deg,#f2d27a,#caa64b);
 color:#000;
-border-radius:30px;
+border-radius:40px;
 text-decoration:none;
 display:inline-block;
-margin-top:10px;
+margin-top:15px;
+font-weight:600;
 }
 
 /* BLOCK */
 .container{
-padding:50px 20px;
+padding:70px 20px;
 text-align:center;
+max-width:1100px;
+margin:auto;
 }
 
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+margin-top:40px;
+}
+
+.card{
+background:#11182b;
+padding:25px;
+border-radius:16px;
+border:1px solid rgba(255,255,255,0.05);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+border:1px solid rgba(242,210,122,0.3);
+}
+
+/* FORM */
 input{
 width:100%;
 padding:12px;
 margin:10px 0;
-border-radius:6px;
+border-radius:8px;
 border:none;
 }
 </style>
@@ -96,15 +140,40 @@ border:none;
 </div>
 
 <div class="hero">
-<h1 id="title">Международные грузоперевозки</h1>
+<h1 id="title">Международные грузоперевозки под ключ</h1>
 <p id="desc">Европа • СНГ • Азия</p>
+
+<div class="trust">
+📦 Договор &nbsp;&nbsp; 🛡 Страхование &nbsp;&nbsp; 📍 Контроль
+</div>
+
 <a class="btn" href="tel:+79205516575">Позвонить</a>
+</div>
+
+<div class="container">
+<h2>Услуги</h2>
+
+<div class="grid">
+<div class="card">🚛 Автоперевозки Европа — СНГ</div>
+<div class="card">📦 Карго Турция / Китай</div>
+<div class="card">📍 Сборные грузы</div>
+</div>
+</div>
+
+<div class="container">
+<h2>Как работаем</h2>
+
+<div class="grid">
+<div class="card">1. Заявка</div>
+<div class="card">2. Расчёт</div>
+<div class="card">3. Доставка</div>
+</div>
 </div>
 
 <div class="container">
 <h2>Оставить заявку</h2>
 
-<form onsubmit="sendForm(event)">
+<form onsubmit="sendForm(event)" style="max-width:400px;margin:auto;">
 <input id="name" placeholder="Имя" required>
 <input id="phone" placeholder="Телефон" required>
 <input id="cargo" placeholder="Груз">
