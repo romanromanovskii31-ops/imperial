@@ -47,7 +47,7 @@ color:#000;
 border-radius:20px;
 text-decoration:none;
 display:inline-block;
-margin-top:10px;
+margin:10px;
 }
 
 input{
@@ -83,7 +83,10 @@ border:none;
 
 <p id="msg"></p>
 
+<!-- КНОПКИ -->
 <a class="btn" href="https://wa.me/79103273958">WhatsApp</a>
+<a class="btn" href="https://t.me/imperialcargo">Telegram</a>
+<a class="btn" href="mailto:romanromanovskii31@gmail.com">Почта</a>
 
 <script>
 function sendForm(e){
@@ -93,14 +96,16 @@ var name = document.getElementById('name').value;
 var phone = document.getElementById('phone').value;
 var cargo = document.getElementById('cargo').value;
 
-// ТОЧНО КАК ВЧЕРА
 emailjs.send("service_rjz7d2c","template_6w4m9kf",{
 name: name,
 phone: phone,
 cargo: cargo
+})
+.then(function(){
+document.getElementById("msg").innerText="Заявка отправлена";
+}, function(){
+document.getElementById("msg").innerText="Ошибка отправки";
 });
-
-document.getElementById("msg").innerText="Отправлено!";
 }
 </script>
 
