@@ -3,94 +3,103 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IMPERIAL Logistics & Cargo</title>
+<title>ИМПЕРИАЛ КАРГО ТРАНС</title>
 
 <style>
 body{margin:0;font-family:Arial,sans-serif;background:#0a0f1c;color:#fff}
 .container{max-width:1000px;margin:auto;padding:40px 20px}
-.hero{padding:100px 20px;text-align:center;max-width:800px;margin:auto}
 
 .header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:20px 40px;
-  border-bottom:1px solid rgba(255,255,255,0.05);
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 40px;
+border-bottom:1px solid rgba(255,255,255,0.05);
 }
 
-.logo{font-weight:700;font-size:18px}
-.phone a{color:#c9a24a;text-decoration:none}
+.logo{
+display:flex;
+align-items:center;
+gap:10px;
+font-weight:600;
+}
+
+.logo img{height:40px}
+
+.hero{
+padding:100px 20px;
+text-align:center;
+max-width:800px;
+margin:auto;
+}
 
 h1{font-size:42px;margin-bottom:10px}
 .sub{font-size:20px;opacity:.8}
 
 .btn{
-  padding:14px 28px;
-  margin:10px;
-  background:linear-gradient(135deg,#c9a24a,#f2d27a);
-  color:#000;
-  border:none;
-  border-radius:30px;
-  font-weight:600;
-  text-decoration:none;
-  display:inline-block;
-  transition:0.2s;
+padding:14px 28px;
+margin:10px;
+background:linear-gradient(135deg,#c9a24a,#f2d27a);
+color:#000;
+border:none;
+border-radius:30px;
+font-weight:600;
+text-decoration:none;
+display:inline-block;
+transition:0.2s;
 }
 
-.btn:hover{
-  transform:scale(1.05);
-}
+.btn:hover{transform:scale(1.05)}
 
 .block{margin:60px 0;text-align:center}
 
 .grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:20px;
 }
 
 .card{
-  background:#11182b;
-  padding:22px;
-  border-radius:14px;
-  border:1px solid rgba(255,255,255,0.05);
+background:#11182b;
+padding:22px;
+border-radius:14px;
+border:1px solid rgba(255,255,255,0.05);
 }
 
 .stats{margin-top:20px;opacity:.9}
-
-.lang{display:none;}
-.active{display:block;}
 </style>
-
-<script>
-function setLang(lang){
-  document.querySelectorAll('.lang').forEach(el=>el.classList.remove('active'));
-  document.querySelectorAll('.'+lang).forEach(el=>el.classList.add('active'));
-}
-</script>
-
 </head>
 
-<body onload="setLang('ru')">
+<body>
 
 <!-- HEADER -->
 <div class="header">
-  <div class="logo">IMPERIAL</div>
-  <div style="opacity:.7">Европа • СНГ • Азия</div>
-  <div class="phone"><a href="tel:+79205516575">+7 920 551-65-75</a></div>
+<div class="logo">
+<img src="logo.png">
+<span>ИМПЕРИАЛ КАРГО ТРАНС</span>
+</div>
+
+<div style="opacity:.7">Европа • СНГ • Азия</div>
+
+<div>
+<a href="tel:+79205516575" style="color:#c9a24a;text-decoration:none;">
++7 920 551-65-75
+</a>
+</div>
 </div>
 
 <!-- HERO -->
 <div class="hero">
 
-<h1 class="lang ru">Доставка грузов Европа — СНГ — Азия</h1>
-<h1 class="lang en">Cargo delivery Europe — CIS — Asia</h1>
+<h1>Международные грузоперевозки</h1>
 
-<p class="sub lang ru">Работаем с бизнесом и частными клиентами</p>
-<p class="sub lang en">For business and private clients</p>
+<p class="sub">
+Европа • СНГ • Азия
+</p>
 
-<p class="lang ru">⚡ Рассчитаем стоимость за 10 минут — без обязательств</p>
-<p class="lang en">⚡ Get a quote in 10 minutes — no obligation</p>
+<p>
+⚡ Рассчитаем стоимость за 10 минут
+</p>
 
 <div class="stats">
 🚚 15+ лет &nbsp;&nbsp; 🌍 10+ стран &nbsp;&nbsp; 📦 1000+ перевозок
@@ -104,8 +113,7 @@ function setLang(lang){
 
 <!-- SERVICES -->
 <div class="block">
-<h2 class="lang ru">Услуги</h2>
-<h2 class="lang en">Services</h2>
+<h2>Услуги</h2>
 
 <div class="grid">
 <div class="card">Автоперевозки Европа — СНГ</div>
@@ -116,8 +124,7 @@ function setLang(lang){
 
 <!-- CASES -->
 <div class="block">
-<h2 class="lang ru">Реальные перевозки</h2>
-<h2 class="lang en">Cases</h2>
+<h2>Реальные перевозки</h2>
 
 <div class="grid">
 <div class="card">Италия → Москва<br>12 паллет • 6 дней</div>
@@ -128,8 +135,7 @@ function setLang(lang){
 
 <!-- PROCESS -->
 <div class="block">
-<h2 class="lang ru">Как работаем</h2>
-<h2 class="lang en">How we work</h2>
+<h2>Как работаем</h2>
 
 <div class="grid">
 <div class="card">1. Заявка</div>
@@ -140,11 +146,9 @@ function setLang(lang){
 
 <!-- CTA -->
 <div class="block">
-<h2 class="lang ru">Нужна доставка?</h2>
-<h2 class="lang en">Need delivery?</h2>
+<h2>Нужна доставка?</h2>
 
-<p class="lang ru">Свяжитесь с нами прямо сейчас</p>
-<p class="lang en">Contact us right now</p>
+<p>Свяжитесь с нами прямо сейчас</p>
 
 <a href="tel:+79205516575" class="btn">Получить расчёт</a>
 <a href="https://t.me/Roman_Imperial_Trans_Cargo" class="btn">Telegram</a>
