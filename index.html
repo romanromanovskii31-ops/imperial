@@ -3,12 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ИМПЕРИАЛ КАРГО ТРАНС</title>
+<title>ИМПЕРИАЛ ТРАНС КАРГО</title>
 
 <style>
-body{margin:0;font-family:Arial,sans-serif;background:#0a0f1c;color:#fff}
-.container{max-width:1000px;margin:auto;padding:40px 20px}
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#0b1220;
+color:#fff;
+}
 
+/* HEADER */
 .header{
 display:flex;
 justify-content:space-between;
@@ -19,39 +24,72 @@ border-bottom:1px solid rgba(255,255,255,0.05);
 
 .logo{
 display:flex;
-align-items:center;
-gap:10px;
+flex-direction:column;
+line-height:1.2;
+}
+
+.logo strong{
+font-size:22px;
+letter-spacing:1px;
+}
+
+.logo span{
+font-size:12px;
+opacity:.6;
+}
+
+.phone{
+color:#f2d27a;
+text-decoration:none;
 font-weight:600;
 }
 
-.logo img{height:40px}
-
+/* HERO */
 .hero{
 padding:100px 20px;
 text-align:center;
-max-width:800px;
-margin:auto;
 }
 
-h1{font-size:42px;margin-bottom:10px}
-.sub{font-size:20px;opacity:.8}
+h1{
+font-size:40px;
+margin-bottom:10px;
+}
 
+.sub{
+font-size:18px;
+opacity:.8;
+margin-bottom:10px;
+}
+
+.desc{
+opacity:.8;
+margin-bottom:20px;
+}
+
+.stats{
+margin:20px 0;
+opacity:.9;
+}
+
+/* BUTTON */
 .btn{
 padding:14px 28px;
-margin:10px;
-background:linear-gradient(135deg,#c9a24a,#f2d27a);
+background:#f2d27a;
 color:#000;
-border:none;
-border-radius:30px;
-font-weight:600;
+border-radius:25px;
 text-decoration:none;
+font-weight:600;
 display:inline-block;
-transition:0.2s;
+margin:10px;
 }
 
-.btn:hover{transform:scale(1.05)}
-
-.block{margin:60px 0;text-align:center}
+/* BLOCKS */
+.container{
+max-width:1100px;
+margin:auto;
+padding:50px 20px;
+text-align:center;
+}
 
 .grid{
 display:grid;
@@ -62,11 +100,15 @@ gap:20px;
 .card{
 background:#11182b;
 padding:22px;
-border-radius:14px;
-border:1px solid rgba(255,255,255,0.05);
+border-radius:12px;
 }
 
-.stats{margin-top:20px;opacity:.9}
+/* CTA */
+.cta{
+padding:60px 20px;
+text-align:center;
+background:#0f172a;
+}
 </style>
 </head>
 
@@ -74,18 +116,16 @@ border:1px solid rgba(255,255,255,0.05);
 
 <!-- HEADER -->
 <div class="header">
+
 <div class="logo">
-<img src="logo.png">
-<span>ИМПЕРИАЛ КАРГО ТРАНС</span>
+<strong>ИМПЕРИАЛ</strong>
+<span>ТРАНС КАРГО</span>
 </div>
 
-<div style="opacity:.7">Европа • СНГ • Азия</div>
-
-<div>
-<a href="tel:+79205516575" style="color:#c9a24a;text-decoration:none;">
+<a href="tel:+79205516575" class="phone">
 +7 920 551-65-75
 </a>
-</div>
+
 </div>
 
 <!-- HERO -->
@@ -93,13 +133,9 @@ border:1px solid rgba(255,255,255,0.05);
 
 <h1>Международные грузоперевозки</h1>
 
-<p class="sub">
-Европа • СНГ • Азия
-</p>
+<p class="sub">Европа • СНГ • Азия</p>
 
-<p>
-⚡ Рассчитаем стоимость за 10 минут
-</p>
+<p class="desc">Надёжная доставка грузов по ключевым направлениям</p>
 
 <div class="stats">
 🚚 15+ лет &nbsp;&nbsp; 🌍 10+ стран &nbsp;&nbsp; 📦 1000+ перевозок
@@ -109,10 +145,8 @@ border:1px solid rgba(255,255,255,0.05);
 
 </div>
 
-<div class="container">
-
 <!-- SERVICES -->
-<div class="block">
+<div class="container">
 <h2>Услуги</h2>
 
 <div class="grid">
@@ -123,18 +157,18 @@ border:1px solid rgba(255,255,255,0.05);
 </div>
 
 <!-- CASES -->
-<div class="block">
+<div class="container">
 <h2>Реальные перевозки</h2>
 
 <div class="grid">
-<div class="card">Италия → Москва<br>12 паллет • 6 дней</div>
-<div class="card">Германия → Казахстан<br>Оборудование • 8 дней</div>
-<div class="card">Польша → Грузия<br>Сборный груз • 4 дня</div>
+<div class="card">Италия → Москва<br>6 дней</div>
+<div class="card">Германия → Казахстан<br>8 дней</div>
+<div class="card">Польша → Грузия<br>4 дня</div>
 </div>
 </div>
 
 <!-- PROCESS -->
-<div class="block">
+<div class="container">
 <h2>Как работаем</h2>
 
 <div class="grid">
@@ -145,16 +179,14 @@ border:1px solid rgba(255,255,255,0.05);
 </div>
 
 <!-- CTA -->
-<div class="block">
+<div class="cta">
 <h2>Нужна доставка?</h2>
 
 <p>Свяжитесь с нами прямо сейчас</p>
 
-<a href="tel:+79205516575" class="btn">Получить расчёт</a>
+<a href="tel:+79205516575" class="btn">Позвонить</a>
 <a href="https://t.me/Roman_Imperial_Trans_Cargo" class="btn">Telegram</a>
 <a href="https://wa.me/79103273958" class="btn">WhatsApp</a>
-</div>
-
 </div>
 
 </body>
