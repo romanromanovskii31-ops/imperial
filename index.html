@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ИМПЕРИАЛ ТРАНС КАРГО</title>
+<title>ИМПЕРИАЛ TRANS CARGO</title>
 
 <style>
 body{
@@ -11,6 +11,7 @@ margin:0;
 font-family:Arial,sans-serif;
 background:#0b1220;
 color:#fff;
+line-height:1.6;
 }
 
 /* HEADER */
@@ -18,24 +19,13 @@ color:#fff;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:20px 40px;
+padding:20px 60px;
 border-bottom:1px solid rgba(255,255,255,0.05);
 }
 
-.logo{
-display:flex;
-flex-direction:column;
-line-height:1.2;
-}
-
-.logo strong{
-font-size:22px;
-letter-spacing:1px;
-}
-
-.logo span{
-font-size:12px;
-opacity:.6;
+.logo img{
+height:50px;
+filter: drop-shadow(0 0 10px rgba(242,210,122,0.4));
 }
 
 .phone{
@@ -46,68 +36,88 @@ font-weight:600;
 
 /* HERO */
 .hero{
-padding:100px 20px;
+padding:140px 20px 100px;
 text-align:center;
+max-width:900px;
+margin:auto;
 }
 
 h1{
-font-size:40px;
-margin-bottom:10px;
+font-size:44px;
+margin-bottom:20px;
+font-weight:700;
 }
 
 .sub{
 font-size:18px;
-opacity:.8;
+opacity:.7;
 margin-bottom:10px;
 }
 
 .desc{
-opacity:.8;
-margin-bottom:20px;
+opacity:.85;
+margin-bottom:25px;
 }
 
-.stats{
-margin:20px 0;
+.trust{
+margin:25px 0;
 opacity:.9;
+font-size:15px;
 }
 
 /* BUTTON */
 .btn{
-padding:14px 28px;
-background:#f2d27a;
+padding:16px 36px;
+background:linear-gradient(135deg,#f2d27a,#caa64b);
 color:#000;
-border-radius:25px;
+border-radius:40px;
 text-decoration:none;
 font-weight:600;
 display:inline-block;
-margin:10px;
+margin-top:10px;
+transition:0.3s;
+box-shadow:0 4px 20px rgba(242,210,122,0.25);
+}
+
+.btn:hover{
+transform:scale(1.05);
+box-shadow:0 6px 25px rgba(242,210,122,0.4);
 }
 
 /* BLOCKS */
 .container{
 max-width:1100px;
 margin:auto;
-padding:50px 20px;
+padding:70px 20px;
 text-align:center;
 }
 
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:20px;
+gap:25px;
+margin-top:40px;
 }
 
 .card{
 background:#11182b;
-padding:22px;
-border-radius:12px;
+padding:28px;
+border-radius:16px;
+transition:0.3s;
+border:1px solid rgba(255,255,255,0.05);
+}
+
+.card:hover{
+transform:translateY(-6px);
+border:1px solid rgba(242,210,122,0.3);
 }
 
 /* CTA */
 .cta{
-padding:60px 20px;
+padding:80px 20px;
 text-align:center;
 background:#0f172a;
+border-top:1px solid rgba(255,255,255,0.05);
 }
 </style>
 </head>
@@ -116,29 +126,28 @@ background:#0f172a;
 
 <!-- HEADER -->
 <div class="header">
-
 <div class="logo">
-<strong>ИМПЕРИАЛ</strong>
-<span>ТРАНС КАРГО</span>
+<img src="logo.png" alt="Imperial Cargo">
 </div>
 
 <a href="tel:+79205516575" class="phone">
 +7 920 551-65-75
 </a>
-
 </div>
 
 <!-- HERO -->
 <div class="hero">
 
-<h1>Международные грузоперевозки</h1>
+<h1>Международные грузоперевозки под ключ с полным контролем на каждом этапе</h1>
 
 <p class="sub">Европа • СНГ • Азия</p>
 
-<p class="desc">Надёжная доставка грузов по ключевым направлениям</p>
+<p class="desc">
+Работаем по договору, обеспечиваем контроль на каждом этапе и гарантируем безопасную доставку вашего груза
+</p>
 
-<div class="stats">
-🚚 15+ лет &nbsp;&nbsp; 🌍 10+ стран &nbsp;&nbsp; 📦 1000+ перевозок
+<div class="trust">
+📦 Работаем по договору &nbsp;&nbsp; 🛡 Страхование грузов &nbsp;&nbsp; 📍 Контроль на всех этапах
 </div>
 
 <a href="tel:+79205516575" class="btn">Получить расчёт</a>
@@ -147,34 +156,56 @@ background:#0f172a;
 
 <!-- SERVICES -->
 <div class="container">
-<h2>Услуги</h2>
+<h2>Наши услуги</h2>
 
 <div class="grid">
-<div class="card">Автоперевозки Европа — СНГ</div>
-<div class="card">Карго Турция / Китай</div>
-<div class="card">Сборные грузы</div>
+<div class="card">
+🚛 Автоперевозки Европа — СНГ<br>
+Надёжная доставка по международным маршрутам
+</div>
+
+<div class="card">
+📦 Карго Турция / Китай<br>
+Оптимальные решения под любые задачи
+</div>
+
+<div class="card">
+📍 Сборные грузы<br>
+Экономия на доставке без потери качества
+</div>
 </div>
 </div>
 
 <!-- CASES -->
 <div class="container">
-<h2>Реальные перевозки</h2>
+<h2>Примеры перевозок</h2>
 
 <div class="grid">
-<div class="card">Италия → Москва<br>6 дней</div>
-<div class="card">Германия → Казахстан<br>8 дней</div>
-<div class="card">Польша → Грузия<br>4 дня</div>
+<div class="card">🇮🇹 Италия → Москва<br>6 дней</div>
+<div class="card">🇩🇪 Германия → Казахстан<br>8 дней</div>
+<div class="card">🇵🇱 Польша → Грузия<br>4 дня</div>
 </div>
 </div>
 
 <!-- PROCESS -->
 <div class="container">
-<h2>Как работаем</h2>
+<h2>Как мы работаем</h2>
 
 <div class="grid">
-<div class="card">1. Заявка</div>
-<div class="card">2. Расчёт</div>
-<div class="card">3. Доставка</div>
+<div class="card">1️⃣ Заявка</div>
+<div class="card">2️⃣ Быстрый расчёт</div>
+<div class="card">3️⃣ Доставка и контроль</div>
+</div>
+</div>
+
+<!-- TRUST -->
+<div class="container">
+<h2>Почему выбирают нас</h2>
+
+<div class="grid">
+<div class="card">✔ Работаем официально по договору</div>
+<div class="card">✔ Страхование грузов</div>
+<div class="card">✔ Контроль на всех этапах</div>
 </div>
 </div>
 
@@ -182,7 +213,7 @@ background:#0f172a;
 <div class="cta">
 <h2>Нужна доставка?</h2>
 
-<p>Свяжитесь с нами прямо сейчас</p>
+<p>Свяжитесь с нами — ответим в течение 5 минут</p>
 
 <a href="tel:+79205516575" class="btn">Позвонить</a>
 <a href="https://t.me/Roman_Imperial_Trans_Cargo" class="btn">Telegram</a>
