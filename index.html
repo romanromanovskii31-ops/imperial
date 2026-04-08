@@ -7,78 +7,55 @@
 
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
-(function(){ emailjs.init("iBgRJG8GNtKKEUoBM"); })();
+(function(){
+emailjs.init("iBgRJG8GNtKKEUoBM");
+})();
 </script>
 
 <style>
 body{
 margin:0;
 font-family:Arial,sans-serif;
-background: radial-gradient(circle at top, #111a33, #0b1220 60%);
+background:#0b1220;
 color:#fff;
-}
-
-/* HEADER */
-.header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 60px;
-border-bottom:1px solid rgba(255,255,255,0.05);
-}
-
-.logo-text .main{
-font-size:26px;
-font-weight:700;
-color:#f2d27a;
-letter-spacing:2px;
-}
-
-.logo-text .sub{
-font-size:11px;
-opacity:.6;
-letter-spacing:2px;
-}
-
-/* HERO */
-.hero{
-padding:120px 20px 80px;
 text-align:center;
-max-width:900px;
-margin:auto;
 }
 
-.hero h1{
-font-size:42px;
-margin-bottom:15px;
+.header{
+padding:20px;
 }
 
-/* BUTTON */
+.main{
+font-size:26px;
+color:#f2d27a;
+font-weight:bold;
+}
+
+.sub{
+font-size:12px;
+opacity:.6;
+}
+
+.hero{
+padding:60px;
+}
+
 .btn{
-padding:14px 32px;
-background:linear-gradient(135deg,#f2d27a,#caa64b);
+padding:12px 25px;
+background:#f2d27a;
 color:#000;
-border-radius:40px;
+border-radius:20px;
 text-decoration:none;
 display:inline-block;
-margin-top:15px;
-font-weight:600;
+margin-top:10px;
 }
 
-/* BLOCK */
-.container{
-padding:70px 20px;
-text-align:center;
-max-width:1100px;
-margin:auto;
-}
-
-/* FORM */
 input{
-width:100%;
-padding:12px;
-margin:10px 0;
-border-radius:8px;
+display:block;
+margin:10px auto;
+padding:10px;
+width:250px;
+border-radius:6px;
 border:none;
 }
 </style>
@@ -87,25 +64,18 @@ border:none;
 <body>
 
 <div class="header">
-<div class="logo-text">
 <div class="main">ИМПЕРИАЛ</div>
 <div class="sub">TRANS CARGO</div>
-</div>
 </div>
 
 <div class="hero">
 <h1>Международные грузоперевозки</h1>
 <p>Европа • СНГ • Азия</p>
-
-<a class="btn" href="tel:+79205516575">Позвонить</a>
 </div>
 
-<div class="container">
-<h2>Оставить заявку</h2>
-
-<form onsubmit="sendForm(event)" style="max-width:400px;margin:auto;">
-<input id="name" placeholder="Имя" required>
-<input id="phone" placeholder="Телефон" required>
+<form onsubmit="sendForm(event)">
+<input id="name" placeholder="Имя">
+<input id="phone" placeholder="Телефон">
 <input id="cargo" placeholder="Груз">
 
 <button class="btn">Отправить</button>
@@ -114,25 +84,23 @@ border:none;
 <p id="msg"></p>
 
 <a class="btn" href="https://wa.me/79103273958">WhatsApp</a>
-</div>
 
 <script>
 function sendForm(e){
 e.preventDefault();
 
-let name = document.getElementById('name').value;
-let phone = document.getElementById('phone').value;
-let cargo = document.getElementById('cargo').value;
+var name = document.getElementById('name').value;
+var phone = document.getElementById('phone').value;
+var cargo = document.getElementById('cargo').value;
 
-// ВОТ КЛЮЧ — КАК ВЧЕРА
+// ТОЧНО КАК ВЧЕРА
 emailjs.send("service_rjz7d2c","template_6w4m9kf",{
-user_name: name,
-user_phone: phone,
-user_cargo: cargo,
-message: `Новая заявка:\nИмя: ${name}\nТелефон: ${phone}\nГруз: ${cargo}`
+name: name,
+phone: phone,
+cargo: cargo
 });
 
-document.getElementById("msg").innerText="Заявка отправлена!";
+document.getElementById("msg").innerText="Отправлено!";
 }
 </script>
 
