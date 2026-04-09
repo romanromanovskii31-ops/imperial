@@ -83,7 +83,6 @@ border:none;
 
 <p id="msg"></p>
 
-<!-- КНОПКИ -->
 <a class="btn" href="https://wa.me/79103273958">WhatsApp</a>
 <a class="btn" href="https://t.me/imperialcargo">Telegram</a>
 <a class="btn" href="mailto:romanromanovskii31@gmail.com">Почта</a>
@@ -101,10 +100,12 @@ name: name,
 phone: phone,
 cargo: cargo
 })
-.then(function(){
+.then(function(response){
+console.log("SUCCESS", response);
 document.getElementById("msg").innerText="Заявка отправлена";
-}, function(){
-document.getElementById("msg").innerText="Ошибка отправки";
+}, function(error){
+console.log("ERROR", error);
+document.getElementById("msg").innerText="Ошибка: " + error.text;
 });
 }
 </script>
