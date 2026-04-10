@@ -8,7 +8,7 @@
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
 (function(){
-emailjs.init("iBgRJG8GNtKKEUoBM");
+emailjs.init("YAEhiFYVjeawWDEi63RLQ");
 })();
 </script>
 
@@ -33,21 +33,9 @@ font-weight:bold;
 color:#f2d27a;
 }
 
-nav a{
-margin:0 10px;
-color:#fff;
-text-decoration:none;
-}
-
 .hero{
 text-align:center;
 padding:100px 20px;
-background:linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6));
-}
-
-.hero h1{
-font-size:40px;
-margin-bottom:10px;
 }
 
 .section{
@@ -107,6 +95,7 @@ text-decoration:none;
 
 #msg{
 margin-top:10px;
+font-weight:bold;
 }
 </style>
 </head>
@@ -115,11 +104,6 @@ margin-top:10px;
 
 <header>
 <div class="logo">ИМПЕРИАЛ TRANS CARGO</div>
-<nav>
-<a href="#">Главная</a>
-<a href="#">Услуги</a>
-<a href="#">Контакты</a>
-</nav>
 </header>
 
 <div class="hero">
@@ -172,7 +156,7 @@ document.getElementById("msg").innerText="Заполните все поля";
 return;
 }
 
-emailjs.send("service_rjz7d2c","template_6w4m9kf",{
+emailjs.send("service_nsvynwu","template_daooa4d",{
 name: name,
 phone: phone,
 cargo: cargo
