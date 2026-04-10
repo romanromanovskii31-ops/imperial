@@ -14,40 +14,19 @@
 body {margin:0;font-family:Arial;background:#0b1220;color:white;}
 
 header {
-position:fixed;
-width:100%;
-top:0;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px 30px;
-background:rgba(0,0,0,0.85);
+position:fixed;width:100%;top:0;
+display:flex;justify-content:space-between;align-items:center;
+padding:15px 30px;background:rgba(0,0,0,0.85);
 z-index:1000;
 }
 
-.flags {
-display:flex;
-align-items:center;
-gap:10px;
-}
-
-.flags img {
-width:28px;
-cursor:pointer;
-transition:0.3s;
-}
-
-.flags img:hover {
-transform:scale(1.2);
-}
+.flags {display:flex;gap:10px;}
+.flags img {width:28px;cursor:pointer;}
+.flags img:hover {transform:scale(1.2);}
 
 .hero {
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
+height:100vh;display:flex;flex-direction:column;
+justify-content:center;align-items:center;text-align:center;
 background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
 url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80') center/cover;
 }
@@ -56,13 +35,8 @@ url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80') center/
 .hero p {color:#cbd5e1;}
 
 .btn {
-background:#22c55e;
-padding:14px 25px;
-border:none;
-border-radius:6px;
-color:white;
-cursor:pointer;
-margin-top:20px;
+background:#22c55e;padding:14px 25px;border:none;
+border-radius:6px;color:white;cursor:pointer;margin-top:20px;
 }
 
 .section {padding:80px 20px;text-align:center;}
@@ -73,73 +47,39 @@ grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:25px;margin-top:30px;
 }
 
-.card {
-background:#1e293b;
-padding:25px;
-border-radius:12px;
-}
+.card {background:#1e293b;padding:25px;border-radius:12px;}
 
-.stats {
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-}
-
+.stats {display:flex;justify-content:center;flex-wrap:wrap;}
 .stat {font-size:24px;margin:15px;}
 
 input {
-width:100%;
-padding:12px;
-margin:10px 0;
-border:none;
-border-radius:6px;
+width:100%;padding:12px;margin:10px 0;
+border:none;border-radius:6px;
 }
 
 .call {
-background:#3b82f6;
-padding:12px;
-border-radius:6px;
-display:inline-block;
-margin-top:10px;
-color:white;
-text-decoration:none;
+background:#3b82f6;padding:12px;border-radius:6px;
+display:inline-block;margin-top:10px;color:white;text-decoration:none;
 }
 
 .whatsapp {
-position:fixed;
-bottom:20px;
-right:20px;
-background:#25D366;
-padding:16px;
-border-radius:50%;
-color:white;
-text-decoration:none;
+position:fixed;bottom:20px;right:20px;
+background:#25D366;padding:16px;border-radius:50%;
+color:white;text-decoration:none;
 }
 
 footer {
-background:#020617;
-padding:40px 20px;
-margin-top:40px;
+background:#020617;padding:40px 20px;margin-top:40px;
 }
-
 .footer-grid {
-max-width:1000px;
-margin:auto;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+max-width:1000px;margin:auto;
+display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
 gap:20px;
 }
-
-.copy {
-text-align:center;
-color:#64748b;
-margin-top:20px;
-}
+.copy {text-align:center;color:#64748b;margin-top:20px;}
 
 @media(max-width:600px){
-.flags img {
-width:24px;
-}
+.flags img {width:24px;}
 }
 </style>
 </head>
@@ -163,32 +103,34 @@ width:24px;
 </section>
 
 <section class="section">
-<h2>Почему выбирают нас</h2>
+<h2 id="why">Почему выбирают нас</h2>
 <div class="grid">
-<div class="card">Более 15 лет опыта</div>
-<div class="card">Контроль груза 24/7</div>
-<div class="card">Без посредников</div>
-<div class="card">Гарантия сроков</div>
+<div class="card">Более 15 лет опыта в международных перевозках</div>
+<div class="card">Полный контроль груза на всех этапах</div>
+<div class="card">Работаем напрямую без посредников</div>
+<div class="card">Гарантия сроков доставки</div>
 </div>
 </section>
 
 <section class="section">
-<h2>Нам доверяют</h2>
+<h2 id="trust">Нам доверяют</h2>
 <div class="stats">
 <div class="stat">500+ клиентов</div>
 <div class="stat">1000+ перевозок</div>
-<div class="stat">24/7</div>
+<div class="stat">24/7 поддержка</div>
 </div>
 </section>
 
 <section class="section" id="formSection">
-<h2 id="formTitle">Получить расчёт</h2>
+<h2 id="formTitle">Получите расчёт стоимости</h2>
 
 <input type="text" id="name" placeholder="Ваше имя">
 <input type="text" id="phone" placeholder="Телефон">
 <input type="text" id="cargo" placeholder="Название груза">
 
-<button class="btn" onclick="sendData()" id="send">Отправить</button>
+<button class="btn" onclick="sendData()" id="send">Получить расчёт</button>
+
+<p style="color:#94a3b8;">Ответим в течение 5–15 минут</p>
 
 <div id="msg"></div>
 
@@ -201,16 +143,16 @@ width:24px;
 <div class="footer-grid">
 <div>
 <h3 id="footerTitle">ООО ИМПЕРИАЛ TRANS CARGO</h3>
-<p>Международные грузоперевозки</p>
+<p id="footerDesc">Международные грузоперевозки и логистика</p>
 </div>
 
 <div>
-<h4>Контакты</h4>
+<h4 id="contactTitle">Контакты</h4>
 <p>📞 +7 910 327-39-58</p>
 </div>
 </div>
 
-<div class="copy">© 2026 ООО ИМПЕРИАЛ TRANS CARGO</div>
+<div class="copy" id="copy">© 2026 ООО ИМПЕРИАЛ TRANS CARGO</div>
 </footer>
 
 <script>
@@ -236,18 +178,67 @@ document.getElementById("msg").innerText="Заявка отправлена ✅"
 }
 
 function setLang(lang){
+
 if(lang==='en'){
 title.innerText="Cargo transportation Europe – CIS";
-subtitle.innerText="Quote in 15 minutes";
+subtitle.innerText="No intermediaries • 24/7 control • Quote in 15 minutes";
+btn.innerText="Get quote";
+
+why.innerText="Why choose us";
+trust.innerText="Trusted by clients";
+formTitle.innerText="Get a quote";
+send.innerText="Send";
+
+footerTitle.innerText="IMPERIAL TRANS CARGO LLC";
+footerDesc.innerText="International cargo transportation and logistics";
+contactTitle.innerText="Contacts";
+copy.innerText="© 2026 IMPERIAL TRANS CARGO LLC";
+
+name.placeholder="Your name";
+phone.placeholder="Phone";
+cargo.placeholder="Cargo name";
 }
+
 if(lang==='ge'){
-title.innerText="ტვირთის გადაზიდვა ევროპა – დსთ";
-subtitle.innerText="ფასი 15 წუთში";
+title.innerText="საერთაშორისო ტვირთის გადაზიდვა ევროპა – დსთ – რუსეთი";
+subtitle.innerText="უშუალოდ • კონტროლი 24/7 • ფასის გამოთვლა 15 წუთში";
+btn.innerText="ფასის გამოთვლა";
+
+why.innerText="რატომ ირჩევენ ჩვენ";
+trust.innerText="ჩვენ გვენდობიან";
+formTitle.innerText="მიიღეთ ფასის გამოთვლა";
+send.innerText="გაგზავნა";
+
+footerTitle.innerText="შპს IMPERIAL TRANS CARGO";
+footerDesc.innerText="საერთაშორისო ტვირთის გადაზიდვა და ლოგისტიკა";
+contactTitle.innerText="კონტაქტი";
+copy.innerText="© 2026 შპს IMPERIAL TRANS CARGO";
+
+name.placeholder="თქვენი სახელი";
+phone.placeholder="ტელეფონი";
+cargo.placeholder="ტვირთის დასახელება";
 }
+
 if(lang==='ru'){
 title.innerText="Грузоперевозки Европа – РФ – СНГ";
-subtitle.innerText="Расчёт за 15 минут";
+subtitle.innerText="Без посредников • Контроль 24/7 • Расчёт за 15 минут";
+btn.innerText="Получить расчёт";
+
+why.innerText="Почему выбирают нас";
+trust.innerText="Нам доверяют";
+formTitle.innerText="Получите расчёт стоимости";
+send.innerText="Получить расчёт";
+
+footerTitle.innerText="ООО ИМПЕРИАЛ TRANS CARGO";
+footerDesc.innerText="Международные грузоперевозки и логистика";
+contactTitle.innerText="Контакты";
+copy.innerText="© 2026 ООО ИМПЕРИАЛ TRANS CARGO";
+
+name.placeholder="Ваше имя";
+phone.placeholder="Телефон";
+cargo.placeholder="Название груза";
 }
+
 }
 </script>
 
