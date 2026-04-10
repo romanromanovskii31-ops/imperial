@@ -5,13 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ИМПЕРИАЛ TRANS CARGO</title>
 
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script>
-(function(){
-emailjs.init("YAEhiFYVjeawWDEi63RLQ");
-})();
-</script>
-
 <style>
 body{
 margin:0;
@@ -21,25 +14,20 @@ color:#fff;
 }
 
 header{
-display:flex;
-justify-content:space-between;
-padding:20px 40px;
-align-items:center;
-}
-
-.logo{
+padding:20px;
+text-align:center;
 font-size:22px;
-font-weight:bold;
 color:#f2d27a;
+font-weight:bold;
 }
 
 .hero{
 text-align:center;
-padding:100px 20px;
+padding:80px 20px;
 }
 
 .section{
-padding:60px 20px;
+padding:50px 20px;
 text-align:center;
 }
 
@@ -59,7 +47,7 @@ width:250px;
 
 .form{
 background:#121a2f;
-padding:40px;
+padding:30px;
 border-radius:10px;
 max-width:400px;
 margin:0 auto;
@@ -102,9 +90,7 @@ font-weight:bold;
 
 <body>
 
-<header>
-<div class="logo">ИМПЕРИАЛ TRANS CARGO</div>
-</header>
+<header>ИМПЕРИАЛ TRANS CARGO</header>
 
 <div class="hero">
 <h1>Международные грузоперевозки</h1>
@@ -112,11 +98,11 @@ font-weight:bold;
 </div>
 
 <div class="section">
-<h2>Наши услуги</h2>
+<h2>Услуги</h2>
 <div class="cards">
 <div class="card">Автоперевозки</div>
 <div class="card">ЖД перевозки</div>
-<div class="card">Морские контейнеры</div>
+<div class="card">Контейнеры</div>
 <div class="card">Экспедирование</div>
 </div>
 </div>
@@ -129,7 +115,7 @@ font-weight:bold;
 <input id="name" placeholder="Имя">
 <input id="phone" placeholder="Телефон">
 <input id="cargo" placeholder="Груз">
-<button class="btn">Отправить заявку</button>
+<button class="btn">Отправить</button>
 </form>
 <p id="msg"></p>
 </div>
@@ -140,32 +126,39 @@ font-weight:bold;
 <h2>Контакты</h2>
 <a href="https://wa.me/79103273958">WhatsApp</a>
 <a href="https://t.me/imperialcargo">Telegram</a>
-<a href="mailto:romanromanovskii31@gmail.com">Почта</a>
 </div>
 
 <script>
+const TOKEN = "8633180088:AAEsPBJAYgXh2NyY1t8Z817WXgmjA2nm9Bc";
+const CHAT_ID = "1118097651";
+
 function sendForm(e){
 e.preventDefault();
 
-var name = document.getElementById('name').value.trim();
-var phone = document.getElementById('phone').value.trim();
-var cargo = document.getElementById('cargo').value.trim();
+let name = document.getElementById('name').value;
+let phone = document.getElementById('phone').value;
+let cargo = document.getElementById('cargo').value;
 
 if(!name || !phone || !cargo){
 document.getElementById("msg").innerText="Заполните все поля";
 return;
 }
 
-emailjs.send("service_nsvynwu","template_daooa4d",{
-name: name,
-phone: phone,
-cargo: cargo
+let text = `🚚 Новая заявка:\nИмя: ${name}\nТелефон: ${phone}\nГруз: ${cargo}`;
+
+fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`,{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body: JSON.stringify({
+chat_id: CHAT_ID,
+text: text
 })
-.then(function(){
+})
+.then(()=>{
 document.getElementById("msg").innerText="Заявка отправлена ✅";
-}, function(error){
+})
+.catch(()=>{
 document.getElementById("msg").innerText="Ошибка ❌";
-console.log(error);
 });
 }
 </script>
