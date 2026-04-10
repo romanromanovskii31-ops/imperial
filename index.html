@@ -14,35 +14,55 @@
 body {margin:0;font-family:Arial;background:#0b1220;color:white;}
 
 header {
-position:fixed;width:100%;top:0;
-display:flex;justify-content:space-between;
-padding:15px 30px;background:rgba(0,0,0,0.85);
+position:fixed;
+width:100%;
+top:0;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 30px;
+background:rgba(0,0,0,0.85);
 z-index:1000;
 }
 
+.flags {
+display:flex;
+align-items:center;
+gap:10px;
+}
+
 .flags img {
-width:28px;cursor:pointer;margin-left:8px;
+width:28px;
+cursor:pointer;
 transition:0.3s;
 }
-.flags img:hover {transform:scale(1.2);}
+
+.flags img:hover {
+transform:scale(1.2);
+}
 
 .hero {
 height:100vh;
-display:flex;flex-direction:column;
-justify-content:center;align-items:center;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
 text-align:center;
 background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
 url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80') center/cover;
 }
 
-.hero h1 {font-size:46px;}
+.hero h1 {font-size:42px;}
 .hero p {color:#cbd5e1;}
 
 .btn {
 background:#22c55e;
 padding:14px 25px;
-border:none;border-radius:6px;
-color:white;cursor:pointer;margin-top:20px;
+border:none;
+border-radius:6px;
+color:white;
+cursor:pointer;
+margin-top:20px;
 }
 
 .section {padding:80px 20px;text-align:center;}
@@ -55,42 +75,72 @@ gap:25px;margin-top:30px;
 
 .card {
 background:#1e293b;
-padding:25px;border-radius:12px;
+padding:25px;
+border-radius:12px;
 }
 
-.stats {display:flex;justify-content:center;flex-wrap:wrap;}
-.stat {font-size:26px;margin:15px;}
+.stats {
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+}
+
+.stat {font-size:24px;margin:15px;}
 
 input {
-width:100%;padding:12px;margin:10px 0;
-border:none;border-radius:6px;
+width:100%;
+padding:12px;
+margin:10px 0;
+border:none;
+border-radius:6px;
 }
 
 .call {
 background:#3b82f6;
-padding:12px;border-radius:6px;
-display:inline-block;margin-top:10px;
-color:white;text-decoration:none;
+padding:12px;
+border-radius:6px;
+display:inline-block;
+margin-top:10px;
+color:white;
+text-decoration:none;
 }
 
 .whatsapp {
-position:fixed;bottom:20px;right:20px;
-background:#25D366;padding:16px;
-border-radius:50%;color:white;text-decoration:none;
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+padding:16px;
+border-radius:50%;
+color:white;
+text-decoration:none;
 }
 
-/* FOOTER */
 footer {
-background:#020617;padding:40px 20px;margin-top:40px;
+background:#020617;
+padding:40px 20px;
+margin-top:40px;
 }
+
 .footer-grid {
-max-width:1000px;margin:auto;
-display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+max-width:1000px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
 gap:20px;
 }
-.footer-title {font-size:18px;}
-.footer-text {color:#94a3b8;}
-.copy {text-align:center;color:#64748b;margin-top:20px;}
+
+.copy {
+text-align:center;
+color:#64748b;
+margin-top:20px;
+}
+
+@media(max-width:600px){
+.flags img {
+width:24px;
+}
+}
 </style>
 </head>
 
@@ -98,6 +148,7 @@ gap:20px;
 
 <header>
 <div>IMPERIAL</div>
+
 <div class="flags">
 <img src="https://flagcdn.com/w40/ru.png" onclick="setLang('ru')">
 <img src="https://flagcdn.com/w40/gb.png" onclick="setLang('en')">
@@ -106,15 +157,15 @@ gap:20px;
 </header>
 
 <section class="hero">
-<h1 id="title">Надёжные грузоперевозки Европа – СНГ – Россия</h1>
-<p id="subtitle">Без посредников • Контроль 24/7 • Расчёт за 5 минут</p>
-<button class="btn" onclick="scrollToForm()" id="btn">Получить расчёт за 5 минут</button>
+<h1 id="title">Грузоперевозки Европа – РФ – СНГ</h1>
+<p id="subtitle">Без посредников • Контроль 24/7 • Расчёт за 15 минут</p>
+<button class="btn" onclick="scrollToForm()" id="btn">Получить расчёт</button>
 </section>
 
 <section class="section">
-<h2 id="adv">Почему выбирают нас</h2>
+<h2>Почему выбирают нас</h2>
 <div class="grid">
-<div class="card">10+ лет опыта</div>
+<div class="card">Более 15 лет опыта</div>
 <div class="card">Контроль груза 24/7</div>
 <div class="card">Без посредников</div>
 <div class="card">Гарантия сроков</div>
@@ -130,37 +181,8 @@ gap:20px;
 </div>
 </section>
 
-<section class="section">
-<h2 id="services">Услуги</h2>
-<div class="grid">
-<div class="card">Автоперевозки</div>
-<div class="card">Сборные грузы</div>
-<div class="card">Экспресс доставка</div>
-<div class="card">Логистика под ключ</div>
-</div>
-</section>
-
-<section class="section">
-<h2 id="routes">Маршруты</h2>
-<div class="grid">
-<div class="card">Россия</div>
-<div class="card">Грузия</div>
-<div class="card">Турция</div>
-<div class="card">Европа</div>
-</div>
-</section>
-
-<section class="section">
-<h2>Отзывы</h2>
-<div class="grid">
-<div class="card">Быстро доставили груз, всё чётко.</div>
-<div class="card">Работаем постоянно, проблем нет.</div>
-<div class="card">Отличная компания, рекомендую.</div>
-</div>
-</section>
-
 <section class="section" id="formSection">
-<h2 id="formTitle">Оставить заявку</h2>
+<h2 id="formTitle">Получить расчёт</h2>
 
 <input type="text" id="name" placeholder="Ваше имя">
 <input type="text" id="phone" placeholder="Телефон">
@@ -173,37 +195,22 @@ gap:20px;
 <a href="tel:+79103273958" class="call">Позвонить</a>
 </section>
 
-<a href="https://wa.me/79103273958?text=Здравствуйте%20хочу%20рассчитать%20доставку" class="whatsapp" target="_blank">💬</a>
+<a href="https://wa.me/79103273958?text=Здравствуйте%20хочу%20рассчитать%20доставку" class="whatsapp">💬</a>
 
-<!-- FOOTER -->
 <footer>
 <div class="footer-grid">
-
 <div>
 <h3 id="footerTitle">ООО ИМПЕРИАЛ TRANS CARGO</h3>
-<p id="footerDesc" class="footer-text">
-Грузоперевозки по Европе, СНГ и России
-</p>
+<p>Международные грузоперевозки</p>
 </div>
 
 <div>
-<h4 id="contactTitle">Контакты</h4>
+<h4>Контакты</h4>
 <p>📞 +7 910 327-39-58</p>
-<a href="https://wa.me/79103273958" style="color:#22c55e;">WhatsApp</a>
+</div>
 </div>
 
-<div>
-<h4 id="serviceFooter">Услуги</h4>
-<p>Автоперевозки</p>
-<p>Логистика под ключ</p>
-<p>Сборные грузы</p>
-</div>
-
-</div>
-
-<div class="copy" id="copy">
-© 2026 ООО ИМПЕРИАЛ TRANS CARGO
-</div>
+<div class="copy">© 2026 ООО ИМПЕРИАЛ TRANS CARGO</div>
 </footer>
 
 <script>
@@ -231,30 +238,15 @@ document.getElementById("msg").innerText="Заявка отправлена ✅"
 function setLang(lang){
 if(lang==='en'){
 title.innerText="Cargo transportation Europe – CIS";
-subtitle.innerText="Fast calculation in 5 minutes";
-btn.innerText="Get quote";
-formTitle.innerText="Request";
-send.innerText="Send";
-footerTitle.innerText="IMPERIAL TRANS CARGO LLC";
-copy.innerText="© 2026 IMPERIAL TRANS CARGO LLC";
+subtitle.innerText="Quote in 15 minutes";
 }
 if(lang==='ge'){
-title.innerText="საერთაშორისო გადაზიდვები";
-subtitle.innerText="ფასი 5 წუთში";
-btn.innerText="გამოთვლა";
-formTitle.innerText="განაცხადი";
-send.innerText="გაგზავნა";
-footerTitle.innerText="შპს IMPERIAL TRANS CARGO";
-copy.innerText="© 2026 შპს IMPERIAL TRANS CARGO";
+title.innerText="ტვირთის გადაზიდვა ევროპა – დსთ";
+subtitle.innerText="ფასი 15 წუთში";
 }
 if(lang==='ru'){
-title.innerText="Надёжные грузоперевозки Европа – СНГ – Россия";
-subtitle.innerText="Без посредников • Контроль 24/7 • Расчёт за 5 минут";
-btn.innerText="Получить расчёт";
-formTitle.innerText="Оставить заявку";
-send.innerText="Отправить";
-footerTitle.innerText="ООО ИМПЕРИАЛ TRANS CARGO";
-copy.innerText="© 2026 ООО ИМПЕРИАЛ TRANS CARGO";
+title.innerText="Грузоперевозки Европа – РФ – СНГ";
+subtitle.innerText="Расчёт за 15 минут";
 }
 }
 </script>
