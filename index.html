@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IMPERIAL TRANS CARGO</title>
+<title>ООО ИМПЕРИАЛ TRANS CARGO</title>
 
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
@@ -11,11 +11,21 @@
 </script>
 
 <style>
-body{margin:0;font-family:Arial;background:#020617;color:white}
+body{
+margin:0;
+font-family:Arial;
+background:#020617;
+color:white;
+}
 
+/* HEADER */
 header{
-position:fixed;width:100%;top:0;
-display:flex;justify-content:space-between;align-items:center;
+position:fixed;
+width:100%;
+top:0;
+display:flex;
+justify-content:space-between;
+align-items:center;
 padding:15px 30px;
 background:rgba(15,23,42,0.7);
 backdrop-filter:blur(10px);
@@ -27,51 +37,98 @@ z-index:1000;
 
 /* HERO */
 .hero{
-height:100vh;display:flex;flex-direction:column;
-justify-content:center;align-items:center;text-align:center;
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
 background:
 linear-gradient(rgba(2,6,23,0.75),rgba(2,6,23,0.9)),
 url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80') center/cover;
 }
 
-.hero h1{font-size:48px;max-width:800px}
-.hero p{color:#cbd5e1;font-size:18px}
+.hero h1{
+font-size:48px;
+max-width:800px;
+}
+
+.hero p{
+color:#cbd5e1;
+font-size:18px;
+}
 
 /* BUTTON */
 .btn{
 background:linear-gradient(135deg,#22c55e,#16a34a);
 padding:15px 30px;
-border:none;border-radius:8px;
-color:white;margin-top:20px;
-cursor:pointer;font-weight:bold;
+border:none;
+border-radius:8px;
+color:white;
+margin-top:20px;
+cursor:pointer;
+font-weight:bold;
 }
 
-.btn-orange{background:#f59e0b}
+.btn-orange{
+background:#f59e0b;
+}
 
 /* SECTION */
-.section{padding:100px 20px;text-align:center;max-width:1100px;margin:auto}
+.section{
+padding:100px 20px;
+text-align:center;
+max-width:1100px;
+margin:auto;
+}
 
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:25px;margin-top:30px;
+gap:25px;
+margin-top:30px;
 }
 
 .card{
 background:#0f172a;
-padding:25px;border-radius:12px;
+padding:25px;
+border-radius:12px;
 }
 
 /* FORM */
 input{
-width:100%;padding:12px;margin:10px 0;
-border:none;border-radius:6px;
+width:100%;
+padding:12px;
+margin:10px 0;
+border:none;
+border-radius:6px;
 }
 
+/* WHATSAPP */
 .whatsapp{
-position:fixed;bottom:20px;right:20px;
-background:#25D366;padding:16px;border-radius:50%;
-color:white;text-decoration:none;
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+padding:16px;
+border-radius:50%;
+color:white;
+text-decoration:none;
+}
+
+/* LOGO TEXT */
+.logo{
+line-height:1.1;
+}
+.logo-main{
+font-weight:700;
+font-size:18px;
+letter-spacing:1px;
+}
+.logo-sub{
+font-size:12px;
+color:#22c55e;
+letter-spacing:2px;
 }
 </style>
 </head>
@@ -79,7 +136,10 @@ color:white;text-decoration:none;
 <body>
 
 <header>
-<div>IMPERIAL</div>
+<div class="logo">
+<div class="logo-main">ООО ИМПЕРИАЛ</div>
+<div class="logo-sub">TRANS CARGO</div>
+</div>
 
 <div class="flags">
 <img src="https://flagcdn.com/w40/ru.png" onclick="setLang('ru')">
@@ -156,7 +216,7 @@ color:white;text-decoration:none;
 
 <footer style="text-align:center;padding:40px;color:#64748b;">
 © 2026 ООО ИМПЕРИАЛ TRANS CARGO  
-<br>Работаем по всей Европе, СНГ и России
+<br>Международные грузоперевозки
 </footer>
 
 <script>
