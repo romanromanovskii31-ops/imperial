@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ООО ИМПЕРИАЛ TRANS CARGO</title>
 
+<link rel="icon" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian&display=swap" rel="stylesheet">
+
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
 (function(){ emailjs.init("iBgRJG8GNtKKEUoBM"); })();
@@ -13,122 +16,75 @@
 <style>
 body{
 margin:0;
-font-family:Arial;
+font-family:'Noto Sans Georgian', Arial;
 background:#020617;
 color:white;
 }
 
 /* HEADER */
 header{
-position:fixed;
-width:100%;
-top:0;
-display:flex;
-justify-content:space-between;
-align-items:center;
+position:fixed;width:100%;top:0;
+display:flex;justify-content:space-between;align-items:center;
 padding:15px 30px;
-background:rgba(15,23,42,0.7);
-backdrop-filter:blur(10px);
+background:rgba(2,6,23,0.85);
+backdrop-filter:blur(12px);
 z-index:1000;
 }
+
+.logo-img{height:55px}
 
 .flags{display:flex;gap:10px}
 .flags img{width:26px;cursor:pointer}
 
 /* HERO */
 .hero{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
+height:100vh;display:flex;flex-direction:column;
+justify-content:center;align-items:center;text-align:center;
+padding-top:80px;
 background:
 linear-gradient(rgba(2,6,23,0.75),rgba(2,6,23,0.9)),
 url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80') center/cover;
 }
 
-.hero h1{
-font-size:48px;
-max-width:800px;
-}
-
-.hero p{
-color:#cbd5e1;
-font-size:18px;
-}
+.hero h1{font-size:48px;max-width:800px}
+.hero p{color:#cbd5e1;font-size:18px}
 
 /* BUTTON */
 .btn{
 background:linear-gradient(135deg,#22c55e,#16a34a);
 padding:15px 30px;
-border:none;
-border-radius:8px;
-color:white;
-margin-top:20px;
-cursor:pointer;
-font-weight:bold;
+border:none;border-radius:8px;
+color:white;margin-top:20px;
+cursor:pointer;font-weight:bold;
 }
 
-.btn-orange{
-background:#f59e0b;
-}
+.btn-orange{background:#f59e0b}
 
 /* SECTION */
-.section{
-padding:100px 20px;
-text-align:center;
-max-width:1100px;
-margin:auto;
-}
+.section{padding:100px 20px;text-align:center;max-width:1100px;margin:auto}
 
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:25px;
-margin-top:30px;
+gap:25px;margin-top:30px;
 }
 
 .card{
 background:#0f172a;
-padding:25px;
-border-radius:12px;
+padding:25px;border-radius:12px;
 }
 
 /* FORM */
 input{
-width:100%;
-padding:12px;
-margin:10px 0;
-border:none;
-border-radius:6px;
+width:100%;padding:12px;margin:10px 0;
+border:none;border-radius:6px;
 }
 
 /* WHATSAPP */
 .whatsapp{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#25D366;
-padding:16px;
-border-radius:50%;
-color:white;
-text-decoration:none;
-}
-
-/* LOGO TEXT */
-.logo{
-line-height:1.1;
-}
-.logo-main{
-font-weight:700;
-font-size:18px;
-letter-spacing:1px;
-}
-.logo-sub{
-font-size:12px;
-color:#22c55e;
-letter-spacing:2px;
+position:fixed;bottom:20px;right:20px;
+background:#25D366;padding:16px;border-radius:50%;
+color:white;text-decoration:none;
 }
 </style>
 </head>
@@ -136,10 +92,7 @@ letter-spacing:2px;
 <body>
 
 <header>
-<div class="logo">
-<div class="logo-main">ООО ИМПЕРИАЛ</div>
-<div class="logo-sub">TRANS CARGO</div>
-</div>
+<img src="logo.png" class="logo-img">
 
 <div class="flags">
 <img src="https://flagcdn.com/w40/ru.png" onclick="setLang('ru')">
@@ -150,76 +103,124 @@ letter-spacing:2px;
 
 <!-- HERO -->
 <section class="hero">
-<h1 id="title">Надёжные грузоперевозки Европа – РФ – СНГ</h1>
+<h1 id="title"></h1>
+<p id="subtitle"></p>
 
-<p id="subtitle">
-Без посредников • Контроль груза 24/7 • Расчёт стоимости за 10 минут • Ответим сразу
-</p>
+<button class="btn" onclick="scrollToForm()" id="btn"></button>
+<button class="btn btn-orange" onclick="quickCall()" id="callBtn"></button>
 
-<button class="btn" onclick="scrollToForm()" id="btn">
-Получить расчёт
-</button>
-
-<button class="btn btn-orange" onclick="quickCall()">
-Перезвоните мне
-</button>
-
-<p style="color:#22c55e;margin-top:10px;font-weight:bold;">
-Свяжемся с вами в течение 5–10 минут
-</p>
-
-<p style="color:#94a3b8;font-size:14px;">
-Бесплатная консультация • Без обязательств
-</p>
-
-<p style="margin-top:15px;font-size:14px;color:#94a3b8;">
-Работаем по договору • Гарантия сохранности груза
-</p>
+<p id="fast" style="color:#22c55e;margin-top:10px;font-weight:bold;"></p>
+<p id="free" style="color:#94a3b8;font-size:14px;"></p>
 </section>
 
 <!-- WHY -->
 <section class="section">
-<h2 id="why">Почему выбирают нас</h2>
+<h2 id="why"></h2>
 
 <div class="grid">
-<div class="card" id="c1">Более 15 лет опыта в логистике</div>
-<div class="card" id="c2">Контроль груза на всех этапах 24/7</div>
-<div class="card" id="c3">Работаем напрямую без посредников</div>
-<div class="card" id="c4">Гарантия сроков доставки</div>
+<div class="card" id="c1"></div>
+<div class="card" id="c2"></div>
+<div class="card" id="c3"></div>
+<div class="card" id="c4"></div>
 </div>
 </section>
 
 <!-- FORM -->
 <section class="section" id="formSection">
-<h2 id="formTitle">Получите расчёт стоимости перевозки</h2>
+<h2 id="formTitle"></h2>
 
-<p style="color:#22c55e;">Ответим в течение 5–10 минут</p>
+<input type="text" id="name">
+<input type="text" id="phone">
+<input type="text" id="cargo">
 
-<input type="text" id="name" placeholder="Ваше имя">
-<input type="text" id="phone" placeholder="Телефон">
-<input type="text" id="cargo" placeholder="Название груза">
-
-<button class="btn" onclick="sendData()" id="send">
-Получить расчёт за 10 минут
-</button>
-
-<p style="color:#94a3b8;font-size:13px;">
-Мы не передаём ваши данные третьим лицам
-</p>
+<button class="btn" onclick="sendData()" id="send"></button>
 
 <div id="msg"></div>
 </section>
 
-<a href="https://wa.me/79103273958?text=Здравствуйте%20хочу%20рассчитать%20доставку" class="whatsapp">
-💬 Написать
-</a>
+<a href="https://wa.me/79103273958" class="whatsapp">💬</a>
 
 <footer style="text-align:center;padding:40px;color:#64748b;">
-© 2026 ООО ИМПЕРИАЛ TRANS CARGO  
-<br>Международные грузоперевозки
+© 2026 ООО ИМПЕРИАЛ TRANS CARGO
 </footer>
 
 <script>
+
+function setLang(lang){
+
+if(lang==='ru'){
+title.innerText="Надёжные грузоперевозки Европа – РФ – СНГ";
+subtitle.innerText="Без посредников • Контроль 24/7 • Расчёт за 10 минут";
+btn.innerText="Получить расчёт";
+callBtn.innerText="Перезвоните мне";
+
+fast.innerText="Свяжемся за 5–10 минут";
+free.innerText="Бесплатная консультация";
+
+why.innerText="Почему выбирают нас";
+c1.innerText="15+ лет опыта";
+c2.innerText="Контроль груза 24/7";
+c3.innerText="Без посредников";
+c4.innerText="Гарантия сроков";
+
+formTitle.innerText="Получите расчёт";
+send.innerText="Отправить";
+
+name.placeholder="Ваше имя";
+phone.placeholder="Телефон";
+cargo.placeholder="Название груза";
+}
+
+if(lang==='en'){
+title.innerText="Cargo transportation Europe – CIS";
+subtitle.innerText="No intermediaries • 24/7 control • Quote in 10 minutes";
+btn.innerText="Get quote";
+callBtn.innerText="Call me";
+
+fast.innerText="We will contact you in 5–10 minutes";
+free.innerText="Free consultation";
+
+why.innerText="Why choose us";
+c1.innerText="15+ years experience";
+c2.innerText="24/7 cargo control";
+c3.innerText="No intermediaries";
+c4.innerText="Delivery guarantee";
+
+formTitle.innerText="Get a quote";
+send.innerText="Send";
+
+name.placeholder="Your name";
+phone.placeholder="Phone";
+cargo.placeholder="Cargo";
+}
+
+if(lang==='ge'){
+title.innerText="ტვირთის გადაზიდვა ევროპა – დსთ";
+subtitle.innerText="კონტროლი 24/7 • ფასი 10 წუთში";
+btn.innerText="გამოთვლა";
+callBtn.innerText="დამირეკეთ";
+
+fast.innerText="დაგიკავშირდებით 5–10 წუთში";
+free.innerText="უფასო კონსულტაცია";
+
+why.innerText="რატომ ჩვენ";
+c1.innerText="15+ წელი გამოცდილება";
+c2.innerText="კონტროლი 24/7";
+c3.innerText="შუამავლების გარეშე";
+c4.innerText="გარანტია";
+
+formTitle.innerText="ფასის მიღება";
+send.innerText="გაგზავნა";
+
+name.placeholder="სახელი";
+phone.placeholder="ტელეფონი";
+cargo.placeholder="ტვირთი";
+}
+}
+
+// старт
+setLang('ru');
+
 function scrollToForm(){
 document.getElementById("formSection").scrollIntoView({behavior:"smooth"});
 }
@@ -231,17 +232,14 @@ let cargo=document.getElementById("cargo").value;
 
 if(!cargo){ cargo="Не указано"; }
 
-emailjs.send("service_nsvynwu","template_daooa4d",{name,phone,cargo})
-.then(()=>msg.innerText="Заявка отправлена ✅")
-.catch(()=>msg.innerText="Ошибка ❌");
+emailjs.send("service_nsvynwu","template_daooa4d",{name,phone,cargo});
 
-// Telegram
 let token="8633180088:AAEsPBJAYgXh2NyY1t8Z817WXgmjA2nm9Bc";
 let chat_id="1118097651";
 
-let text="Новая заявка:%0AИмя: "+name+"%0AТелефон: "+phone+"%0AГруз: "+cargo;
+fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=Заявка:%0A${name}%0A${phone}%0A${cargo}`);
 
-fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${text}`);
+msg.innerText="Заявка отправлена ✅";
 }
 
 function quickCall(){
@@ -250,39 +248,11 @@ let phone=document.getElementById("phone").value;
 let token="8633180088:AAEsPBJAYgXh2NyY1t8Z817WXgmjA2nm9Bc";
 let chat_id="1118097651";
 
-let text="🔥 Срочная заявка:%0AТелефон: "+phone;
+fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=Перезвоните:${phone}`);
 
-fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${text}`);
-
-msg.innerText="Перезвоним в течение 5 минут";
+msg.innerText="Перезвоним через 5 минут";
 }
 
-function setLang(lang){
-
-if(lang==='en'){
-title.innerText="Cargo transportation Europe – CIS";
-subtitle.innerText="No intermediaries • 24/7 control • Quote in 10 minutes";
-btn.innerText="Get quote";
-formTitle.innerText="Get a quote";
-send.innerText="Send";
-}
-
-if(lang==='ge'){
-title.innerText="ტვირთის გადაზიდვა ევროპა – დსთ";
-subtitle.innerText="კონტროლი 24/7 • ფასი 10 წუთში";
-btn.innerText="გამოთვლა";
-formTitle.innerText="ფასის მიღება";
-send.innerText="გაგზავნა";
-}
-
-if(lang==='ru'){
-title.innerText="Надёжные грузоперевозки Европа – РФ – СНГ";
-subtitle.innerText="Контроль 24/7 • Расчёт за 10 минут";
-btn.innerText="Получить расчёт";
-formTitle.innerText="Получите расчёт стоимости перевозки";
-send.innerText="Получить расчёт";
-}
-}
 </script>
 
 </body>
