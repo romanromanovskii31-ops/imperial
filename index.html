@@ -129,13 +129,6 @@ color:white;text-decoration:none;
 </div>
 </section>
 
-<!-- CTA -->
-<section class="section">
-<h2>Готовы рассчитать стоимость?</h2>
-<p>Оставьте заявку и получите точный расчёт в течение 10 минут</p>
-<button class="btn" onclick="scrollToForm()">Получить расчёт</button>
-</section>
-
 <!-- FORM -->
 <section class="section" id="formSection">
 <h2 id="formTitle">Получите расчёт стоимости перевозки</h2>
@@ -176,16 +169,19 @@ let name=document.getElementById("name").value;
 let phone=document.getElementById("phone").value;
 let cargo=document.getElementById("cargo").value;
 
-emailjs.send("service_nsvynwu","template_daooa4d",{name,phone,cargo});
+if(!cargo){ cargo="Не указано"; }
 
+emailjs.send("service_nsvynwu","template_daooa4d",{name,phone,cargo})
+.then(()=>msg.innerText="Заявка отправлена ✅")
+.catch(()=>msg.innerText="Ошибка ❌");
+
+// Telegram
 let token="8633180088:AAEsPBJAYgXh2NyY1t8Z817WXgmjA2nm9Bc";
 let chat_id="1118097651";
 
 let text="Новая заявка:%0AИмя: "+name+"%0AТелефон: "+phone+"%0AГруз: "+cargo;
 
 fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${text}`);
-
-msg.innerText="Заявка отправлена ✅";
 }
 
 function quickCall(){
