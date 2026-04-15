@@ -3,10 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ООО ИМПЕРИАЛ TRANS CARGO</title>
+<title>IMPERIAL TRANS CARGO</title>
 
 <style>
 body{margin:0;font-family:Arial;background:#020617;color:white;}
+.header{display:flex;justify-content:space-between;padding:15px 20px;border-bottom:1px solid #1f2937;}
+.lang button{margin-left:10px;padding:5px 10px;cursor:pointer;}
+
 .container{max-width:1200px;margin:auto;padding:40px 20px;}
 
 .hero{
@@ -60,72 +63,38 @@ border:none;
 
 <body>
 
+<!-- HEADER -->
+<div class="header">
+<div>IMPERIAL TRANS CARGO</div>
+<div class="lang">
+<button onclick="setLang('ru')">RU</button>
+<button onclick="setLang('en')">EN</button>
+<button onclick="setLang('tr')">TR</button>
+</div>
+</div>
+
 <!-- HERO -->
 <div class="hero">
 <div class="container">
-<h1>ООО ИМПЕРИАЛ</h1>
-<p class="subtitle">Международная экспедиторская компания полного цикла</p>
-<p>Европа • СНГ • Азия</p>
-<p>Доставляем грузы даже по сложным маршрутам — там, где другие не работают</p>
+<h1 id="title"></h1>
+<p class="subtitle" id="geo"></p>
+<p id="desc"></p>
 
 <div style="margin-top:25px;">
-<a class="btn" href="#form">Оставить заявку</a>
+<a class="btn" href="#form" id="btnText"></a>
 </div>
 </div>
 </div>
 
 <!-- SERVICES -->
 <div class="section container">
-<h2 class="block-title">Наши услуги</h2>
-<div class="grid">
-<div class="card">🚚 Международные перевозки</div>
-<div class="card">📦 Карго доставка</div>
-<div class="card">🚛 Автоперевозки</div>
-<div class="card">✈ Авиадоставка</div>
-<div class="card">🚢 Морские перевозки</div>
-<div class="card">📑 Таможенное оформление</div>
-</div>
-</div>
-
-<!-- EXTRA -->
-<div class="section container">
-<h2 class="block-title">Дополнительные услуги</h2>
-<div class="grid">
-<div class="card">💳 Агентские платежи</div>
-<div class="card">🌍 Аутсорсинг ВЭД</div>
-<div class="card">📦 Параллельный импорт</div>
-<div class="card">📑 Полное сопровождение</div>
-</div>
-</div>
-
-<!-- CUSTOMS -->
-<div class="section container">
-<h2 class="block-title">Таможенные услуги</h2>
-<p>Белгород • Краснодар • Новороссийск</p>
-</div>
-
-<!-- OFFICES -->
-<div class="section container">
-<h2 class="block-title">Наши офисы</h2>
-<p>📍 Россия, Белгород<br>
-📍 Стамбул (Турция)<br>
-📍 Вильнюс (Европа)</p>
-</div>
-
-<!-- WHY -->
-<div class="section container">
-<h2 class="block-title">Почему выбирают ИМПЕРИАЛ</h2>
-<div class="grid">
-<div class="card">✔ Более 15 лет опыта</div>
-<div class="card">✔ Европа • СНГ • Азия</div>
-<div class="card">✔ Полное сопровождение</div>
-<div class="card">✔ Быстрая доставка</div>
-</div>
+<h2 class="block-title" id="servicesTitle"></h2>
+<div class="grid" id="services"></div>
 </div>
 
 <!-- FORM -->
 <div class="section container" id="form">
-<h2 class="block-title">Оставить заявку</h2>
+<h2 class="block-title" id="formTitle"></h2>
 
 <form onsubmit="sendForm(event)" style="max-width:400px;">
 <input type="text" id="name" placeholder="Имя" required>
@@ -147,45 +116,81 @@ border:none;
 <p id="status"></p>
 </div>
 
-<div class="footer">© ООО ИМПЕРИАЛ TRANS CARGO</div>
+<div class="footer">© IMPERIAL TRANS CARGO</div>
 
 <script>
+const data={
+ru:{
+title:"Международная логистика под ключ",
+geo:"Европа • СНГ • Азия",
+desc:"Доставляем грузы даже по сложным маршрутам",
+btn:"Оставить заявку",
+servicesTitle:"Наши услуги",
+formTitle:"Оставить заявку",
+services:["🚚 Международные перевозки","📦 Карго","🚛 Авто","✈ Авиа","🚢 Море","📑 Таможня"]
+},
+en:{
+title:"Full-cycle logistics company",
+geo:"Europe • CIS • Asia",
+desc:"We deliver cargo even on complex routes",
+btn:"Send request",
+servicesTitle:"Services",
+formTitle:"Request form",
+services:["Transport","Cargo","Road","Air","Sea","Customs"]
+},
+tr:{
+title:"Uluslararası lojistik şirketi",
+geo:"Avrupa • BDT • Asya",
+desc:"Zor rotalarda teslimat",
+btn:"Talep gönder",
+servicesTitle:"Hizmetler",
+formTitle:"Talep formu",
+services:["Taşımacılık","Kargo","Kara","Hava","Deniz","Gümrük"]
+}
+};
+
+function setLang(lang){
+let d=data[lang];
+title.innerText=d.title;
+geo.innerText=d.geo;
+desc.innerText=d.desc;
+btnText.innerText=d.btn;
+servicesTitle.innerText=d.servicesTitle;
+formTitle.innerText=d.formTitle;
+
+let html="";
+d.services.forEach(s=>html+=`<div class="card">${s}</div>`);
+services.innerHTML=html;
+}
+
+setLang('ru');
+
 function sendForm(e){
 e.preventDefault();
 
-let btn=document.getElementById("btn");
-btn.innerText="Отправка...";
-btn.disabled=true;
+let now=new Date();
+let time=now.toLocaleString();
 
 let text=`🚚 Новая заявка:
+Дата: ${time}
 Имя: ${name.value}
 Телефон: ${phone.value}
 Тип: ${type.value}
 Груз: ${msg.value}`;
 
-let token="8633180088:AAHnQLObBs5pCQfHEOu2m9cKJV-24lIVVUk";
-let chat_id="1118097651";
-
-fetch(`https://api.telegram.org/bot${token}/sendMessage`,{
+fetch("https://api.telegram.org/bot8633180088:AAHnQLObBs5pCQfHEOu2m9cKJV-24lIVVUk/sendMessage",{
 method:"POST",
 headers:{"Content-Type":"application/json"},
-body:JSON.stringify({chat_id,text})
+body:JSON.stringify({
+chat_id:"1118097651",
+text:text
 })
-.then(res=>res.json())
-.then(data=>{
-if(data.ok){
-status.innerText="Отправлено ✅";
-}else{
-status.innerText="Ошибка ❌";
-}
 })
-.catch(()=>{
-status.innerText="Ошибка сети ❌";
+.then(r=>r.json())
+.then(d=>{
+status.innerText=d.ok?"Отправлено ✅":"Ошибка ❌";
 })
-.finally(()=>{
-btn.innerText="Отправить";
-btn.disabled=false;
-});
+.catch(()=>status.innerText="Ошибка сети ❌");
 }
 </script>
 
