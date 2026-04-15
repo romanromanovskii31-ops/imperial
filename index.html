@@ -7,8 +7,7 @@
 
 <style>
 body{margin:0;font-family:Arial;background:#020617;color:white;}
-.header{display:flex;justify-content:space-between;padding:20px;border-bottom:1px solid #1f2937;}
-.lang button{margin-left:10px;padding:6px 10px;cursor:pointer;}
+.header{display:flex;justify-content:space-between;align-items:center;padding:20px;border-bottom:1px solid #1f2937;}
 .container{max-width:1200px;margin:auto;padding:40px 20px;}
 
 .hero{
@@ -20,45 +19,43 @@ url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7');
 background-size:cover;
 }
 
-h1{font-size:48px;}
+h1{font-size:48px;margin:0;}
+.subtitle{color:#9ca3af;margin-top:10px;}
 
 .btn{
-padding:12px 20px;
+padding:14px 24px;
 background:#22c55e;
 color:black;
 text-decoration:none;
 border-radius:6px;
 font-weight:bold;
-display:inline-block;
+transition:0.3s;
 }
+.btn:hover{opacity:0.8;}
 
-.section{padding:70px 20px;}
+.section{padding:80px 20px;}
 
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
+gap:25px;
 }
 
 .card{
 background:#111827;
-padding:20px;
-border-radius:10px;
+padding:25px;
+border-radius:12px;
+transition:0.3s;
+opacity:0;
+transform:translateY(20px);
 }
 
-input, select, textarea{
-width:100%;
-padding:12px;
-margin:8px 0;
-border-radius:6px;
-border:none;
+.card.show{
+opacity:1;
+transform:translateY(0);
 }
 
-.footer{
-text-align:center;
-padding:30px;
-border-top:1px solid #1f2937;
-}
+.block-title{font-size:28px;margin-bottom:20px;}
 
 .float{
 position:fixed;
@@ -76,13 +73,29 @@ padding:12px;
 border-radius:50%;
 text-decoration:none;
 }
+
+input,select,textarea{
+width:100%;
+padding:12px;
+margin:10px 0;
+border-radius:6px;
+border:none;
+}
+
+.footer{text-align:center;padding:30px;border-top:1px solid #1f2937;}
+
+.lang button{margin-left:10px;padding:5px 10px;cursor:pointer;}
 </style>
 </head>
 
 <body>
 
 <div class="header">
+<div style="display:flex;align-items:center;gap:10px;">
+<img src="logo.png" style="height:40px;">
 <div>IMPERIAL TRANS CARGO</div>
+</div>
+
 <div class="lang">
 <button onclick="setLang('ru')">RU</button>
 <button onclick="setLang('en')">EN</button>
@@ -90,13 +103,14 @@ text-decoration:none;
 </div>
 </div>
 
+<!-- HERO -->
 <div class="hero">
 <div class="container">
 <h1 id="title"></h1>
-<p id="geo"></p>
+<p class="subtitle" id="geo"></p>
 <p id="desc"></p>
 
-<div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;">
+<div style="margin-top:25px;display:flex;gap:10px;flex-wrap:wrap;">
 <a class="btn" href="https://wa.me/79103273958">WhatsApp</a>
 <a class="btn" href="https://t.me/+79103273958">Telegram</a>
 <a class="btn" href="tel:+79205516575">Позвонить</a>
@@ -104,31 +118,63 @@ text-decoration:none;
 </div>
 </div>
 
+<!-- SERVICES -->
 <div class="section container">
-<h2 id="servicesTitle"></h2>
+<h2 class="block-title" id="servicesTitle"></h2>
 <div class="grid" id="services"></div>
 </div>
 
+<!-- EXTRA -->
 <div class="section container">
-<h2>Наши перевозки</h2>
+<h2 class="block-title">Дополнительные услуги</h2>
 <div class="grid">
-<div class="card">Италия → Россия (оборудование)</div>
-<div class="card">Германия → Казахстан (запчасти)</div>
-<div class="card">Турция → Россия (текстиль)</div>
-<div class="card">Китай → Европа (электроника)</div>
+<div class="card">💳 Агентские платежи</div>
+<div class="card">🌍 Аутсорсинг ВЭД</div>
+<div class="card">📦 Параллельный импорт</div>
+<div class="card">📑 Полное сопровождение</div>
 </div>
 </div>
 
+<!-- CUSTOMS -->
 <div class="section container">
-<h2 id="officesTitle"></h2>
+<h2 class="block-title">Таможенные услуги</h2>
+<p>Белгород • Краснодар • Новороссийск</p>
+</div>
+
+<!-- CASES -->
+<div class="section container">
+<h2 class="block-title">Наши перевозки</h2>
+<div class="grid">
+<div class="card">Италия → Россия</div>
+<div class="card">Германия → Казахстан</div>
+<div class="card">Турция → Россия</div>
+<div class="card">Китай → Европа</div>
+</div>
+</div>
+
+<!-- WHY -->
+<div class="section container">
+<h2 class="block-title">Почему выбирают нас</h2>
+<div class="grid">
+<div class="card">✔ Более 15 лет опыта</div>
+<div class="card">✔ Европа • СНГ • Азия</div>
+<div class="card">✔ Полное сопровождение</div>
+<div class="card">✔ Быстрая доставка</div>
+</div>
+</div>
+
+<!-- OFFICES -->
+<div class="section container">
+<h2 class="block-title" id="officesTitle"></h2>
 <p id="offices"></p>
 </div>
 
+<!-- FORM -->
 <div class="section container">
-<h2>Оставить заявку</h2>
+<h2 class="block-title">Оставить заявку</h2>
 
 <form onsubmit="sendForm(event)" style="max-width:400px;">
-<input type="text" id="name" placeholder="Ваше имя" required>
+<input type="text" id="name" placeholder="Имя" required>
 <input type="text" id="phone" placeholder="Телефон" required>
 
 <select id="type">
@@ -141,17 +187,10 @@ text-decoration:none;
 
 <textarea id="msg" placeholder="Описание груза"></textarea>
 
-<button class="btn" type="submit">Отправить</button>
+<button class="btn">Отправить</button>
 </form>
 
 <p id="status"></p>
-</div>
-
-<div class="section container">
-<h2 id="contactTitle"></h2>
-<p>+7 920 551 6575</p>
-<p>WhatsApp / Telegram: +7 910 327 3958 • +995 597 084 312</p>
-<p>romanromanovskii31@gmail.com</p>
 </div>
 
 <div class="float">
@@ -167,22 +206,20 @@ const data={
 ru:{
 title:"Международная экспедиторская компания полного цикла",
 geo:"Европа • СНГ • Азия",
-desc:"Доставляем грузы даже по сложным маршрутам",
+desc:"Доставляем грузы даже по сложным маршрутам — там, где другие не работают",
 servicesTitle:"Наши услуги",
 officesTitle:"Офисы",
-contactTitle:"Контакты",
 offices:"Белгород • Батуми • Стамбул • Вильнюс",
-services:["Международные перевозки","Авто","Авиа","Море","Карго","Таможня","ВЭД","Платежи","Импорт","Сопровождение"]
+services:["🚚 Международные перевозки","📦 Карго","🚛 Авто","✈ Авиа","🚢 Море","📑 Таможня"]
 },
 en:{
-title:"Full-cycle international logistics company",
+title:"Full-cycle logistics company",
 geo:"Europe • CIS • Asia",
 desc:"We deliver cargo even on complex routes",
 servicesTitle:"Services",
 officesTitle:"Offices",
-contactTitle:"Contacts",
 offices:"Belgorod • Batumi • Istanbul • Vilnius",
-services:["International","Road","Air","Sea","Cargo","Customs","Outsourcing","Payments","Import","Support"]
+services:["Transport","Cargo","Road","Air","Sea","Customs"]
 },
 tr:{
 title:"Uluslararası lojistik şirketi",
@@ -190,26 +227,32 @@ geo:"Avrupa • BDT • Asya",
 desc:"Zor rotalarda teslimat",
 servicesTitle:"Hizmetler",
 officesTitle:"Ofisler",
-contactTitle:"İletişim",
 offices:"Belgorod • Batum • İstanbul • Vilnius",
-services:["Taşımacılık","Kara","Hava","Deniz","Kargo","Gümrük","Dış ticaret","Ödemeler","İthalat","Destek"]
+services:["Taşımacılık","Kargo","Kara","Hava","Deniz","Gümrük"]
 }
 };
 
 function setLang(lang){
 let d=data[lang];
+
 title.innerText=d.title;
 geo.innerText=d.geo;
 desc.innerText=d.desc;
 servicesTitle.innerText=d.servicesTitle;
 officesTitle.innerText=d.officesTitle;
-contactTitle.innerText=d.contactTitle;
 offices.innerText=d.offices;
 
 let html="";
-d.services.forEach(s=>{html+=`<div class="card">${s}</div>`});
+d.services.forEach(s=>{
+html+=`<div class="card">${s}</div>`;
+});
 services.innerHTML=html;
+
+setTimeout(()=>{
+document.querySelectorAll('.card').forEach(el=>el.classList.add('show'));
+},100);
 }
+
 setLang('ru');
 
 function sendForm(e){
