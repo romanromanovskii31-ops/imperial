@@ -63,7 +63,6 @@ border:none;
 
 <body>
 
-<!-- HEADER -->
 <div class="header">
 <div>IMPERIAL TRANS CARGO</div>
 <div class="lang">
@@ -73,7 +72,6 @@ border:none;
 </div>
 </div>
 
-<!-- HERO -->
 <div class="hero">
 <div class="container">
 <h1 id="title"></h1>
@@ -86,13 +84,11 @@ border:none;
 </div>
 </div>
 
-<!-- SERVICES -->
 <div class="section container">
 <h2 class="block-title" id="servicesTitle"></h2>
 <div class="grid" id="services"></div>
 </div>
 
-<!-- FORM -->
 <div class="section container" id="form">
 <h2 class="block-title" id="formTitle"></h2>
 
@@ -168,6 +164,12 @@ setLang('ru');
 function sendForm(e){
 e.preventDefault();
 
+let btn=document.getElementById("btn");
+let status=document.getElementById("status");
+
+btn.innerText="Отправка...";
+btn.disabled=true;
+
 let now=new Date();
 let time=now.toLocaleString();
 
@@ -183,14 +185,27 @@ method:"POST",
 headers:{"Content-Type":"application/json"},
 body:JSON.stringify({
 chat_id:"1118097651",
-text:text
+text:text,
+parse_mode:"HTML"
 })
 })
 .then(r=>r.json())
 .then(d=>{
-status.innerText=d.ok?"Отправлено ✅":"Ошибка ❌";
+if(d.ok){
+status.innerText="Заявка отправлена ✅";
+}else{
+status.innerText="Ошибка Telegram ❌";
+console.log(d);
+}
 })
-.catch(()=>status.innerText="Ошибка сети ❌");
+.catch(e=>{
+status.innerText="Ошибка сети ❌";
+console.log(e);
+})
+.finally(()=>{
+btn.innerText="Отправить";
+btn.disabled=false;
+});
 }
 </script>
 
