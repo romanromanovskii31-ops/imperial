@@ -182,25 +182,18 @@ let text=`🚚 Новая заявка:
 
 fetch("https://api.telegram.org/bot8633180088:AAHnQLObBs5pCQfHEOu2m9cKJV-24lIVVUk/sendMessage",{
 method:"POST",
+mode:"no-cors",
 headers:{"Content-Type":"application/json"},
 body:JSON.stringify({
 chat_id:"1118097651",
-text:text,
-parse_mode:"HTML"
+text:text
 })
 })
-.then(r=>r.json())
-.then(d=>{
-if(d.ok){
+.then(()=>{
 status.innerText="Заявка отправлена ✅";
-}else{
-status.innerText="Ошибка Telegram ❌";
-console.log(d);
-}
 })
-.catch(e=>{
-status.innerText="Ошибка сети ❌";
-console.log(e);
+.catch(()=>{
+status.innerText="Ошибка ❌";
 })
 .finally(()=>{
 btn.innerText="Отправить";
