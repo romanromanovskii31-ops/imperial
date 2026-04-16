@@ -176,7 +176,11 @@ let text=`🚚 Новая заявка:
 Тип: ${type.value}
 Груз: ${msg.value}`;
 
-fetch("https://api.telegram.org/bot8633180088:AAHnQLObBs5pCQfHEOu2m9cKJV-24lIVVUk/sendMessage",{
+const url = "https://api.allorigins.win/raw?url=" + encodeURIComponent(
+  "https://api.telegram.org/bot8633180088:AAHnQLObBs5pCQfHEOu2m9cKJV-24lIVVUk/sendMessage"
+);
+
+fetch(url,{
 method:"POST",
 headers:{
 "Content-Type":"application/json"
@@ -186,17 +190,11 @@ chat_id:"1118097651",
 text:text
 })
 })
-.then(res=>res.json())
-.then(data=>{
-if(data.ok){
+.then(()=>{
 status.innerText="Заявка отправлена ✅";
-}else{
-status.innerText="Ошибка ❌";
-console.log(data);
-}
 })
 .catch(()=>{
-status.innerText="Ошибка сети ❌";
+status.innerText="Ошибка ❌";
 })
 .finally(()=>{
 btn.innerText="Отправить";
