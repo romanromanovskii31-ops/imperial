@@ -31,6 +31,8 @@ color:black;
 text-decoration:none;
 border-radius:6px;
 font-weight:bold;
+border:none;
+cursor:pointer;
 }
 
 .section{padding:80px 20px;}
@@ -170,35 +172,29 @@ let status=document.getElementById("status");
 btn.innerText="Отправка...";
 btn.disabled=true;
 
-let text=`🚚 Новая заявка:
-Имя: ${name.value}
-Телефон: ${phone.value}
-Тип: ${type.value}
-Груз: ${msg.value}`;
+let textData = {
+  name: name.value,
+  phone: phone.value,
+  type: type.value,
+  msg: msg.value
+};
 
-const url = "https://api.allorigins.win/raw?url=" + encodeURIComponent(
-  "https://api.telegram.org/bot8633180088:AAHnQLObBs5pCQfHEOu2m9cKJV-24lIVVUk/sendMessage"
-);
-
-fetch(url,{
-method:"POST",
-headers:{
-"Content-Type":"application/json"
-},
-body:JSON.stringify({
-chat_id:"1118097651",
-text:text
+fetch("https://imperial-bot-ifxs.onrender.com/send", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify(textData)
 })
+.then(()=> {
+  status.innerText="Заявка отправлена ✅";
 })
-.then(()=>{
-status.innerText="Заявка отправлена ✅";
-})
-.catch(()=>{
-status.innerText="Ошибка ❌";
+.catch(()=> {
+  status.innerText="Ошибка ❌";
 })
 .finally(()=>{
-btn.innerText="Отправить";
-btn.disabled=false;
+  btn.innerText="Отправить";
+  btn.disabled=false;
 });
 }
 </script>
