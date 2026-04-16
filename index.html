@@ -5,61 +5,156 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IMPERIAL TRANS CARGO</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
 <style>
-body{margin:0;font-family:Arial;background:#020617;color:white;}
-.header{display:flex;justify-content:space-between;padding:15px 20px;border-bottom:1px solid #1f2937;}
-.lang button{margin-left:10px;padding:5px 10px;cursor:pointer;}
+body{
+margin:0;
+font-family:'Inter',sans-serif;
+background:#020617;
+color:white;
+}
 
-.container{max-width:1200px;margin:auto;padding:40px 20px;}
+/* HEADER */
+.header{
+display:flex;
+justify-content:space-between;
+padding:15px 20px;
+border-bottom:1px solid #1f2937;
+}
 
+.lang button{
+margin-left:10px;
+padding:6px 12px;
+cursor:pointer;
+background:#111827;
+color:white;
+border:none;
+border-radius:6px;
+}
+
+/* HERO */
 .hero{
 height:100vh;
 display:flex;
 align-items:center;
-background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.9)),
+background:
+linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.9)),
 url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7');
 background-size:cover;
+background-position:center;
+background-attachment:fixed;
 }
 
-h1{font-size:48px;margin:0;}
-.subtitle{color:#9ca3af;margin-top:10px;}
+/* CONTAINER */
+.container{
+max-width:1200px;
+margin:auto;
+padding:40px 20px;
+}
 
+/* TEXT */
+h1{
+font-size:56px;
+font-weight:800;
+margin:0;
+}
+
+.subtitle{
+color:#9ca3af;
+font-size:18px;
+margin-top:10px;
+}
+
+/* BUTTON */
 .btn{
-padding:14px 24px;
+padding:14px 26px;
 background:#22c55e;
 color:black;
-text-decoration:none;
-border-radius:6px;
+border-radius:8px;
 font-weight:bold;
 border:none;
 cursor:pointer;
+transition:0.3s;
 }
 
-.section{padding:80px 20px;}
+.btn:hover{
+background:#16a34a;
+transform:scale(1.05);
+}
 
+/* SECTION */
+.section{
+padding:80px 20px;
+}
+
+.block-title{
+font-size:32px;
+margin-bottom:25px;
+}
+
+/* GRID */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:25px;
 }
 
+/* CARD */
 .card{
 background:#111827;
 padding:25px;
-border-radius:12px;
+border-radius:14px;
+transition:0.3s;
+position:relative;
+overflow:hidden;
 }
 
-.block-title{font-size:28px;margin-bottom:20px;}
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 15px 40px rgba(34,197,94,0.25);
+}
 
+.card::after{
+content:"";
+position:absolute;
+inset:0;
+background:radial-gradient(circle at top, rgba(34,197,94,0.2), transparent);
+opacity:0;
+transition:0.3s;
+}
+
+.card:hover::after{
+opacity:1;
+}
+
+/* FORM */
 input,select,textarea{
 width:100%;
 padding:12px;
 margin:10px 0;
-border-radius:6px;
+border-radius:8px;
 border:none;
 }
 
-.footer{text-align:center;padding:30px;border-top:1px solid #1f2937;}
+/* FOOTER */
+.footer{
+text-align:center;
+padding:30px;
+border-top:1px solid #1f2937;
+}
+
+/* ANIMATION */
+.fade{
+opacity:0;
+transform:translateY(30px);
+transition:0.7s;
+}
+
+.fade.show{
+opacity:1;
+transform:translateY(0);
+}
 </style>
 </head>
 
@@ -74,8 +169,9 @@ border:none;
 </div>
 </div>
 
+<!-- HERO -->
 <div class="hero">
-<div class="container">
+<div class="container fade">
 <h1 id="title"></h1>
 <p class="subtitle" id="geo"></p>
 <p id="desc"></p>
@@ -86,12 +182,40 @@ border:none;
 </div>
 </div>
 
-<div class="section container">
+<!-- STATS -->
+<div class="section container fade">
+<div class="grid">
+<div class="card"><h2>10+</h2><p>лет опыта</p></div>
+<div class="card"><h2>5000+</h2><p>перевозок</p></div>
+<div class="card"><h2>24/7</h2><p>поддержка</p></div>
+<div class="card"><h2>15 стран</h2><p>география</p></div>
+</div>
+</div>
+
+<!-- SERVICES -->
+<div class="section container fade">
 <h2 class="block-title" id="servicesTitle"></h2>
 <div class="grid" id="services"></div>
 </div>
 
-<div class="section container" id="form">
+<!-- ABOUT -->
+<div class="section container fade">
+<h2 class="block-title">О компании</h2>
+<p style="max-width:700px; line-height:1.6; color:#9ca3af;">
+IMPERIAL TRANS CARGO — международная логистическая компания полного цикла.
+Организуем перевозки любой сложности: авто, авиа, морские и карго направления.
+</p>
+</div>
+
+<!-- MAP -->
+<div class="section container fade">
+<h2 class="block-title">География перевозок</h2>
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg"
+style="width:100%; opacity:0.6; border-radius:12px;">
+</div>
+
+<!-- FORM -->
+<div class="section container fade" id="form">
 <h2 class="block-title" id="formTitle"></h2>
 
 <form onsubmit="sendForm(event)" style="max-width:400px;">
@@ -99,7 +223,7 @@ border:none;
 <input type="text" id="phone" placeholder="Телефон" required>
 
 <select id="type">
-<option>Тип перевозки</option>
+<option disabled selected>Тип перевозки</option>
 <option>Авто</option>
 <option>Авиа</option>
 <option>Море</option>
@@ -108,7 +232,7 @@ border:none;
 
 <textarea id="msg" placeholder="Описание груза"></textarea>
 
-<button class="btn" id="btn">Отправить</button>
+<button class="btn" id="btn" type="submit">Отправить</button>
 </form>
 
 <p id="status"></p>
@@ -163,6 +287,17 @@ services.innerHTML=html;
 
 setLang('ru');
 
+/* АНИМАЦИЯ */
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+if(e.isIntersecting){
+e.target.classList.add('show');
+}
+});
+});
+document.querySelectorAll('.fade').forEach(el=>observer.observe(el));
+
+/* ОТПРАВКА */
 function sendForm(e){
 e.preventDefault();
 
@@ -172,29 +307,32 @@ let status=document.getElementById("status");
 btn.innerText="Отправка...";
 btn.disabled=true;
 
-let textData = {
-  name: name.value,
-  phone: phone.value,
-  type: type.value,
-  msg: msg.value
+let textData={
+name:name.value,
+phone:phone.value,
+type:type.value,
+msg:msg.value
 };
 
-fetch("https://imperial-bot-ifxs.onrender.com/send", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify(textData)
+fetch("https://imperial-bot-ifxs.onrender.com/send",{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify(textData)
 })
-.then(()=> {
-  status.innerText="Заявка отправлена ✅";
+.then(res=>{
+if(!res.ok) throw new Error();
+return res.json();
 })
-.catch(()=> {
-  status.innerText="Ошибка ❌";
+.then(()=>{
+status.innerText="Заявка отправлена ✅";
+document.querySelector("form").reset();
+})
+.catch(()=>{
+status.innerText="Ошибка ❌";
 })
 .finally(()=>{
-  btn.innerText="Отправить";
-  btn.disabled=false;
+btn.innerText="Отправить";
+btn.disabled=false;
 });
 }
 </script>
