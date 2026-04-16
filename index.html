@@ -170,11 +170,7 @@ let status=document.getElementById("status");
 btn.innerText="Отправка...";
 btn.disabled=true;
 
-let now=new Date();
-let time=now.toLocaleString();
-
 let text=`🚚 Новая заявка:
-Дата: ${time}
 Имя: ${name.value}
 Телефон: ${phone.value}
 Тип: ${type.value}
@@ -182,18 +178,25 @@ let text=`🚚 Новая заявка:
 
 fetch("https://api.telegram.org/bot8633180088:AAHnQLObBs5pCQfHEOu2m9cKJV-24lIVVUk/sendMessage",{
 method:"POST",
-mode:"no-cors",
-headers:{"Content-Type":"application/json"},
+headers:{
+"Content-Type":"application/json"
+},
 body:JSON.stringify({
 chat_id:"1118097651",
 text:text
 })
 })
-.then(()=>{
+.then(res=>res.json())
+.then(data=>{
+if(data.ok){
 status.innerText="Заявка отправлена ✅";
+}else{
+status.innerText="Ошибка ❌";
+console.log(data);
+}
 })
 .catch(()=>{
-status.innerText="Ошибка ❌";
+status.innerText="Ошибка сети ❌";
 })
 .finally(()=>{
 btn.innerText="Отправить";
