@@ -7,89 +7,37 @@
 
 <style>
 body{margin:0;font-family:Arial;background:#020617;color:white;}
-.header{display:flex;justify-content:space-between;padding:15px 20px;border-bottom:1px solid #1f2937;}
-.lang button{margin-left:10px;padding:5px 10px;cursor:pointer;}
-.container{max-width:1200px;margin:auto;padding:40px 20px;}
-.hero{
-height:100vh;
-display:flex;
-align-items:center;
-background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.9)),
-url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7');
-background-size:cover;
-}
-h1{font-size:48px;margin:0;}
-.subtitle{color:#9ca3af;margin-top:10px;}
+.container{max-width:1000px;margin:auto;padding:40px 20px;}
+h1{font-size:40px;}
 .btn{
-padding:14px 24px;
+padding:12px 20px;
 background:#22c55e;
-color:black;
-text-decoration:none;
-border-radius:6px;
-font-weight:bold;
 border:none;
+border-radius:6px;
 cursor:pointer;
+margin-top:10px;
 }
-.section{padding:80px 20px;}
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-}
-.card{
-background:#111827;
-padding:25px;
-border-radius:12px;
-}
-.block-title{font-size:28px;margin-bottom:20px;}
 input,select,textarea{
 width:100%;
-padding:12px;
-margin:10px 0;
+padding:10px;
+margin:8px 0;
 border-radius:6px;
 border:none;
 }
-.footer{text-align:center;padding:30px;border-top:1px solid #1f2937;}
 </style>
 </head>
 
 <body>
 
-<div class="header">
-<div>IMPERIAL TRANS CARGO</div>
-<div class="lang">
-<button onclick="setLang('ru')">RU</button>
-<button onclick="setLang('en')">EN</button>
-<button onclick="setLang('tr')">TR</button>
-</div>
-</div>
-
-<div class="hero">
 <div class="container">
-<h1 id="title"></h1>
-<p class="subtitle" id="geo"></p>
-<p id="desc"></p>
+<h1>IMPERIAL TRANS CARGO</h1>
+<p>Оставьте заявку</p>
 
-<div style="margin-top:25px;">
-<a class="btn" href="#form" id="btnText"></a>
-</div>
-</div>
-</div>
-
-<div class="section container">
-<h2 class="block-title" id="servicesTitle"></h2>
-<div class="grid" id="services"></div>
-</div>
-
-<div class="section container" id="form">
-<h2 class="block-title" id="formTitle"></h2>
-
-<form onsubmit="sendForm(event)" style="max-width:400px;">
+<form onsubmit="sendForm(event)">
 <input type="text" id="name" placeholder="Имя" required>
 <input type="text" id="phone" placeholder="Телефон" required>
 
 <select id="type">
-<option>Тип перевозки</option>
 <option>Авто</option>
 <option>Авиа</option>
 <option>Море</option>
@@ -98,96 +46,44 @@ border:none;
 
 <textarea id="msg" placeholder="Описание груза"></textarea>
 
-<button class="btn" id="btn">Отправить</button>
+<button class="btn">Отправить</button>
 </form>
 
 <p id="status"></p>
 </div>
 
-<div class="footer">© IMPERIAL TRANS CARGO</div>
-
 <script>
-const data={
-ru:{
-title:"Международная логистика под ключ",
-geo:"Европа • СНГ • Азия",
-desc:"Доставляем грузы даже по сложным маршрутам",
-btn:"Оставить заявку",
-servicesTitle:"Наши услуги",
-formTitle:"Оставить заявку",
-services:["🚚 Международные перевозки","📦 Карго","🚛 Авто","✈ Авиа","🚢 Море","📑 Таможня"]
-},
-en:{
-title:"Full-cycle logistics company",
-geo:"Europe • CIS • Asia",
-desc:"We deliver cargo even on complex routes",
-btn:"Send request",
-servicesTitle:"Services",
-formTitle:"Request form",
-services:["Transport","Cargo","Road","Air","Sea","Customs"]
-},
-tr:{
-title:"Uluslararası lojistik şirketi",
-geo:"Avrupa • BDT • Asya",
-desc:"Zor rotalarda teslimat",
-btn:"Talep gönder",
-servicesTitle:"Hizmetler",
-formTitle:"Talep formu",
-services:["Taşımacılık","Kargo","Kara","Hava","Deniz","Gümrük"]
-}
-};
-
-function setLang(lang){
-let d=data[lang];
-title.innerText=d.title;
-geo.innerText=d.geo;
-desc.innerText=d.desc;
-btnText.innerText=d.btn;
-servicesTitle.innerText=d.servicesTitle;
-formTitle.innerText=d.formTitle;
-
-let html="";
-d.services.forEach(s=>html+=`<div class="card">${s}</div>`);
-services.innerHTML=html;
-}
-
-setLang('ru');
 
 function sendForm(e){
 e.preventDefault();
 
-let btn=document.getElementById("btn");
-let status=document.getElementById("status");
+let status = document.getElementById("status");
 
-btn.innerText="Отправка...";
-btn.disabled=true;
+let nameVal = document.getElementById("name").value;
+let phoneVal = document.getElementById("phone").value;
+let typeVal = document.getElementById("type").value;
+let msgVal = document.getElementById("msg").value;
 
 let text = `🚚 Новая заявка:
-Имя: ${name.value}
-Телефон: ${phone.value}
-Тип: ${type.value}
-Груз: ${msg.value}`;
+Имя: ${nameVal}
+Телефон: ${phoneVal}
+Тип: ${typeVal}
+Груз: ${msgVal}`;
 
-fetch(`https://api.telegram.org/bot8633180088:AAG-ZzRIFeyE2dy_6rsZt70MOMfytQeACGY/sendMessage`,{
-method:"POST",
-headers:{"Content-Type":"application/json"},
-body:JSON.stringify({
-chat_id:"1118097651",
-text:text
-})
-})
+let url = "https://api.telegram.org/bot8633180088:AAG-ZzRIFeyE2dy_6rsZt70MOMfytQeACGY/sendMessage"
++ "?chat_id=1118097651"
++ "&text=" + encodeURIComponent(text);
+
+fetch(url)
 .then(()=>{
 status.innerText="Заявка отправлена ✅";
 document.querySelector("form").reset();
 })
 .catch(()=>{
 status.innerText="Ошибка ❌";
-})
-.finally(()=>{
-btn.innerText="Отправить";
-btn.disabled=false;
 });
 }
+
 </script>
 
 </body>
