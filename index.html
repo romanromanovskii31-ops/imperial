@@ -20,7 +20,6 @@ margin:auto;
 padding:20px;
 }
 
-/* HEADER */
 .header{
 display:flex;
 justify-content:space-between;
@@ -33,7 +32,6 @@ font-weight:700;
 font-size:20px;
 }
 
-/* HERO */
 .hero{
 position:relative;
 height:85vh;
@@ -91,7 +89,6 @@ background:transparent;
 border:1px solid #22c55e;
 }
 
-/* SECTIONS */
 .section{
 margin:100px 0;
 }
@@ -101,21 +98,26 @@ font-size:32px;
 margin-bottom:20px;
 }
 
-/* GRID */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:20px;
 }
 
-/* CARDS */
 .card{
 background:rgba(15,23,42,0.7);
 backdrop-filter:blur(10px);
 padding:25px;
 border-radius:16px;
-transition:0.3s;
+transition:0.4s;
 border:1px solid rgba(255,255,255,0.05);
+opacity:0;
+transform:translateY(30px);
+}
+
+.card.show{
+opacity:1;
+transform:translateY(0);
 }
 
 .card:hover{
@@ -123,7 +125,6 @@ transform:translateY(-8px);
 box-shadow:0 20px 40px rgba(0,0,0,0.5);
 }
 
-/* FORM */
 input,textarea{
 width:100%;
 padding:14px;
@@ -134,7 +135,6 @@ background:#0f172a;
 color:white;
 }
 
-/* FOOTER */
 .footer{
 margin-top:60px;
 text-align:center;
@@ -151,9 +151,7 @@ font-size:14px;
 <!-- HEADER -->
 <div class="header">
 <div class="logo">IMPERIAL TRANS CARGO</div>
-<div>
 <a href="tel:+79103273958" class="btn-outline btn">Позвонить</a>
-</div>
 </div>
 
 <!-- HERO -->
@@ -162,7 +160,9 @@ font-size:14px;
 
 <h1>Доставка грузов из Китая, Европы и Турции</h1>
 
-<p>5–20 дней • Под ключ • Без посредников • Контроль на каждом этапе</p>
+<p>
+Доставка за 5–20 дней • Снижаем стоимость до 30% • Полный контроль груза
+</p>
 
 <div class="hero-buttons">
 <button class="btn" onclick="scrollToForm()">Рассчитать</button>
@@ -193,6 +193,16 @@ font-size:14px;
 <div class="card">1000+ перевозок</div>
 <div class="card">Прямые контракты</div>
 <div class="card">Контроль 24/7</div>
+</div>
+</div>
+
+<!-- КЕЙСЫ -->
+<div class="section">
+<h2>Кейсы</h2>
+<div class="grid">
+<div class="card">Китай → Москва • 20 тонн • 18 дней</div>
+<div class="card">Турция → РФ • 7 дней</div>
+<div class="card">Европа → СНГ • 10 дней</div>
 </div>
 </div>
 
@@ -231,12 +241,25 @@ font-size:14px;
 
 <script>
 
+// плавный скролл
+document.documentElement.style.scrollBehavior="smooth";
+
+// анимация
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+if(e.isIntersecting){e.target.classList.add("show")}
+})
+});
+document.querySelectorAll(".card").forEach(el=>observer.observe(el));
+
+// калькулятор
 function calc(){
 let w=document.getElementById("weight").value;
 let price=7000+w*35;
 document.getElementById("result").innerText="≈ "+price+" ₽";
 }
 
+// форма
 function sendForm(e){
 e.preventDefault();
 let text=`Заявка:\n${name.value}\n${phone.value}\n${msg.value}`;
