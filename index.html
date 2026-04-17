@@ -6,58 +6,141 @@
 <title>IMPERIAL TRANS CARGO</title>
 
 <style>
+*{box-sizing:border-box;}
 body{
 margin:0;
-font-family:Arial;
-background:linear-gradient(180deg,#020617,#0a0f2c);
+font-family:Inter, Arial;
+background:#020617;
 color:white;
 }
-.container{max-width:1200px;margin:auto;padding:20px;}
-section{margin:80px 0;}
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:20px;
+}
+
+/* HEADER */
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:30px;
+}
+
+.logo{
+font-weight:700;
+font-size:20px;
+}
+
+/* HERO */
 .hero{
-background:url('https://images.unsplash.com/photo-1601582585289-4c0c6cce02b7') center/cover no-repeat;
+position:relative;
+height:85vh;
 border-radius:20px;
 overflow:hidden;
+background:url('https://images.unsplash.com/photo-1494412685616-a5d310fbb07d') center/cover no-repeat;
+display:flex;
+align-items:center;
 }
-.hero-inner{
-background:rgba(0,0,0,0.65);
-padding:100px 20px;
-text-align:center;
+
+.hero::after{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background:linear-gradient(90deg,#020617 20%, rgba(2,6,23,0.2));
 }
-h1{font-size:48px;}
-h2{font-size:32px;}
+
+.hero-content{
+position:relative;
+z-index:2;
+max-width:600px;
+padding:60px;
+}
+
+.hero h1{
+font-size:56px;
+line-height:1.2;
+margin:0;
+}
+
+.hero p{
+margin-top:15px;
+font-size:18px;
+color:#cbd5f5;
+}
+
+.hero-buttons{
+margin-top:25px;
+}
+
 .btn{
 padding:14px 22px;
 background:#22c55e;
 border:none;
 border-radius:10px;
 color:white;
-font-weight:bold;
-margin:5px;
 cursor:pointer;
+margin-right:10px;
+font-weight:600;
 }
-.services{
+
+.btn-outline{
+background:transparent;
+border:1px solid #22c55e;
+}
+
+/* SECTIONS */
+.section{
+margin:100px 0;
+}
+
+h2{
+font-size:32px;
+margin-bottom:20px;
+}
+
+/* GRID */
+.grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:20px;
 }
+
+/* CARDS */
 .card{
-background:#0f172a;
+background:rgba(15,23,42,0.7);
+backdrop-filter:blur(10px);
 padding:25px;
-border-radius:15px;
-transition:.3s;
-opacity:0;
-transform:translateY(30px);
+border-radius:16px;
+transition:0.3s;
+border:1px solid rgba(255,255,255,0.05);
 }
-.card.show{opacity:1;transform:translateY(0);}
+
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 20px 40px rgba(0,0,0,0.5);
+}
+
+/* FORM */
 input,textarea{
 width:100%;
-padding:12px;
+padding:14px;
 margin:10px 0;
 border-radius:8px;
 border:none;
+background:#0f172a;
+color:white;
 }
-.lang{text-align:right;}
+
+/* FOOTER */
+.footer{
+margin-top:60px;
+text-align:center;
+opacity:0.6;
+font-size:14px;
+}
 </style>
 </head>
 
@@ -65,282 +148,100 @@ border:none;
 
 <div class="container">
 
-<!-- LANG -->
-<div class="lang">
-<button onclick="setLang('ru')" class="btn">RU</button>
-<button onclick="setLang('en')" class="btn">EN</button>
-<button onclick="setLang('ge')" class="btn">GE</button>
+<!-- HEADER -->
+<div class="header">
+<div class="logo">IMPERIAL TRANS CARGO</div>
+<div>
+<a href="tel:+79103273958" class="btn-outline btn">Позвонить</a>
+</div>
 </div>
 
 <!-- HERO -->
-<section class="hero">
-<div class="hero-inner">
+<div class="hero">
+<div class="hero-content">
 
-<h1 data-key="title">IMPERIAL TRANS CARGO</h1>
+<h1>Доставка грузов из Китая, Европы и Турции</h1>
 
-<p data-key="hero1" style="font-size:26px;font-weight:bold;"></p>
-<p data-key="hero2" style="font-size:18px;"></p>
-<p data-key="geo"></p>
+<p>5–20 дней • Под ключ • Без посредников • Контроль на каждом этапе</p>
 
-<button class="btn" onclick="scrollToForm()" data-key="cta"></button>
-<a href="tel:+79103273958" class="btn" data-key="call"></a>
-
-<p style="margin-top:20px;" data-key="fast"></p>
-
-<a href="https://wa.me/79103273958" class="btn" data-key="whatsapp"></a>
+<div class="hero-buttons">
+<button class="btn" onclick="scrollToForm()">Рассчитать</button>
+<a href="https://wa.me/79103273958" class="btn btn-outline">WhatsApp</a>
+</div>
 
 </div>
-</section>
+</div>
 
 <!-- УСЛУГИ -->
-<section>
-<h2 data-key="services"></h2>
-<div class="services">
-<div class="card" data-key="s1"></div>
-<div class="card" data-key="s2"></div>
-<div class="card" data-key="s3"></div>
-<div class="card" data-key="s4"></div>
-<div class="card" data-key="s5"></div>
-<div class="card" data-key="s6"></div>
+<div class="section">
+<h2>Услуги</h2>
+<div class="grid">
+<div class="card">Международные перевозки</div>
+<div class="card">Карго доставка</div>
+<div class="card">Автоперевозки</div>
+<div class="card">Авиадоставка</div>
+<div class="card">Морские перевозки</div>
+<div class="card">Таможенное оформление</div>
 </div>
-</section>
-
-<!-- ДОП -->
-<section>
-<h2 data-key="extra"></h2>
-<div class="services">
-<div class="card" data-key="e1"></div>
-<div class="card" data-key="e2"></div>
-<div class="card" data-key="e3"></div>
-<div class="card" data-key="e4"></div>
 </div>
-</section>
-
-<!-- ОФИСЫ -->
-<section>
-<h2 data-key="offices"></h2>
-<div class="services">
-<div class="card" data-key="o1"></div>
-<div class="card" data-key="o2"></div>
-<div class="card" data-key="o3"></div>
-</div>
-</section>
 
 <!-- ПРЕИМУЩЕСТВА -->
-<section>
-<h2 data-key="why"></h2>
-<div class="services">
-<div class="card" data-key="w1"></div>
-<div class="card" data-key="w2"></div>
-<div class="card" data-key="w3"></div>
-<div class="card" data-key="w4"></div>
+<div class="section">
+<h2>Почему мы</h2>
+<div class="grid">
+<div class="card">15+ лет опыта</div>
+<div class="card">1000+ перевозок</div>
+<div class="card">Прямые контракты</div>
+<div class="card">Контроль 24/7</div>
 </div>
-</section>
+</div>
 
 <!-- КАЛЬКУЛЯТОР -->
-<section>
-<h2 data-key="calcTitle"></h2>
-<div class="card">
-<input id="weight" data-key-placeholder="weight">
-<button class="btn" onclick="calc()" data-key="calcBtn"></button>
+<div class="section">
+<h2>Рассчитать стоимость</h2>
+
+<input id="weight" placeholder="Вес (кг)">
+<button class="btn" onclick="calc()">Рассчитать</button>
+
 <p id="result"></p>
-<a href="https://wa.me/79103273958" class="btn" data-key="exact"></a>
+
 </div>
-</section>
 
 <!-- ФОРМА -->
-<section id="form">
-<h2 data-key="formTitle"></h2>
+<div class="section" id="form">
+<h2>Оставить заявку</h2>
+
 <form onsubmit="sendForm(event)">
-<input id="name" data-key-placeholder="name">
-<input id="phone" data-key-placeholder="phone">
-<textarea id="msg" data-key-placeholder="msg"></textarea>
-<button class="btn" data-key="send"></button>
+<input id="name" placeholder="Имя">
+<input id="phone" placeholder="Телефон">
+<textarea id="msg" placeholder="Описание груза"></textarea>
+
+<button class="btn">Отправить</button>
 </form>
+
 <p id="status"></p>
-</section>
+
+</div>
+
+<div class="footer">
+ООО «Империал-Транс Карго»
+</div>
 
 </div>
 
 <script>
 
-// ПЕРЕВОДЫ
-const t = {
-ru:{
-title:"IMPERIAL TRANS CARGO",
-hero1:"Доставка из Китая, Европы и Турции за 5–20 дней",
-hero2:"Снижаем стоимость до 30% • Работаем под ключ",
-geo:"Европа • СНГ • Азия",
-cta:"Рассчитать стоимость",
-call:"Позвонить",
-fast:"Ответим за 5–10 минут",
-whatsapp:"Написать в WhatsApp",
-
-services:"Наши услуги",
-s1:"🚚 Международные перевозки",
-s2:"📦 Карго доставка",
-s3:"🚛 Автоперевозки",
-s4:"✈️ Авиадоставка",
-s5:"🚢 Морские перевозки",
-s6:"📑 Таможенное оформление",
-
-extra:"Дополнительные услуги",
-e1:"💳 Агентские платежи",
-e2:"🌍 Аутсорсинг ВЭД",
-e3:"📦 Параллельный импорт",
-e4:"📑 Полное сопровождение",
-
-offices:"Наши офисы",
-o1:"📍 Россия (Белгород)",
-o2:"📍 Стамбул",
-o3:"📍 Вильнюс",
-
-why:"Почему выбирают нас",
-w1:"✔️ 15+ лет опыта",
-w2:"✔️ Работаем по Европе и Азии",
-w3:"✔️ Полное сопровождение",
-w4:"✔️ Быстрая доставка",
-
-calcTitle:"Рассчитать стоимость",
-calcBtn:"Рассчитать",
-exact:"Получить точный расчёт",
-
-formTitle:"Оставьте заявку",
-send:"Отправить",
-
-weight:"Вес (кг)",
-name:"Имя",
-phone:"Телефон",
-msg:"Описание груза"
-},
-
-en:{
-title:"IMPERIAL TRANS CARGO",
-hero1:"Delivery from China, Europe and Turkey in 5–20 days",
-hero2:"Reduce costs up to 30% • Full service",
-geo:"Europe • CIS • Asia",
-cta:"Calculate cost",
-call:"Call",
-fast:"We respond in 5–10 minutes",
-whatsapp:"Write on WhatsApp",
-
-services:"Our services",
-s1:"International перевозки",
-s2:"Cargo delivery",
-s3:"Truck transport",
-s4:"Air delivery",
-s5:"Sea freight",
-s6:"Customs clearance",
-
-extra:"Additional services",
-e1:"Agent payments",
-e2:"Outsourcing",
-e3:"Parallel import",
-e4:"Full support",
-
-offices:"Our offices",
-o1:"Russia",
-o2:"Istanbul",
-o3:"Vilnius",
-
-why:"Why choose us",
-w1:"15+ years experience",
-w2:"Work across Europe & Asia",
-w3:"Full support",
-w4:"Fast delivery",
-
-calcTitle:"Calculate cost",
-calcBtn:"Calculate",
-exact:"Get exact quote",
-
-formTitle:"Leave a request",
-send:"Send",
-
-weight:"Weight (kg)",
-name:"Name",
-phone:"Phone",
-msg:"Cargo details"
-},
-
-ge:{
-title:"IMPERIAL TRANS CARGO",
-hero1:"ტვირთის გადაზიდვა 5–20 დღეში",
-hero2:"ფასის შემცირება • სრული მომსახურება",
-geo:"ევროპა • აზია",
-cta:"გამოთვლა",
-call:"დარეკვა",
-fast:"პასუხი 5–10 წუთში",
-whatsapp:"WhatsApp",
-
-services:"სერვისები",
-s1:"გადაზიდვები",
-s2:"კარგო",
-s3:"ავტო",
-s4:"ავიაცია",
-s5:"საზღვაო",
-s6:"საბაჟო",
-
-extra:"დამატებითი",
-e1:"გადახდები",
-e2:"აუთსორსინგი",
-e3:"იმპორტი",
-e4:"სრული სერვისი",
-
-offices:"ოფისები",
-o1:"რუსეთი",
-o2:"სტამბული",
-o3:"ვილნიუსი",
-
-why:"რატომ ჩვენ",
-w1:"15+ წელი",
-w2:"ევროპა/აზია",
-w3:"სრული მხარდაჭერა",
-w4:"სწრაფი",
-
-calcTitle:"ფასის გამოთვლა",
-calcBtn:"გამოთვლა",
-exact:"ზუსტი ფასი",
-
-formTitle:"განაცხადი",
-send:"გაგზავნა",
-
-weight:"წონა",
-name:"სახელი",
-phone:"ტელეფონი",
-msg:"აღწერა"
-}
-};
-
-function setLang(lang){
-document.querySelectorAll("[data-key]").forEach(el=>{
-el.innerText=t[lang][el.dataset.key]||"";
-});
-
-document.querySelectorAll("[data-key-placeholder]").forEach(el=>{
-el.placeholder=t[lang][el.dataset.keyPlaceholder]||"";
-});
-}
-
-// по умолчанию русский
-setLang("ru");
-
-// анимация
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("show")}})
-});
-document.querySelectorAll(".card").forEach(el=>observer.observe(el));
-
-// калькулятор
 function calc(){
 let w=document.getElementById("weight").value;
 let price=7000+w*35;
-document.getElementById("result").innerText="≈ "+price;
+document.getElementById("result").innerText="≈ "+price+" ₽";
 }
 
-// форма
 function sendForm(e){
 e.preventDefault();
-document.getElementById("status").innerText="OK";
+let text=`Заявка:\n${name.value}\n${phone.value}\n${msg.value}`;
+fetch("https://api.telegram.org/bot8633180088:AAG-ZzRIFeyE2dy_6rsZt70MOMfytQeACGY/sendMessage?chat_id=1118097651&text="+encodeURIComponent(text));
+document.getElementById("status").innerText="Отправлено";
 }
 
 function scrollToForm(){
