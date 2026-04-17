@@ -5,33 +5,117 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IMPERIAL TRANS CARGO</title>
 
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+(function(){
+emailjs.init("iBgRJG8GNtKKEUoBM");
+})();
+</script>
+
 <style>
-body{margin:0;font-family:Arial;background:#020617;color:white;}
-.container{max-width:1000px;margin:auto;padding:40px 20px;}
-h1{font-size:40px;}
+body{
+margin:0;
+font-family:Arial;
+background:#020617;
+color:white;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:20px;
+}
+
+h1{
+font-size:42px;
+margin-bottom:10px;
+}
+
+h2{
+margin-top:40px;
+}
+
+.hero{
+text-align:center;
+padding:60px 20px;
+}
+
 .btn{
-padding:12px 20px;
+padding:14px 22px;
 background:#22c55e;
 border:none;
-border-radius:6px;
+border-radius:8px;
 cursor:pointer;
 margin-top:10px;
+font-size:16px;
 }
+
+form{
+background:#0f172a;
+padding:20px;
+border-radius:10px;
+margin-top:20px;
+}
+
 input,select,textarea{
 width:100%;
-padding:10px;
-margin:8px 0;
+padding:12px;
+margin:10px 0;
 border-radius:6px;
 border:none;
 }
+
+.services{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:15px;
+margin-top:20px;
+}
+
+.card{
+background:#0f172a;
+padding:15px;
+border-radius:10px;
+text-align:center;
+}
+
+.contacts{
+margin-top:30px;
+text-align:center;
+}
+
+a{
+color:#22c55e;
+text-decoration:none;
+}
 </style>
+
 </head>
 
 <body>
 
 <div class="container">
+
+<!-- HERO -->
+<div class="hero">
 <h1>IMPERIAL TRANS CARGO</h1>
-<p>Оставьте заявку</p>
+<p>Международные грузоперевозки под ключ</p>
+<p>Европа • СНГ • Азия • Турция • Китай</p>
+<p><b>Рассчитаем стоимость за 5 минут</b></p>
+</div>
+
+<!-- УСЛУГИ -->
+<h2>Наши услуги</h2>
+<div class="services">
+<div class="card">🚚 Автоперевозки</div>
+<div class="card">✈️ Авиадоставка</div>
+<div class="card">🚢 Морские перевозки</div>
+<div class="card">📦 Сборные грузы</div>
+<div class="card">📑 Экспедирование</div>
+</div>
+
+<!-- ФОРМА -->
+<h2>Оставьте заявку</h2>
 
 <form onsubmit="sendForm(event)">
 <input type="text" id="name" placeholder="Имя" required>
@@ -50,6 +134,15 @@ border:none;
 </form>
 
 <p id="status"></p>
+
+<!-- КОНТАКТЫ -->
+<div class="contacts">
+<h2>Связь</h2>
+<p>📞 Телефон: <a href="tel:+79103273958">+7 (910) 327-39-58</a></p>
+<p>💬 Telegram: <a href="https://t.me/Roman_Imperial_Trans_Cargo">написать</a></p>
+<p>📱 WhatsApp: <a href="https://wa.me/79103273958">написать</a></p>
+</div>
+
 </div>
 
 <script>
@@ -64,6 +157,7 @@ let phoneVal = document.getElementById("phone").value;
 let typeVal = document.getElementById("type").value;
 let msgVal = document.getElementById("msg").value;
 
+// TELEGRAM
 let text = `🚚 Новая заявка:
 Имя: ${nameVal}
 Телефон: ${phoneVal}
@@ -74,14 +168,18 @@ let url = "https://api.telegram.org/bot8633180088:AAG-ZzRIFeyE2dy_6rsZt70MOMfytQ
 + "?chat_id=1118097651"
 + "&text=" + encodeURIComponent(text);
 
-fetch(url)
-.then(()=>{
+fetch(url);
+
+// EMAIL
+emailjs.send("service_nsvynwu","template_daooa4d",{
+name: nameVal,
+phone: phoneVal,
+type: typeVal,
+msg: msgVal
+});
+
 status.innerText="Заявка отправлена ✅";
 document.querySelector("form").reset();
-})
-.catch(()=>{
-status.innerText="Ошибка ❌";
-});
 }
 
 </script>
