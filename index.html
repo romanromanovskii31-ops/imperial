@@ -15,7 +15,6 @@ background:#020617;
 color:white;
 }
 
-/* HEADER */
 .header{
 display:flex;
 justify-content:space-between;
@@ -33,7 +32,6 @@ border:none;
 border-radius:6px;
 }
 
-/* HERO */
 .hero{
 height:100vh;
 display:flex;
@@ -46,14 +44,12 @@ background-position:center;
 background-attachment:fixed;
 }
 
-/* CONTAINER */
 .container{
 max-width:1200px;
 margin:auto;
 padding:40px 20px;
 }
 
-/* TEXT */
 h1{
 font-size:56px;
 font-weight:800;
@@ -66,7 +62,6 @@ font-size:18px;
 margin-top:10px;
 }
 
-/* BUTTON */
 .btn{
 padding:14px 26px;
 background:#22c55e;
@@ -83,7 +78,6 @@ background:#16a34a;
 transform:scale(1.05);
 }
 
-/* SECTION */
 .section{
 padding:80px 20px;
 }
@@ -93,14 +87,12 @@ font-size:32px;
 margin-bottom:25px;
 }
 
-/* GRID */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:25px;
 }
 
-/* CARD */
 .card{
 background:#111827;
 padding:25px;
@@ -128,7 +120,6 @@ transition:0.3s;
 opacity:1;
 }
 
-/* FORM */
 input,select,textarea{
 width:100%;
 padding:12px;
@@ -137,14 +128,12 @@ border-radius:8px;
 border:none;
 }
 
-/* FOOTER */
 .footer{
 text-align:center;
 padding:30px;
 border-top:1px solid #1f2937;
 }
 
-/* ANIMATION */
 .fade{
 opacity:0;
 transform:translateY(30px);
@@ -169,7 +158,6 @@ transform:translateY(0);
 </div>
 </div>
 
-<!-- HERO -->
 <div class="hero">
 <div class="container fade">
 <h1 id="title"></h1>
@@ -182,7 +170,6 @@ transform:translateY(0);
 </div>
 </div>
 
-<!-- STATS -->
 <div class="section container fade">
 <div class="grid">
 <div class="card"><h2>10+</h2><p>лет опыта</p></div>
@@ -192,13 +179,11 @@ transform:translateY(0);
 </div>
 </div>
 
-<!-- SERVICES -->
 <div class="section container fade">
 <h2 class="block-title" id="servicesTitle"></h2>
 <div class="grid" id="services"></div>
 </div>
 
-<!-- ABOUT -->
 <div class="section container fade">
 <h2 class="block-title">О компании</h2>
 <p style="max-width:700px; line-height:1.6; color:#9ca3af;">
@@ -207,14 +192,12 @@ IMPERIAL TRANS CARGO — международная логистическая �
 </p>
 </div>
 
-<!-- MAP -->
 <div class="section container fade">
 <h2 class="block-title">География перевозок</h2>
 <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg"
 style="width:100%; opacity:0.6; border-radius:12px;">
 </div>
 
-<!-- FORM -->
 <div class="section container fade" id="form">
 <h2 class="block-title" id="formTitle"></h2>
 
@@ -287,7 +270,6 @@ services.innerHTML=html;
 
 setLang('ru');
 
-/* АНИМАЦИЯ */
 const observer=new IntersectionObserver(entries=>{
 entries.forEach(e=>{
 if(e.isIntersecting){
@@ -297,7 +279,6 @@ e.target.classList.add('show');
 });
 document.querySelectorAll('.fade').forEach(el=>observer.observe(el));
 
-/* ОТПРАВКА */
 function sendForm(e){
 e.preventDefault();
 
@@ -314,6 +295,7 @@ type:type.value,
 msg:msg.value
 };
 
+function sendRequest(retry=0){
 fetch("https://imperial-bot-ifxs.onrender.com/send",{
 method:"POST",
 headers:{"Content-Type":"application/json"},
@@ -328,12 +310,20 @@ status.innerText="Заявка отправлена ✅";
 document.querySelector("form").reset();
 })
 .catch(()=>{
+if(retry<2){
+status.innerText="Пробуем снова...";
+setTimeout(()=>sendRequest(retry+1),2000);
+}else{
 status.innerText="Ошибка ❌";
+}
 })
 .finally(()=>{
 btn.innerText="Отправить";
 btn.disabled=false;
 });
+}
+
+sendRequest();
 }
 </script>
 
