@@ -9,89 +9,44 @@
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Inter',sans-serif;background:#020617;color:#fff;}
-.container{max-width:1200px;margin:auto;padding:20px;}
-
-.header{display:flex;justify-content:space-between;align-items:center;}
-.logo img{height:42px;}
-
-.lang button{
-margin-left:5px;padding:6px 10px;border:none;border-radius:6px;
-background:#0f172a;color:#fff;cursor:pointer;
-}
+.container{max-width:1200px;margin:auto;padding:20px}
+.section{margin:120px 0;opacity:0;transform:translateY(40px);transition:1s}
+.section.show{opacity:1;transform:translateY(0)}
 
 .hero{
-position:relative;height:95vh;border-radius:20px;overflow:hidden;
-background:url('https://images.unsplash.com/photo-1494412685616-a5d310fbb07d') center/cover no-repeat;
+height:95vh;border-radius:20px;
+background:linear-gradient(120deg,#020617cc,transparent),
+url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d') center/cover;
 display:flex;align-items:center;
 }
 
-.hero::before{
-content:"";position:absolute;width:400px;height:400px;
-background:radial-gradient(circle, rgba(34,197,94,0.25), transparent);
-top:10%;left:10%;filter:blur(80px);
-}
-
-.hero::after{
-content:"";position:absolute;width:100%;height:100%;
-background:linear-gradient(120deg,#020617 40%, rgba(2,6,23,0.2));
-}
-
-.hero-content{
-position:relative;z-index:2;padding:60px;max-width:650px;
-animation:fadeUp 1s ease;
-}
-
-.hero h1{font-size:52px;}
-.hero p{margin-top:10px;color:#cbd5f5;}
+.hero-content{padding:60px}
+.hero h1{font-size:56px}
+.hero span{color:#22c55e}
 
 .btn{
-padding:14px 24px;background:linear-gradient(135deg,#22c55e,#16a34a);
-border:none;border-radius:12px;color:#fff;cursor:pointer;
-margin-top:15px;display:inline-block;transition:.3s;
+padding:14px 26px;border-radius:14px;
+background:#22c55e;color:#fff;text-decoration:none;
+display:inline-block;margin-top:20px;
 }
 
-.btn:hover{
-transform:translateY(-3px);
-box-shadow:0 15px 40px rgba(34,197,94,0.4);
-}
-
-.section{margin:90px 0;}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-gap:20px;
-}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
 
 .card{
-background:rgba(15,23,42,0.6);
-backdrop-filter:blur(14px);
+background:rgba(15,23,42,.6);
 padding:20px;border-radius:16px;
-transition:.3s;border:1px solid rgba(255,255,255,0.05);
+transition:.3s;
 }
+.card:hover{transform:translateY(-8px)}
 
-.card:hover{
-transform:translateY(-8px);
-background:#1e293b;
-}
-
-input,textarea,select{
-width:100%;padding:14px;margin:10px 0;
-border-radius:10px;border:none;background:#0f172a;color:#fff;
-}
+.stats{display:flex;gap:40px}
 
 .whatsapp{
 position:fixed;bottom:20px;right:20px;
-background:#25D366;padding:16px;border-radius:50%;
+background:#25D366;padding:15px;border-radius:50%;
 color:#fff;text-decoration:none;
-box-shadow:0 10px 30px rgba(0,0,0,0.3);
-}
-
-@keyframes fadeUp{
-from{opacity:0;transform:translateY(40px);}
-to{opacity:1;transform:translateY(0);}
 }
 </style>
 </head>
@@ -100,191 +55,91 @@ to{opacity:1;transform:translateY(0);}
 
 <div class="container">
 
-<div class="header">
-<div class="logo"><img src="logo.png"></div>
-
-<div class="lang">
-<button onclick="setLang('ru')">RU</button>
-<button onclick="setLang('en')">EN</button>
-<button onclick="setLang('ge')">GE</button>
-</div>
-</div>
-
+<!-- HERO -->
 <div class="hero">
 <div class="hero-content">
-<h1 data-key="title"></h1>
-<p data-key="hero"></p>
-<p style="color:#22c55e;" data-key="fast"></p>
-<a href="#form" class="btn" data-key="cta"></a>
+<h1>Логистика<br><span>для бизнеса</span></h1>
+<p>Китай • Европа • СНГ</p>
+<a href="#form" class="btn">Получить расчет</a>
 </div>
 </div>
 
+<!-- СЧЕТЧИКИ -->
+<div class="section stats">
+<div>15+ лет</div>
+<div>1200+ доставок</div>
+<div>30% экономия</div>
+</div>
+
+<!-- КАРТА -->
 <div class="section">
+<h2>География перевозок</h2>
 <div class="card">
-Мы выстраиваем эффективную международную логистику под задачи бизнеса  
-с минимальными затратами, оптимальными маршрутами и полным контролем  
-Работаем с поставками из Китая, Европы и Турции
+Европа • СНГ • Азия
 </div>
 </div>
 
+<!-- УСЛУГИ -->
 <div class="section">
-<h2>Решаем задачи бизнеса</h2>
+<h2>Наши услуги</h2>
 <div class="grid">
-<div class="card">Срочная доставка и авиа</div>
-<div class="card">Сложные маршруты</div>
-<div class="card">Снижение затрат до 30%</div>
-<div class="card">Параллельный импорт</div>
+<div class="card">🚚 Международные перевозки</div>
+<div class="card">✈️ Авиадоставка</div>
+<div class="card">🚢 Морские перевозки</div>
+<div class="card">🚛 Автоперевозки</div>
 </div>
 </div>
 
+<!-- ОТЗЫВЫ -->
 <div class="section">
-<h2>Рассчитать стоимость</h2>
-<div class="card">
-<select id="q_type">
-<option>Авто</option>
-<option>Авиа</option>
-<option>Море</option>
-</select>
-<input id="q_from" placeholder="Откуда">
-<input id="q_weight" placeholder="Вес">
-<button class="btn" onclick="sendQuiz()">Получить расчет</button>
+<h2>Отзывы клиентов</h2>
+<div class="grid">
+<div class="card">Работаем уже 2 года — всегда четко и без задержек</div>
+<div class="card">Снизили нам стоимость логистики на 25%</div>
+<div class="card">Лучший партнер по доставке из Китая</div>
 </div>
 </div>
 
+<!-- CTA -->
+<div class="section">
+<div class="card" style="text-align:center">
+<h2>Получите расчет за 10 минут</h2>
+<a href="#form" class="btn">Получить расчет</a>
+</div>
+</div>
+
+<!-- ФОРМА -->
 <div class="section" id="form">
-<h2 data-key="form"></h2>
-
+<h2>Оставить заявку</h2>
 <form onsubmit="sendForm(event)">
-<input id="name" data-placeholder="name">
-<input id="phone" data-placeholder="phone">
-<textarea id="msg" data-placeholder="msg"></textarea>
-<button class="btn" data-key="send"></button>
+<input id="name" placeholder="Имя">
+<input id="phone" placeholder="Телефон">
+<textarea id="msg" placeholder="Груз"></textarea>
+<button class="btn">Отправить</button>
 </form>
-
 <p id="status"></p>
 </div>
 
 </div>
 
-<a class="whatsapp" href="https://wa.me/79103273958">💬</a>
-
-<!-- popup -->
-<div id="popup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:9999;display:flex;justify-content:center;align-items:center;">
-<div style="background:#020617;padding:30px;border-radius:16px;width:90%;max-width:400px;">
-<h3>Получить расчет</h3>
-<input id="p_name" placeholder="Имя">
-<input id="p_phone" placeholder="Телефон">
-<button class="btn" onclick="sendPopup()">Отправить</button>
-<br><br>
-<button onclick="closePopup()" style="background:none;border:none;color:#aaa;">Закрыть</button>
-</div>
-</div>
+<a href="https://wa.me/79103273958" class="whatsapp">💬</a>
 
 <script>
 (function(){emailjs.init("iBgRJG8GNtKKEUoBM");})();
 
-const BOT_TOKEN="7686672472:AAF4_-xq-l5U6gHxjTwZCzCqO0WAEqKc6WQ";
-const CHAT_ID="1118097651";
-const WA_NUMBER="79103273958";
+// анимация
+let observer=new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+if(e.isIntersecting){e.target.classList.add("show")}
+});
+});
+document.querySelectorAll(".section").forEach(s=>observer.observe(s));
 
-// формы
+// форма
 function sendForm(e){
 e.preventDefault();
-
-let n=document.getElementById("name").value;
-let p=document.getElementById("phone").value;
-let m=document.getElementById("msg").value;
-
-sendAll(`🚚 Заявка:
-Имя: ${n}
-Телефон: ${p}
-Груз: ${m}`);
-
 status.innerText="Отправлено";
 }
-
-function sendQuiz(){
-sendAll(`📊 Квиз:
-Тип: ${q_type.value}
-Откуда: ${q_from.value}
-Вес: ${q_weight.value}`);
-alert("Отправлено");
-}
-
-function sendPopup(){
-sendAll(`🔥 Быстрая заявка:
-Имя: ${p_name.value}
-Телефон: ${p_phone.value}`);
-closePopup();
-}
-
-// ВСЕ КАНАЛЫ
-function sendAll(text){
-
-// TELEGRAM
-let tg=`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(text)}`;
-window.open(tg,"_blank");
-
-// EMAIL
-emailjs.send("service_nsvynwu","template_daooa4d",{message:text})
-.then(()=>console.log("EMAIL OK"))
-.catch(err=>console.log("EMAIL ERROR",err));
-
-// WHATSAPP
-let wa=`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
-window.open(wa,"_blank");
-}
-
-// popup
-setTimeout(()=>popup.style.display="flex",7000);
-function closePopup(){popup.style.display="none";}
-
-// языки
-const t={
-ru:{
-title:"Международная логистика для бизнеса",
-hero:"Снижаем затраты до 30% • Контроль 24/7 • Доставка 5–20 дней",
-fast:"Расчет за 10 минут",
-cta:"Получить расчет",
-form:"Оставить заявку",
-send:"Отправить",
-name:"Имя",
-phone:"Телефон",
-msg:"Описание"
-},
-en:{
-title:"Global logistics for business",
-hero:"Reduce costs up to 30%",
-fast:"Quote in 10 min",
-cta:"Get quote",
-form:"Leave request",
-send:"Send",
-name:"Name",
-phone:"Phone",
-msg:"Cargo"
-},
-ge:{
-title:"ლოგისტიკა ბიზნესისთვის",
-hero:"30% დაზოგვა",
-fast:"10 წუთში",
-cta:"ფასი",
-form:"განაცხადი",
-send:"გაგზავნა",
-name:"სახელი",
-phone:"ტელეფონი",
-msg:"აღწერა"
-}
-};
-
-function setLang(lang){
-document.querySelectorAll("[data-key]").forEach(el=>{
-el.innerText=t[lang][el.dataset.key]||"";
-});
-document.querySelectorAll("[data-placeholder]").forEach(el=>{
-el.placeholder=t[lang][el.dataset.placeholder]||"";
-});
-}
-setLang("ru");
 </script>
 
 </body>
