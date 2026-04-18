@@ -41,12 +41,13 @@ display:flex;align-items:center;
 
 .hero-content{padding:60px}
 .hero h1{font-size:52px}
-.hero span{color:#22c55e}
 
 .btn{
 padding:14px 26px;border-radius:14px;
 background:#22c55e;color:#fff;text-decoration:none;
 display:inline-block;margin-top:20px;
+border:none;
+cursor:pointer;
 }
 
 .section{margin:100px 0}
@@ -59,7 +60,15 @@ transition:.3s;
 }
 .card:hover{transform:translateY(-6px)}
 
-img{width:100%;border-radius:12px}
+input, textarea{
+width:100%;
+padding:12px;
+margin:10px 0;
+border-radius:10px;
+border:none;
+background:#0f172a;
+color:#fff;
+}
 
 .whatsapp{
 position:fixed;bottom:20px;right:20px;
@@ -73,7 +82,7 @@ color:#fff;text-decoration:none;
 
 <header class="header">
 <div class="header-inner">
-<a href="#"><img src="logo.png"></a>
+<a href="#"><img src="./logo.png" alt="IMPERIAL"></a>
 <div class="lang">
 <button onclick="setLang('ru')">RU</button>
 <button onclick="setLang('en')">EN</button>
@@ -132,12 +141,15 @@ color:#fff;text-decoration:none;
 
 <div class="section" id="form">
 <h2 data-key="form"></h2>
+
 <form onsubmit="sendForm(event)">
-<input id="name" data-key="name">
-<input id="phone" data-key="phone">
+<input id="name" type="text" data-key="name">
+<input id="phone" type="tel" data-key="phone">
 <textarea id="msg" data-key="msg"></textarea>
+
 <button class="btn" data-key="send"></button>
 </form>
+
 <p id="status"></p>
 </div>
 
@@ -148,39 +160,47 @@ color:#fff;text-decoration:none;
 <script>
 (function(){emailjs.init("iBgRJG8GNtKKEUoBM");})();
 
-const BOT_TOKEN="ВСТАВЬ_НОВЫЙ_ТОКЕН";
-const CHAT_ID="1118097651";
-
 function sendForm(e){
 e.preventDefault();
 
-let nameValue = document.getElementById("name").value.trim();
-let phoneValue = document.getElementById("phone").value.trim();
-let cargoValue = document.getElementById("msg").value.trim();
+let name = document.getElementById("name").value.trim();
+let phone = document.getElementById("phone").value.trim();
+let cargo = document.getElementById("msg").value.trim();
 
-if(!nameValue || !phoneValue){
-document.getElementById("status").innerText="Заполните имя и телефон";
+if(!name || !phone){
+document.getElementById("status").innerText="Введите имя и телефон";
 return;
 }
 
 let text = `🚚 Новая заявка:
-Имя: ${nameValue}
-Телефон: ${phoneValue}
-Груз: ${cargoValue || "не указано"}`;
+Имя: ${name}
+Телефон: ${phone}
+Груз: ${cargo || "не указано"}`;
 
-fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,{
+Promise.all([
+
+fetch("https://api.telegram.org/bot8633180088:AAE8Kr9uW6L568rgblJQWiolXNDf0yWhVf4/sendMessage",{
 method:"POST",
 headers:{"Content-Type":"application/json"},
-body:JSON.stringify({chat_id:CHAT_ID,text:text})
-});
+body:JSON.stringify({
+chat_id:"1118097651",
+text:text
+})
+}),
 
 emailjs.send("service_nsvynwu","template_daooa4d",{
-name: nameValue,
-phone: phoneValue,
-cargo: cargoValue
-});
+name: name,
+phone: phone,
+cargo: cargo
+})
 
+])
+.then(()=>{
 document.getElementById("status").innerText="Заявка отправлена ✅";
+})
+.catch(()=>{
+document.getElementById("status").innerText="Ошибка ❌";
+});
 
 document.getElementById("name").value="";
 document.getElementById("phone").value="";
