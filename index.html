@@ -10,10 +10,27 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',sans-serif;background:#020617;color:#fff;}
+body{font-family:'Inter',sans-serif;background:#020617;color:#fff;padding-top:80px;}
 .container{max-width:1200px;margin:auto;padding:20px}
-.section{margin:120px 0;opacity:0;transform:translateY(40px);transition:1s}
-.section.show{opacity:1;transform:translateY(0)}
+
+.header{
+position:fixed;top:0;width:100%;z-index:999;
+background:rgba(2,6,23,0.7);
+backdrop-filter:blur(10px);
+border-bottom:1px solid rgba(255,255,255,0.05);
+}
+.header-inner{
+max-width:1200px;margin:auto;
+display:flex;justify-content:space-between;align-items:center;
+padding:15px 20px;
+}
+.logo img{height:40px}
+
+.lang button{
+margin-left:8px;padding:6px 10px;border:none;
+border-radius:6px;background:#0f172a;color:#fff;cursor:pointer;
+}
+.lang button:hover{background:#22c55e}
 
 .hero{
 height:95vh;border-radius:20px;
@@ -23,7 +40,7 @@ display:flex;align-items:center;
 }
 
 .hero-content{padding:60px}
-.hero h1{font-size:56px}
+.hero h1{font-size:52px}
 .hero span{color:#22c55e}
 
 .btn{
@@ -32,6 +49,7 @@ background:#22c55e;color:#fff;text-decoration:none;
 display:inline-block;margin-top:20px;
 }
 
+.section{margin:100px 0}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
 
 .card{
@@ -39,9 +57,9 @@ background:rgba(15,23,42,.6);
 padding:20px;border-radius:16px;
 transition:.3s;
 }
-.card:hover{transform:translateY(-8px)}
+.card:hover{transform:translateY(-6px)}
 
-.stats{display:flex;gap:40px}
+img{width:100%;border-radius:12px}
 
 .whatsapp{
 position:fixed;bottom:20px;right:20px;
@@ -53,69 +71,88 @@ color:#fff;text-decoration:none;
 
 <body>
 
+<header class="header">
+<div class="header-inner">
+<a href="#" class="logo"><img src="logo.png"></a>
+<div class="lang">
+<button onclick="setLang('ru')">RU</button>
+<button onclick="setLang('en')">EN</button>
+<button onclick="setLang('ge')">GE</button>
+</div>
+</div>
+</header>
+
 <div class="container">
 
-<!-- HERO -->
 <div class="hero">
 <div class="hero-content">
-<h1>Логистика<br><span>для бизнеса</span></h1>
-<p>Китай • Европа • СНГ</p>
-<a href="#form" class="btn">Получить расчет</a>
+<h1 data-key="title"></h1>
+<p data-key="hero"></p>
+<a href="#form" class="btn" data-key="cta"></a>
 </div>
 </div>
 
-<!-- СЧЕТЧИКИ -->
-<div class="section stats">
-<div>15+ лет</div>
-<div>1200+ доставок</div>
-<div>30% экономия</div>
-</div>
-
-<!-- КАРТА -->
 <div class="section">
-<h2>География перевозок</h2>
-<div class="card">
-Европа • СНГ • Азия
-</div>
-</div>
-
-<!-- УСЛУГИ -->
-<div class="section">
-<h2>Наши услуги</h2>
+<h2 data-key="services"></h2>
 <div class="grid">
-<div class="card">🚚 Международные перевозки</div>
-<div class="card">✈️ Авиадоставка</div>
-<div class="card">🚢 Морские перевозки</div>
-<div class="card">🚛 Автоперевозки</div>
+
+<div class="card"><img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d">🚚 <span data-key="s1"></span></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1605745341112-85968b19335b">📦 <span data-key="s2"></span></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70">🚛 <span data-key="s3"></span></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1504198453319-5ce911bafcde">✈️ <span data-key="s4"></span></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c">🚢 <span data-key="s5"></span></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f">📑 <span data-key="s6"></span></div>
+
 </div>
 </div>
 
-<!-- ОТЗЫВЫ -->
 <div class="section">
-<h2>Отзывы клиентов</h2>
+<h2 data-key="extra"></h2>
 <div class="grid">
-<div class="card">Работаем уже 2 года — всегда четко и без задержек</div>
-<div class="card">Снизили нам стоимость логистики на 25%</div>
-<div class="card">Лучший партнер по доставке из Китая</div>
+<div class="card">💳 <span data-key="e1"></span></div>
+<div class="card">🌍 <span data-key="e2"></span></div>
+<div class="card">📦 <span data-key="e3"></span></div>
+<div class="card">📑 <span data-key="e4"></span></div>
 </div>
 </div>
 
-<!-- CTA -->
+<div class="section">
+<h2 data-key="customs"></h2>
+<div class="card" data-key="customs_text"></div>
+</div>
+
+<div class="section">
+<h2 data-key="offices"></h2>
+<div class="grid">
+<div class="card" data-key="office1"></div>
+<div class="card" data-key="office2"></div>
+<div class="card" data-key="office3"></div>
+</div>
+</div>
+
+<div class="section">
+<h2 data-key="cases"></h2>
+<div class="grid">
+<div class="card" data-key="case1"></div>
+<div class="card" data-key="case2"></div>
+<div class="card" data-key="case3"></div>
+</div>
+</div>
+
 <div class="section">
 <div class="card" style="text-align:center">
-<h2>Получите расчет за 10 минут</h2>
-<a href="#form" class="btn">Получить расчет</a>
+<h2 data-key="cta2"></h2>
+<a href="#form" class="btn" data-key="cta"></a>
 </div>
 </div>
 
-<!-- ФОРМА -->
 <div class="section" id="form">
-<h2>Оставить заявку</h2>
+<h2 data-key="form"></h2>
 <form onsubmit="sendForm(event)">
-<input id="name" placeholder="Имя">
-<input id="phone" placeholder="Телефон">
-<textarea id="msg" placeholder="Груз"></textarea>
-<button class="btn">Отправить</button>
+<input id="name" data-key="name">
+<input id="phone" data-key="phone">
+<textarea id="msg" data-key="msg"></textarea>
+<button class="btn" data-key="send"></button>
 </form>
 <p id="status"></p>
 </div>
@@ -127,19 +164,134 @@ color:#fff;text-decoration:none;
 <script>
 (function(){emailjs.init("iBgRJG8GNtKKEUoBM");})();
 
-// анимация
-let observer=new IntersectionObserver(entries=>{
-entries.forEach(e=>{
-if(e.isIntersecting){e.target.classList.add("show")}
-});
-});
-document.querySelectorAll(".section").forEach(s=>observer.observe(s));
+const BOT_TOKEN="ТВОЙ_ТОКЕН";
+const CHAT_ID="ТВОЙ_CHAT";
 
-// форма
 function sendForm(e){
 e.preventDefault();
+let text=`Заявка: ${name.value} ${phone.value} ${msg.value}`;
+fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify({chat_id:CHAT_ID,text:text})
+});
+emailjs.send("service_nsvynwu","template_daooa4d",{message:text});
 status.innerText="Отправлено";
 }
+
+const t={
+ru:{
+title:"Полный цикл логистики",
+hero:"Работаем там, где другие не работают",
+cta:"Получить расчет",
+services:"Наши услуги",
+s1:"Международные перевозки",
+s2:"Карго доставка",
+s3:"Автоперевозки",
+s4:"Авиадоставка",
+s5:"Морские перевозки",
+s6:"Таможенное оформление",
+extra:"Дополнительные услуги",
+e1:"Агентские платежи",
+e2:"Аутсорсинг ВЭД",
+e3:"Параллельный импорт",
+e4:"Полное сопровождение",
+customs:"Таможенное оформление",
+customs_text:"Белгород • Краснодар • Новороссийск",
+offices:"Наши офисы",
+office1:"Россия, Белгород",
+office2:"Стамбул",
+office3:"Вильнюс",
+cases:"Наши кейсы",
+case1:"Китай → Москва 12 дней (-27%)",
+case2:"Турция → РФ 8 дней (-18%)",
+case3:"Европа → РФ 10 дней (-22%)",
+cta2:"Получите расчет за 10 минут",
+form:"Оставить заявку",
+send:"Отправить",
+name:"Имя",
+phone:"Телефон",
+msg:"Груз"
+},
+en:{
+title:"Full logistics cycle",
+hero:"We work where others don’t",
+cta:"Get quote",
+services:"Services",
+s1:"International transport",
+s2:"Cargo delivery",
+s3:"Truck transport",
+s4:"Air delivery",
+s5:"Sea transport",
+s6:"Customs clearance",
+extra:"Additional services",
+e1:"Agent payments",
+e2:"Outsourcing",
+e3:"Parallel import",
+e4:"Full support",
+customs:"Customs",
+customs_text:"Russia",
+offices:"Offices",
+office1:"Russia",
+office2:"Istanbul",
+office3:"Vilnius",
+cases:"Cases",
+case1:"China → Moscow 12 days (-27%)",
+case2:"Turkey → Russia 8 days (-18%)",
+case3:"Europe → Russia 10 days (-22%)",
+cta2:"Get quote in 10 minutes",
+form:"Request",
+send:"Send",
+name:"Name",
+phone:"Phone",
+msg:"Cargo"
+},
+ge:{
+title:"ლოგისტიკის სრული ციკლი",
+hero:"ვმუშაობთ იქ, სადაც სხვები ვერ",
+cta:"ფასი",
+services:"სერვისები",
+s1:"ტრანსპორტი",
+s2:"კარგო",
+s3:"ავტო",
+s4:"ავიაცია",
+s5:"ზღვა",
+s6:"საბაჟო",
+extra:"დამატებითი",
+e1:"გადახდები",
+e2:"აუთსორსინგი",
+e3:"იმპორტი",
+e4:"სერვისი",
+customs:"საბაჟო",
+customs_text:"საქართველო",
+offices:"ოფისები",
+office1:"რუსეთი",
+office2:"სტამბული",
+office3:"ვილნიუსი",
+cases:"ქეისები",
+case1:"ჩინეთი → მოსკოვი",
+case2:"თურქეთი → რუსეთი",
+case3:"ევროპა → რუსეთი",
+cta2:"ფასი 10 წუთში",
+form:"ფორმა",
+send:"გაგზავნა",
+name:"სახელი",
+phone:"ტელეფონი",
+msg:"ტვირთი"
+}
+};
+
+function setLang(lang){
+document.querySelectorAll("[data-key]").forEach(el=>{
+let key=el.dataset.key;
+if(el.tagName==="INPUT"||el.tagName==="TEXTAREA"){
+el.placeholder=t[lang][key]||"";
+}else{
+el.innerText=t[lang][key]||"";
+}
+});
+}
+setLang("ru");
 </script>
 
 </body>
