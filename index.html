@@ -17,8 +17,8 @@ body{font-family:'Inter',sans-serif;background:#020617;color:#fff;}
 .logo img{height:42px;}
 
 .lang button{
-margin-left:5px;padding:6px 10px;border:none;border-radius:6px;cursor:pointer;
-background:#0f172a;color:#fff;
+margin-left:5px;padding:6px 10px;border:none;border-radius:6px;
+background:#0f172a;color:#fff;cursor:pointer;
 }
 
 .hero{
@@ -27,7 +27,6 @@ background:url('https://images.unsplash.com/photo-1494412685616-a5d310fbb07d') c
 display:flex;align-items:center;
 }
 
-/* свечение */
 .hero::before{
 content:"";position:absolute;width:400px;height:400px;
 background:radial-gradient(circle, rgba(34,197,94,0.25), transparent);
@@ -102,9 +101,7 @@ to{opacity:1;transform:translateY(0);}
 <div class="container">
 
 <div class="header">
-<div class="logo">
-<img src="logo.png">
-</div>
+<div class="logo"><img src="logo.png"></div>
 
 <div class="lang">
 <button onclick="setLang('ru')">RU</button>
@@ -122,27 +119,24 @@ to{opacity:1;transform:translateY(0);}
 </div>
 </div>
 
-<!-- B2B -->
 <div class="section">
 <div class="card">
 Мы выстраиваем эффективную международную логистику под задачи бизнеса  
-с минимальными затратами, оптимальными маршрутами и полным контролем на каждом этапе  
+с минимальными затратами, оптимальными маршрутами и полным контролем  
 Работаем с поставками из Китая, Европы и Турции
 </div>
 </div>
 
-<!-- задачи -->
 <div class="section">
-<h2>Решаем логистические задачи бизнеса</h2>
+<h2>Решаем задачи бизнеса</h2>
 <div class="grid">
 <div class="card">Срочная доставка и авиа</div>
-<div class="card">Сложные маршруты и санкционные направления</div>
-<div class="card">Оптимизация затрат до 30%</div>
-<div class="card">Параллельный импорт под ключ</div>
+<div class="card">Сложные маршруты</div>
+<div class="card">Снижение затрат до 30%</div>
+<div class="card">Параллельный импорт</div>
 </div>
 </div>
 
-<!-- квиз -->
 <div class="section">
 <h2>Рассчитать стоимость</h2>
 <div class="card">
@@ -152,33 +146,11 @@ to{opacity:1;transform:translateY(0);}
 <option>Море</option>
 </select>
 <input id="q_from" placeholder="Откуда">
-<input id="q_weight" placeholder="Вес (кг)">
+<input id="q_weight" placeholder="Вес">
 <button class="btn" onclick="sendQuiz()">Получить расчет</button>
 </div>
 </div>
 
-<!-- кейсы -->
-<div class="section">
-<h2>Реальные кейсы</h2>
-<div class="grid">
-<div class="card">20 тонн оборудования<br>Китай → Москва<br>18 дней • снижение стоимости на 27%</div>
-<div class="card">Авиадоставка<br>Турция → РФ<br>5 дней • запуск производства</div>
-<div class="card">Европа → СНГ<br>10 дней • сложный маршрут</div>
-</div>
-</div>
-
-<!-- доверие -->
-<div class="section">
-<h2>Почему нам доверяют</h2>
-<div class="grid">
-<div class="card">Работаем с бизнесом и производствами</div>
-<div class="card">Опыт сложных логистических схем</div>
-<div class="card">Контроль груза на каждом этапе</div>
-<div class="card">Персональный менеджер 24/7</div>
-</div>
-</div>
-
-<!-- форма -->
 <div class="section" id="form">
 <h2 data-key="form"></h2>
 
@@ -197,7 +169,7 @@ to{opacity:1;transform:translateY(0);}
 <a class="whatsapp" href="https://wa.me/79103273958">💬</a>
 
 <!-- popup -->
-<div id="popup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:9999;justify-content:center;align-items:center;">
+<div id="popup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:9999;display:flex;justify-content:center;align-items:center;">
 <div style="background:#020617;padding:30px;border-radius:16px;width:90%;max-width:400px;">
 <h3>Получить расчет</h3>
 <input id="p_name" placeholder="Имя">
@@ -213,39 +185,65 @@ to{opacity:1;transform:translateY(0);}
 
 const BOT_TOKEN="7686672472:AAF4_-xq-l5U6gHxjTwZCzCqO0WAEqKc6WQ";
 const CHAT_ID="1118097651";
+const WA_NUMBER="79103273958";
 
+// формы
 function sendForm(e){
 e.preventDefault();
-sendAll(`🚚 Заявка:\nИмя: ${name.value}\nТелефон: ${phone.value}\nГруз: ${msg.value}`);
+
+let n=document.getElementById("name").value;
+let p=document.getElementById("phone").value;
+let m=document.getElementById("msg").value;
+
+sendAll(`🚚 Заявка:
+Имя: ${n}
+Телефон: ${p}
+Груз: ${m}`);
+
 status.innerText="Отправлено";
 }
 
 function sendQuiz(){
-sendAll(`📊 Квиз:\nТип: ${q_type.value}\nОткуда: ${q_from.value}\nВес: ${q_weight.value}`);
+sendAll(`📊 Квиз:
+Тип: ${q_type.value}
+Откуда: ${q_from.value}
+Вес: ${q_weight.value}`);
 alert("Отправлено");
 }
 
 function sendPopup(){
-sendAll(`🔥 Быстрая заявка:\nИмя: ${p_name.value}\nТелефон: ${p_phone.value}`);
+sendAll(`🔥 Быстрая заявка:
+Имя: ${p_name.value}
+Телефон: ${p_phone.value}`);
 closePopup();
 }
 
+// ВСЕ КАНАЛЫ
 function sendAll(text){
-fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,{
-method:"POST",
-headers:{"Content-Type":"application/json"},
-body:JSON.stringify({chat_id:CHAT_ID,text:text})
-});
-emailjs.send("service_nsvynwu","template_daooa4d",{message:text});
+
+// TELEGRAM
+let tg=`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(text)}`;
+window.open(tg,"_blank");
+
+// EMAIL
+emailjs.send("service_nsvynwu","template_daooa4d",{message:text})
+.then(()=>console.log("EMAIL OK"))
+.catch(err=>console.log("EMAIL ERROR",err));
+
+// WHATSAPP
+let wa=`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
+window.open(wa,"_blank");
 }
 
+// popup
 setTimeout(()=>popup.style.display="flex",7000);
 function closePopup(){popup.style.display="none";}
 
+// языки
 const t={
 ru:{
-title:"Международная логистика и доставка грузов для бизнеса",
-hero:"Оптимизация логистики • Снижение затрат до 30% • Полный контроль грузов 24/7",
+title:"Международная логистика для бизнеса",
+hero:"Снижаем затраты до 30% • Контроль 24/7 • Доставка 5–20 дней",
 fast:"Расчет за 10 минут",
 cta:"Получить расчет",
 form:"Оставить заявку",
@@ -255,8 +253,8 @@ phone:"Телефон",
 msg:"Описание"
 },
 en:{
-title:"Logistics and cargo delivery for business",
-hero:"Reduce costs up to 30% • Full control",
+title:"Global logistics for business",
+hero:"Reduce costs up to 30%",
 fast:"Quote in 10 min",
 cta:"Get quote",
 form:"Leave request",
@@ -267,7 +265,7 @@ msg:"Cargo"
 },
 ge:{
 title:"ლოგისტიკა ბიზნესისთვის",
-hero:"30% დაზოგვა • სრული კონტროლი",
+hero:"30% დაზოგვა",
 fast:"10 წუთში",
 cta:"ფასი",
 form:"განაცხადი",
