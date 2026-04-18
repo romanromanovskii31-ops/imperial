@@ -1,8 +1,75 @@
-<!-- ТОЛЬКО ШАПКА И HERO ОБНОВЛЕНЫ, ОСТАЛЬНОЕ ТВОЁ -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IMPERIAL TRANS CARGO</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:#020617;color:#fff;}
+.container{max-width:1200px;margin:auto;padding:20px;}
+
+.header{display:flex;justify-content:space-between;align-items:center;}
+.logo img{height:42px;}
+
+.lang button{margin-left:5px;padding:6px 10px;border:none;border-radius:6px;cursor:pointer;}
+
+.hero{
+position:relative;height:95vh;border-radius:20px;overflow:hidden;
+background:url('https://images.unsplash.com/photo-1494412685616-a5d310fbb07d') center/cover no-repeat;
+display:flex;align-items:center;
+}
+
+.hero::after{
+content:"";position:absolute;width:100%;height:100%;
+background:linear-gradient(120deg,#020617 40%, rgba(2,6,23,0.2));
+}
+
+.hero-content{position:relative;z-index:2;padding:60px;max-width:650px;}
+.hero h1{font-size:52px;}
+.hero p{margin-top:10px;color:#cbd5f5;}
+
+.btn{
+padding:14px 24px;background:#22c55e;border:none;border-radius:10px;
+color:#fff;cursor:pointer;margin-top:15px;display:inline-block;transition:.3s;
+}
+.btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(34,197,94,0.4);}
+
+.section{margin:90px 0;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;}
+
+.card{
+background:rgba(15,23,42,0.6);
+backdrop-filter:blur(12px);
+padding:20px;
+border-radius:14px;
+transition:.3s;
+}
+.card:hover{transform:translateY(-6px);background:#1e293b;}
+
+input,textarea,select{
+width:100%;padding:14px;margin:10px 0;border-radius:10px;border:none;
+background:#0f172a;color:#fff;
+}
+
+.whatsapp{
+position:fixed;bottom:20px;right:20px;background:#25D366;
+padding:16px;border-radius:50%;color:#fff;text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
 
 <div class="header">
 <div class="logo">
-<img src="logo.png" style="height:42px;">
+<img src="logo.png">
 </div>
 
 <div class="lang">
@@ -12,67 +79,105 @@
 </div>
 </div>
 
-<!-- HERO -->
 <div class="hero">
 <div class="hero-content">
-
 <h1 data-key="title"></h1>
-
 <p data-key="hero"></p>
-
 <p style="color:#22c55e;" data-key="fast"></p>
-
 <a href="#form" class="btn" data-key="cta"></a>
-
 </div>
 </div>
 
-<!-- СПОКОЙНЫЙ B2B БЛОК -->
 <div class="section">
 <div class="card">
-Мы выстраиваем эффективную международную логистику под задачи бизнеса —  
-с минимальными затратами, оптимальными маршрутами и полным контролем на каждом этапе
+Мы выстраиваем эффективную международную логистику под задачи бизнеса  
+с минимальными затратами и полным контролем
 </div>
 </div>
 
-<!-- ДОЖИМ (НО БЕЗ КРИКА) -->
 <div class="section">
 <h2>Решаем логистические задачи бизнеса</h2>
-
 <div class="grid">
 <div class="card">Срочная доставка и авиа</div>
-<div class="card">Сложные маршруты и санкционные направления</div>
-<div class="card">Оптимизация затрат до 30%</div>
-<div class="card">Параллельный импорт под ключ</div>
+<div class="card">Сложные маршруты</div>
+<div class="card">Оптимизация затрат</div>
+<div class="card">Параллельный импорт</div>
 </div>
 </div>
 
-<!-- КВИЗ ОСТАВЛЯЕМ -->
 <div class="section">
 <h2>Рассчитать стоимость</h2>
-
 <div class="card">
 <select id="q_type">
 <option>Авто</option>
 <option>Авиа</option>
 <option>Море</option>
 </select>
-
 <input id="q_from" placeholder="Откуда">
 <input id="q_weight" placeholder="Вес (кг)">
-
 <button class="btn" onclick="sendQuiz()">Получить расчет</button>
 </div>
 </div>
 
-<!-- ФАКТЫ УСИЛЕНЫ -->
-<div class="section">
-<h2>Мы в цифрах</h2>
+<div class="section" id="form">
+<h2 data-key="form"></h2>
 
-<div class="grid">
-<div class="card">15+ лет опыта</div>
-<div class="card">1000+ перевозок</div>
-<div class="card">Европа • СНГ • Азия</div>
-<div class="card">24/7 поддержка</div>
+<form onsubmit="sendForm(event)">
+<input id="name" data-placeholder="name">
+<input id="phone" data-placeholder="phone">
+<textarea id="msg" data-placeholder="msg"></textarea>
+<button class="btn" data-key="send"></button>
+</form>
+
+<p id="status"></p>
 </div>
+
 </div>
+
+<a class="whatsapp" href="https://wa.me/79103273958">💬</a>
+
+<script>
+(function(){emailjs.init("iBgRJG8GNtKKEUoBM");})();
+
+const BOT_TOKEN="7686672472:AAF4_-xq-l5U6gHxjTwZCzCqO0WAEqKc6WQ";
+const CHAT_ID="1118097651";
+
+function sendForm(e){
+e.preventDefault();
+sendAll(`Заявка: ${name.value} ${phone.value} ${msg.value}`);
+status.innerText="Отправлено";
+}
+
+function sendQuiz(){
+sendAll(`Квиз: ${q_type.value} ${q_from.value} ${q_weight.value}`);
+alert("Отправлено");
+}
+
+function sendAll(text){
+fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify({chat_id:CHAT_ID,text:text})
+});
+emailjs.send("service_nsvynwu","template_daooa4d",{message:text});
+}
+
+const t={
+ru:{title:"Международная логистика и доставка грузов",hero:"Снижение затрат до 30%",fast:"Расчет за 10 минут",cta:"Получить расчет",form:"Оставить заявку",send:"Отправить",name:"Имя",phone:"Телефон",msg:"Описание"},
+en:{title:"Cargo delivery",hero:"Reduce cost",fast:"Quote 10 min",cta:"Get quote",form:"Leave request",send:"Send",name:"Name",phone:"Phone",msg:"Cargo"},
+ge:{title:"ლოგისტიკა",hero:"30% დაზოგვა",fast:"10 წუთში",cta:"ფასი",form:"განაცხადი",send:"გაგზავნა",name:"სახელი",phone:"ტელეფონი",msg:"აღწერა"}
+};
+
+function setLang(lang){
+document.querySelectorAll("[data-key]").forEach(el=>{
+el.innerText=t[lang][el.dataset.key]||"";
+});
+document.querySelectorAll("[data-placeholder]").forEach(el=>{
+el.placeholder=t[lang][el.dataset.placeholder]||"";
+});
+}
+setLang("ru");
+</script>
+
+</body>
+</html>
