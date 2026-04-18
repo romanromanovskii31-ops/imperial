@@ -6,6 +6,7 @@
 <title>IMPERIAL TRANS CARGO</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -21,7 +22,6 @@ color:#fff;
 display:flex;
 justify-content:space-between;
 align-items:center;
-margin-bottom:20px;
 }
 
 .logo{font-weight:700;font-size:20px;}
@@ -36,7 +36,7 @@ cursor:pointer;
 
 .hero{
 position:relative;
-height:90vh;
+height:95vh;
 border-radius:20px;
 overflow:hidden;
 background:url('https://images.unsplash.com/photo-1494412685616-a5d310fbb07d') center/cover no-repeat;
@@ -49,22 +49,22 @@ content:"";
 position:absolute;
 width:100%;
 height:100%;
-background:linear-gradient(90deg,#020617 30%, rgba(2,6,23,0.2));
+background:linear-gradient(120deg,#020617 40%, rgba(2,6,23,0.2));
 }
 
 .hero-content{
 position:relative;
 z-index:2;
 padding:60px;
-max-width:600px;
+max-width:650px;
+animation:fadeUp 1s ease;
 }
 
-.hero h1{font-size:56px;}
-
+.hero h1{font-size:52px;}
 .hero p{margin-top:10px;color:#cbd5f5;}
 
 .btn{
-padding:14px 22px;
+padding:14px 24px;
 background:#22c55e;
 border:none;
 border-radius:10px;
@@ -72,9 +72,15 @@ color:#fff;
 cursor:pointer;
 margin-top:15px;
 display:inline-block;
+transition:.3s;
 }
 
-.section{margin:80px 0;}
+.btn:hover{
+transform:translateY(-3px);
+box-shadow:0 10px 30px rgba(34,197,94,0.4);
+}
+
+.section{margin:90px 0;}
 
 .grid{
 display:grid;
@@ -84,19 +90,36 @@ gap:20px;
 
 .card{
 background:rgba(15,23,42,0.6);
-backdrop-filter:blur(10px);
+backdrop-filter:blur(12px);
 padding:20px;
-border-radius:12px;
+border-radius:14px;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+background:#1e293b;
 }
 
 input,textarea{
 width:100%;
-padding:12px;
+padding:14px;
 margin:10px 0;
-border-radius:8px;
+border-radius:10px;
 border:none;
 background:#0f172a;
 color:#fff;
+}
+
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+padding:16px;
+border-radius:50%;
+color:#fff;
+text-decoration:none;
 }
 </style>
 </head>
@@ -119,12 +142,10 @@ color:#fff;
 <div class="hero-content">
 
 <h1 data-key="title"></h1>
-
 <p data-key="hero"></p>
-
 <p style="color:#22c55e;" data-key="fast"></p>
 
-<a href="https://wa.me/79103273958" class="btn" data-key="cta"></a>
+<a href="#form" class="btn" data-key="cta"></a>
 
 </div>
 </div>
@@ -160,12 +181,7 @@ color:#fff;
 </div>
 </div>
 
-<div class="section">
-<h2 data-key="contact"></h2>
-<div class="card" data-key="trust"></div>
-</div>
-
-<div class="section">
+<div class="section" id="form">
 <h2 data-key="form"></h2>
 
 <form onsubmit="sendForm(event)">
@@ -182,15 +198,52 @@ color:#fff;
 
 </div>
 
-<script>
+<a class="whatsapp" href="https://wa.me/79103273958">💬</a>
 
-const t={
+<script>
+(function(){
+emailjs.init("iBgRJG8GNtKKEUoBM");
+})();
+
+const BOT_TOKEN="7686672472:AAF4_-xq-l5U6gHxjTwZCzCqO0WAEqKc6WQ";
+const CHAT_ID="1118097651";
+
+function sendForm(e){
+e.preventDefault();
+
+let name=document.getElementById("name").value;
+let phone=document.getElementById("phone").value;
+let msg=document.getElementById("msg").value;
+
+let text=`🚚 Новая заявка:
+Имя: ${name}
+Телефон: ${phone}
+Груз: ${msg}`;
+
+fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify({
+chat_id:CHAT_ID,
+text:text
+})
+});
+
+emailjs.send("service_nsvynwu","template_daooa4d",{
+name:name,
+phone:phone,
+message:msg
+});
+
+document.getElementById("status").innerText="✅ Заявка отправлена";
+}
+
+const t = {
 ru:{
 title:"Доставка грузов из Китая, Европы и Турции",
 hero:"5–20 дней • Под ключ • Без посредников",
 fast:"🔥 Рассчитаем стоимость за 10 минут",
 cta:"Получить расчет",
-
 services:"Услуги",
 s1:"Международные перевозки",
 s2:"Карго доставка",
@@ -198,35 +251,26 @@ s3:"Авто",
 s4:"Авиа",
 s5:"Море",
 s6:"Таможня",
-
 why:"Почему мы",
 w1:"15+ лет опыта",
 w2:"1000+ перевозок",
 w3:"Контроль 24/7",
 w4:"Работа под ключ",
-
 cases:"Кейсы",
 c1:"Китай → Москва 18 дней",
 c2:"Турция → РФ 7 дней",
 c3:"Европа → СНГ 10 дней",
-
-contact:"Работаем ежедневно",
-trust:"📞 Ответ 5–10 минут\n📦 Полный контроль\n🚚 Расчет сегодня",
-
 form:"Оставить заявку",
 send:"Отправить",
-
 name:"Имя",
 phone:"Телефон",
 msg:"Описание"
 },
-
 en:{
 title:"Cargo delivery from China, Europe and Turkey",
-hero:"5–20 days • Full service • No посредников",
+hero:"5–20 days • Full service • No middlemen",
 fast:"🔥 Quote in 10 minutes",
 cta:"Get quote",
-
 services:"Services",
 s1:"International transport",
 s2:"Cargo delivery",
@@ -234,35 +278,26 @@ s3:"Truck",
 s4:"Air",
 s5:"Sea",
 s6:"Customs",
-
 why:"Why us",
 w1:"15+ years",
 w2:"1000+ deliveries",
 w3:"24/7 control",
 w4:"Full service",
-
 cases:"Cases",
 c1:"China → Moscow 18 days",
 c2:"Turkey → Russia 7 days",
 c3:"Europe → CIS 10 days",
-
-contact:"We work daily",
-trust:"Fast response • Full control • Today quote",
-
 form:"Leave request",
 send:"Send",
-
 name:"Name",
 phone:"Phone",
 msg:"Cargo"
 },
-
 ge:{
 title:"ტვირთის გადაზიდვა ჩინეთიდან, ევროპიდან",
 hero:"5–20 დღე • სრული სერვისი",
 fast:"🔥 ფასი 10 წუთში",
 cta:"ფასის მიღება",
-
 services:"სერვისები",
 s1:"გადაზიდვები",
 s2:"კარგო",
@@ -270,24 +305,17 @@ s3:"ავტო",
 s4:"ავიაცია",
 s5:"საზღვაო",
 s6:"საბაჟო",
-
 why:"რატომ ჩვენ",
 w1:"15+ წელი",
 w2:"1000+",
 w3:"24/7",
 w4:"სრული სერვისი",
-
 cases:"ქეისები",
 c1:"ჩინეთი → მოსკოვი",
 c2:"თურქეთი → რუსეთი",
 c3:"ევროპა",
-
-contact:"ვმუშაობთ ყოველდღე",
-trust:"სწრაფი პასუხი • სრული კონტროლი",
-
 form:"განაცხადი",
 send:"გაგზავნა",
-
 name:"სახელი",
 phone:"ტელეფონი",
 msg:"აღწერა"
@@ -298,19 +326,12 @@ function setLang(lang){
 document.querySelectorAll("[data-key]").forEach(el=>{
 el.innerText=t[lang][el.dataset.key]||"";
 });
-
 document.querySelectorAll("[data-placeholder]").forEach(el=>{
 el.placeholder=t[lang][el.dataset.placeholder]||"";
 });
 }
 
 setLang("ru");
-
-function sendForm(e){
-e.preventDefault();
-document.getElementById("status").innerText="OK";
-}
-
 </script>
 
 </body>
