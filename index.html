@@ -3,20 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IMPERIAL TRANS CARGO</title>
+
+<title>Доставка грузов из Европы | ЕС → Россия | IMPERIAL TRANS CARGO</title>
+<meta name="description" content="Доставка грузов из Европы в Россию и через Турцию. Быстро, надежно, снижение стоимости до 30%.">
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',sans-serif;background:#020617;color:#fff;padding-top:80px;}
+html{scroll-behavior:smooth}
+
+body{
+font-family:'Inter',sans-serif;
+color:#fff;
+padding-top:80px;
+background:
+radial-gradient(circle at 20% 20%, #0f172a, transparent),
+radial-gradient(circle at 80% 0%, #022c22, transparent),
+#020617;
+}
+
 .container{max-width:1200px;margin:auto;padding:20px}
 
 .header{
 position:fixed;top:0;width:100%;z-index:999;
 background:rgba(2,6,23,0.7);
-backdrop-filter:blur(10px);
+backdrop-filter:blur(12px);
 border-bottom:1px solid rgba(255,255,255,0.05);
 }
 .header-inner{
@@ -24,44 +38,89 @@ max-width:1200px;margin:auto;
 display:flex;justify-content:space-between;align-items:center;
 padding:15px 20px;
 }
-.logo img{height:40px}
-
-.contacts-top{
-font-size:13px;text-align:right;line-height:1.4;
+.logo img{
+height:40px;
+transition:0.3s;
+}
+.logo img:hover{
+transform:scale(1.1);
+filter:drop-shadow(0 0 10px #22c55e);
 }
 
+.contacts-top{font-size:13px;text-align:right}
+
 .lang button{
-margin-left:8px;padding:6px 10px;border:none;
+margin-left:6px;padding:6px 10px;border:none;
 border-radius:6px;background:#0f172a;color:#fff;cursor:pointer;
+transition:.3s;
 }
 .lang button:hover{background:#22c55e}
 
 .hero{
-height:95vh;border-radius:20px;
-background:linear-gradient(120deg,#020617cc,transparent),
+height:95vh;
+border-radius:20px;
+background:
+linear-gradient(120deg,#020617cc,transparent),
 url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d') center/cover;
 display:flex;align-items:center;
+box-shadow:0 30px 80px rgba(0,0,0,0.6);
 }
-
 .hero-content{padding:60px}
-.hero h1{font-size:52px}
+
+.hero h1{
+font-size:48px;
+background:linear-gradient(90deg,#22c55e,#4ade80);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
 
 .btn{
-padding:14px 26px;border-radius:14px;
-background:#22c55e;color:#fff;text-decoration:none;
-display:inline-block;margin-top:20px;
-border:none;cursor:pointer;
-}
-
-.section{margin:100px 0}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
-
-.card{
-background:rgba(15,23,42,.6);
-padding:20px;border-radius:16px;
+padding:14px 26px;
+border-radius:14px;
+background:linear-gradient(135deg,#22c55e,#16a34a);
+color:#fff;
+text-decoration:none;
+display:inline-block;
+margin-top:20px;
+border:none;
+cursor:pointer;
 transition:.3s;
 }
-.card:hover{transform:translateY(-6px)}
+.btn:hover{
+transform:scale(1.05);
+box-shadow:0 10px 30px rgba(34,197,94,0.5);
+}
+
+.section{
+margin:90px 0;
+opacity:0;
+transform:translateY(40px);
+transition:0.6s;
+}
+.section.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.card{
+background:rgba(15,23,42,0.6);
+backdrop-filter:blur(12px);
+border:1px solid rgba(255,255,255,0.05);
+padding:20px;
+border-radius:16px;
+box-shadow:0 20px 50px rgba(0,0,0,0.5);
+transition:.3s;
+}
+.card:hover{
+transform:translateY(-10px) scale(1.02);
+box-shadow:0 30px 70px rgba(0,0,0,0.7);
+}
 
 input, textarea{
 width:100%;
@@ -78,6 +137,17 @@ position:fixed;bottom:20px;right:20px;
 background:#25D366;padding:15px;border-radius:50%;
 color:#fff;text-decoration:none;
 }
+
+.call-btn{
+position:fixed;
+bottom:90px;
+right:20px;
+background:#22c55e;
+padding:16px;
+border-radius:50%;
+color:#fff;
+text-decoration:none;
+}
 </style>
 </head>
 
@@ -85,17 +155,16 @@ color:#fff;text-decoration:none;
 
 <header class="header">
 <div class="header-inner">
-<a href="#"><img src="./logo.png" alt="IMPERIAL"></a>
+<a href="#" class="logo"><img src="./logo.png"></a>
 
 <div class="contacts-top">
-<div>📞 +7 910 327-39-58</div>
-<div>✉️ romanromanovskii31@gmail.com</div>
+📞 +7 910 327-39-58<br>
+✉️ romanromanovskii31@gmail.com
 </div>
 
 <div class="lang">
 <button onclick="setLang('ru')">RU</button>
 <button onclick="setLang('en')">EN</button>
-<button onclick="setLang('ge')">GE</button>
 </div>
 </div>
 </header>
@@ -105,85 +174,80 @@ color:#fff;text-decoration:none;
 <div class="hero">
 <div class="hero-content">
 <h1 data-key="title"></h1>
-<p data-key="hero"></p>
+<p data-key="hero" style="color:#94a3b8"></p>
 <a href="#form" class="btn" data-key="cta"></a>
+<a href="tel:+79103273958" class="btn" style="background:#0f172a;margin-left:10px" data-key="call"></a>
+</div>
+</div>
+
+<div class="section">
+<div class="grid">
+<div class="card"><h2>15+</h2><p data-key="y1"></p></div>
+<div class="card"><h2>3000+</h2><p data-key="y2"></p></div>
+<div class="card"><h2>30%</h2><p data-key="y3"></p></div>
+<div class="card"><h2>5-15</h2><p data-key="y4"></p></div>
 </div>
 </div>
 
 <div class="section">
 <h2 data-key="services"></h2>
 <div class="grid">
-<div class="card">🚚 <span data-key="s1"></span></div>
-<div class="card">📦 <span data-key="s2"></span></div>
-<div class="card">🚛 <span data-key="s3"></span></div>
-<div class="card">✈️ <span data-key="s4"></span></div>
-<div class="card">🚢 <span data-key="s5"></span></div>
-<div class="card">📑 <span data-key="s6"></span></div>
+<div class="card"><i class="fa-solid fa-truck"></i> <span data-key="s1"></span></div>
+<div class="card"><i class="fa-solid fa-box"></i> <span data-key="s2"></span></div>
+<div class="card"><i class="fa-solid fa-road"></i> <span data-key="s3"></span></div>
+<div class="card"><i class="fa-solid fa-plane"></i> <span data-key="s4"></span></div>
+<div class="card"><i class="fa-solid fa-ship"></i> <span data-key="s5"></span></div>
+<div class="card"><i class="fa-solid fa-file"></i> <span data-key="s6"></span></div>
 </div>
 </div>
 
 <div class="section">
-<h2 data-key="extra"></h2>
+<h2 data-key="why"></h2>
 <div class="grid">
-<div class="card">💳 <span data-key="e1"></span></div>
-<div class="card">🌍 <span data-key="e2"></span></div>
-<div class="card">📦 <span data-key="e3"></span></div>
-<div class="card">📑 <span data-key="e4"></span></div>
+<div class="card" data-key="w1"></div>
+<div class="card" data-key="w2"></div>
+<div class="card" data-key="w3"></div>
+<div class="card" data-key="w4"></div>
 </div>
 </div>
 
 <div class="section">
 <h2 data-key="cases"></h2>
 <div class="grid">
-<div class="card" data-key="case1"></div>
-<div class="card" data-key="case2"></div>
-<div class="card" data-key="case3"></div>
+<div class="card" data-key="c1"></div>
+<div class="card" data-key="c2"></div>
+<div class="card" data-key="c3"></div>
 </div>
 </div>
 
-<!-- КОНТАКТЫ -->
 <div class="section">
-<h2>Контакты</h2>
+<h2>Нам доверяют</h2>
 <div class="grid">
-
-<div class="card">
-<h3>📞 Телефон</h3>
-<p>+7 910 327-39-58</p>
-</div>
-
-<div class="card">
-<h3>💬 WhatsApp</h3>
-<p><a href="https://wa.me/79103273958" style="color:#22c55e">Написать</a></p>
-</div>
-
-<div class="card">
-<h3>✉️ Email</h3>
-<p>romanromanovskii31@gmail.com</p>
-</div>
-
-<div class="card">
-<h3>🌍 География</h3>
-<p>Китай • Европа • СНГ • Турция</p>
-</div>
-
+<div class="card">Импортёры оборудования</div>
+<div class="card">Интернет-магазины</div>
+<div class="card">Оптовые компании</div>
+<div class="card">Производственные компании</div>
 </div>
 </div>
 
 <div class="section">
-<div class="card" style="text-align:center">
-<h2 data-key="cta2"></h2>
-<a href="#form" class="btn" data-key="cta"></a>
+<h2 data-key="contacts"></h2>
+<div class="grid">
+<div class="card">📞 +7 910 327-39-58</div>
+<div class="card">✉️ romanromanovskii31@gmail.com</div>
+<div class="card" data-key="geo"></div>
+<div class="card"><a href="https://wa.me/79103273958" style="color:#22c55e">WhatsApp</a></div>
 </div>
 </div>
 
 <div class="section" id="form">
 <h2 data-key="form"></h2>
+<p style="color:#22c55e" data-key="fast"></p>
 
 <form onsubmit="sendForm(event)">
-<input id="name" type="text" data-key="name">
-<input id="phone" type="tel" data-key="phone">
-<textarea id="msg" data-key="msg"></textarea>
-
+<input id="name">
+<input id="phone">
+<textarea id="msg"></textarea>
 <button class="btn" data-key="send"></button>
 </form>
 
@@ -193,6 +257,7 @@ color:#fff;text-decoration:none;
 </div>
 
 <a href="https://wa.me/79103273958" class="whatsapp">💬</a>
+<a href="tel:+79103273958" class="call-btn">📞</a>
 
 <script>
 (function(){emailjs.init("iBgRJG8GNtKKEUoBM");})();
@@ -200,54 +265,95 @@ color:#fff;text-decoration:none;
 function sendForm(e){
 e.preventDefault();
 
-let name = document.getElementById("name").value.trim();
-let phone = document.getElementById("phone").value.trim();
-let cargo = document.getElementById("msg").value.trim();
+let name=document.getElementById("name").value.trim();
+let phone=document.getElementById("phone").value.trim();
+let cargo=document.getElementById("msg").value.trim();
 
-if(!name || !phone){
+if(!name||!phone){
 document.getElementById("status").innerText="Введите имя и телефон";
 return;
 }
 
-let text = `🚚 Новая заявка:
+let text=`🚚 Новая заявка:
 Имя: ${name}
 Телефон: ${phone}
 Груз: ${cargo || "не указано"}`;
 
 Promise.all([
-
 fetch("https://api.telegram.org/bot8633180088:AAE8Kr9uW6L568rgblJQWiolXNDf0yWhVf4/sendMessage",{
 method:"POST",
 headers:{"Content-Type":"application/json"},
-body:JSON.stringify({
-chat_id:"1118097651",
-text:text
-})
+body:JSON.stringify({chat_id:"1118097651",text:text})
 }),
-
-emailjs.send("service_nsvynwu","template_daooa4d",{
-name: name,
-phone: phone,
-cargo: cargo
-})
-
+emailjs.send("service_nsvynwu","template_daooa4d",{name,phone,cargo})
 ])
-.then(()=>{
-document.getElementById("status").innerText="Заявка отправлена ✅";
-})
-.catch(()=>{
-document.getElementById("status").innerText="Ошибка ❌";
-});
-
-document.getElementById("name").value="";
-document.getElementById("phone").value="";
-document.getElementById("msg").value="";
+.then(()=>{document.getElementById("status").innerText="Заявка отправлена ✅"})
+.catch(()=>{document.getElementById("status").innerText="Ошибка ❌"});
 }
 
 const t={
-ru:{title:"Логистика для бизнеса",hero:"Китай • Европа • СНГ",cta:"Получить расчет",services:"Наши услуги",s1:"Международные перевозки",s2:"Карго доставка",s3:"Автоперевозки",s4:"Авиадоставка",s5:"Морские перевозки",s6:"Таможенное оформление",extra:"Дополнительные услуги",e1:"Агентские платежи",e2:"Аутсорсинг ВЭД",e3:"Параллельный импорт",e4:"Полное сопровождение",cases:"Наши кейсы",case1:"Китай → Москва (-27%)",case2:"Турция → РФ (-18%)",case3:"Европа → РФ (-22%)",cta2:"Получите расчет за 10 минут",form:"Оставить заявку",send:"Отправить",name:"Имя",phone:"Телефон",msg:"Груз"},
-en:{title:"Logistics",hero:"China • Europe • CIS",cta:"Get quote",services:"Services",form:"Form",send:"Send",name:"Name",phone:"Phone",msg:"Cargo"},
-ge:{title:"ლოგისტიკა",hero:"ჩინეთი • ევროპა",cta:"ფასი",form:"ფორმა",send:"გაგზავნა",name:"სახელი",phone:"ტელეფონი",msg:"ტვირთი"}
+ru:{
+title:"Доставка грузов из Европы в Россию",
+hero:"ЕС → РФ • ЕС → Турция → РФ • Снижение стоимости до 30%",
+cta:"Получить расчет",
+call:"Позвонить",
+services:"Наши услуги",
+s1:"Доставка из Европы",
+s2:"Карго доставка",
+s3:"Автоперевозки",
+s4:"Авиадоставка",
+s5:"Морские перевозки",
+s6:"Таможня",
+why:"Почему мы",
+w1:"15+ лет опыта",
+w2:"3000+ доставок",
+w3:"Экономия до 30%",
+w4:"Полный контроль",
+cases:"Кейсы",
+c1:"Германия → РФ",
+c2:"Италия → РФ",
+c3:"Польша → РФ",
+contacts:"Контакты",
+geo:"ЕС → РФ / ЕС → Турция → РФ",
+form:"Оставить заявку",
+send:"Отправить",
+fast:"Ответим за 5–10 минут",
+y1:"лет опыта",
+y2:"доставок",
+y3:"экономия",
+y4:"дней доставка"
+},
+en:{
+title:"Delivery from Europe to Russia",
+hero:"EU → Russia • EU → Turkey → Russia • Save up to 30%",
+cta:"Get quote",
+call:"Call",
+services:"Services",
+s1:"EU Delivery",
+s2:"Cargo",
+s3:"Truck delivery",
+s4:"Air delivery",
+s5:"Sea delivery",
+s6:"Customs",
+why:"Why us",
+w1:"15+ years",
+w2:"3000+ deliveries",
+w3:"Up to 30% savings",
+w4:"Full control",
+cases:"Cases",
+c1:"Germany → Russia",
+c2:"Italy → Russia",
+c3:"Poland → Russia",
+contacts:"Contacts",
+geo:"EU → Russia / EU → Turkey → Russia",
+form:"Request quote",
+send:"Send",
+fast:"Reply in 5–10 min",
+y1:"years",
+y2:"deliveries",
+y3:"savings",
+y4:"days delivery"
+}
 };
 
 function setLang(lang){
@@ -262,6 +368,15 @@ el.innerText=t[lang][key]||"";
 }
 
 setLang("ru");
+
+const sections=document.querySelectorAll(".section");
+window.addEventListener("scroll",()=>{
+sections.forEach(sec=>{
+if(sec.getBoundingClientRect().top<window.innerHeight-100){
+sec.classList.add("show");
+}
+});
+});
 </script>
 
 </body>
